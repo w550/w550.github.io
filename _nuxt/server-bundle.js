@@ -1703,7 +1703,7 @@ var layouts = {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = {
-  head: { "title": "test", "meta": [{ "charset": "utf-8" }, { "name": "viewport", "content": "width=device-width, initial-scale=1" }, { "hid": "description", "name": "description", "content": "作品展示" }], "link": [{ "rel": "icon", "type": "image/x-icon", "href": "/favicon.ico" }] },
+  head: { "title": "550", "meta": [{ "charset": "utf-8" }, { "name": "viewport", "content": "width=device-width, initial-scale=1" }, { "hid": "description", "name": "description", "content": "作品展示" }], "link": [{ "rel": "icon", "type": "image/x-icon", "href": "/favicon.ico" }] },
   data: function data() {
     return {
       layout: null,
