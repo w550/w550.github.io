@@ -61,125 +61,14 @@ module.exports =
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/w550.github.io/_nuxt/";
+/******/ 	__webpack_require__.p = "./nuxt/";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 164);
+/******/ 	return __webpack_require__(__webpack_require__.s = 205);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var store      = __webpack_require__(33)('wks')
-  , uid        = __webpack_require__(24)
-  , Symbol     = __webpack_require__(1).Symbol
-  , USE_SYMBOL = typeof Symbol == 'function';
-
-var $exports = module.exports = function(name){
-  return store[name] || (store[name] =
-    USE_SYMBOL && Symbol[name] || (USE_SYMBOL ? Symbol : uid)('Symbol.' + name));
-};
-
-$exports.store = store;
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports) {
-
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var global = module.exports = typeof window != 'undefined' && window.Math == Math
-  ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
-if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-var core = module.exports = {version: '2.4.0'};
-if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports) {
-
-module.exports = require("vue");
-
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var isObject = __webpack_require__(17);
-module.exports = function(it){
-  if(!isObject(it))throw TypeError(it + ' is not an object!');
-  return it;
-};
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// Thank's IE8 for his funny defineProperty
-module.exports = !__webpack_require__(12)(function(){
-  return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
-});
-
-/***/ }),
-/* 6 */
-/***/ (function(module, exports) {
-
-var hasOwnProperty = {}.hasOwnProperty;
-module.exports = function(it, key){
-  return hasOwnProperty.call(it, key);
-};
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var dP         = __webpack_require__(8)
-  , createDesc = __webpack_require__(22);
-module.exports = __webpack_require__(5) ? function(object, key, value){
-  return dP.f(object, key, createDesc(1, value));
-} : function(object, key, value){
-  object[key] = value;
-  return object;
-};
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var anObject       = __webpack_require__(4)
-  , IE8_DOM_DEFINE = __webpack_require__(43)
-  , toPrimitive    = __webpack_require__(36)
-  , dP             = Object.defineProperty;
-
-exports.f = __webpack_require__(5) ? Object.defineProperty : function defineProperty(O, P, Attributes){
-  anObject(O);
-  P = toPrimitive(P, true);
-  anObject(Attributes);
-  if(IE8_DOM_DEFINE)try {
-    return dP(O, P, Attributes);
-  } catch(e){ /* empty */ }
-  if('get' in Attributes || 'set' in Attributes)throw TypeError('Accessors not supported!');
-  if('value' in Attributes)O[P] = Attributes.value;
-  return O;
-};
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// to indexed object, toObject with fallback for non-array-like ES3 strings
-var IObject = __webpack_require__(44)
-  , defined = __webpack_require__(28);
-module.exports = function(it){
-  return IObject(defined(it));
-};
-
-/***/ }),
-/* 10 */
 /***/ (function(module, exports) {
 
 /*
@@ -235,7 +124,23 @@ module.exports = function() {
 
 
 /***/ }),
-/* 11 */
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var store      = __webpack_require__(32)('wks')
+  , uid        = __webpack_require__(24)
+  , Symbol     = __webpack_require__(3).Symbol
+  , USE_SYMBOL = typeof Symbol == 'function';
+
+var $exports = module.exports = function(name){
+  return store[name] || (store[name] =
+    USE_SYMBOL && Symbol[name] || (USE_SYMBOL ? Symbol : uid)('Symbol.' + name));
+};
+
+$exports.store = store;
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports) {
 
 module.exports = function normalizeComponent (
@@ -288,34 +193,19 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 12 */
+/* 3 */
 /***/ (function(module, exports) {
 
-module.exports = function(exec){
-  try {
-    return !!exec();
-  } catch(e){
-    return true;
-  }
-};
+// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+var global = module.exports = typeof window != 'undefined' && window.Math == Math
+  ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
+if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
 
 /***/ }),
-/* 13 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
-// 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys       = __webpack_require__(48)
-  , enumBugKeys = __webpack_require__(30);
-
-module.exports = Object.keys || function keys(O){
-  return $keys(O, enumBugKeys);
-};
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var listToStyles = __webpack_require__(161)
+var listToStyles = __webpack_require__(202)
 
 module.exports = function (parentId, list, isProduction) {
   if (typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
@@ -397,6 +287,116 @@ function renderStyles (styles) {
 
 
 /***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+var core = module.exports = {version: '2.4.0'};
+if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+module.exports = require("vue");
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__(17);
+module.exports = function(it){
+  if(!isObject(it))throw TypeError(it + ' is not an object!');
+  return it;
+};
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Thank's IE8 for his funny defineProperty
+module.exports = !__webpack_require__(13)(function(){
+  return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
+});
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+var hasOwnProperty = {}.hasOwnProperty;
+module.exports = function(it, key){
+  return hasOwnProperty.call(it, key);
+};
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var dP         = __webpack_require__(11)
+  , createDesc = __webpack_require__(22);
+module.exports = __webpack_require__(8) ? function(object, key, value){
+  return dP.f(object, key, createDesc(1, value));
+} : function(object, key, value){
+  object[key] = value;
+  return object;
+};
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var anObject       = __webpack_require__(7)
+  , IE8_DOM_DEFINE = __webpack_require__(42)
+  , toPrimitive    = __webpack_require__(35)
+  , dP             = Object.defineProperty;
+
+exports.f = __webpack_require__(8) ? Object.defineProperty : function defineProperty(O, P, Attributes){
+  anObject(O);
+  P = toPrimitive(P, true);
+  anObject(Attributes);
+  if(IE8_DOM_DEFINE)try {
+    return dP(O, P, Attributes);
+  } catch(e){ /* empty */ }
+  if('get' in Attributes || 'set' in Attributes)throw TypeError('Accessors not supported!');
+  if('value' in Attributes)O[P] = Attributes.value;
+  return O;
+};
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// to indexed object, toObject with fallback for non-array-like ES3 strings
+var IObject = __webpack_require__(43)
+  , defined = __webpack_require__(27);
+module.exports = function(it){
+  return IObject(defined(it));
+};
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports) {
+
+module.exports = function(exec){
+  try {
+    return !!exec();
+  } catch(e){
+    return true;
+  }
+};
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// 19.1.2.14 / 15.2.3.14 Object.keys(O)
+var $keys       = __webpack_require__(47)
+  , enumBugKeys = __webpack_require__(29);
+
+module.exports = Object.keys || function keys(O){
+  return $keys(O, enumBugKeys);
+};
+
+/***/ }),
 /* 15 */
 /***/ (function(module, exports) {
 
@@ -410,10 +410,10 @@ module.exports = function(it){
 /* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global    = __webpack_require__(1)
-  , core      = __webpack_require__(2)
+var global    = __webpack_require__(3)
+  , core      = __webpack_require__(5)
   , ctx       = __webpack_require__(19)
-  , hide      = __webpack_require__(7)
+  , hide      = __webpack_require__(10)
   , PROTOTYPE = 'prototype';
 
 var $export = function(type, name, source){
@@ -491,7 +491,7 @@ module.exports = {};
 /***/ (function(module, exports, __webpack_require__) {
 
 // optional / simple context binding
-var aFunction = __webpack_require__(27);
+var aFunction = __webpack_require__(26);
 module.exports = function(fn, that, length){
   aFunction(fn);
   if(that === undefined)return fn;
@@ -540,9 +540,9 @@ module.exports = function(bitmap, value){
 /* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var def = __webpack_require__(8).f
-  , has = __webpack_require__(6)
-  , TAG = __webpack_require__(0)('toStringTag');
+var def = __webpack_require__(11).f
+  , has = __webpack_require__(9)
+  , TAG = __webpack_require__(1)('toStringTag');
 
 module.exports = function(it, tag, stat){
   if(it && !has(it = stat ? it : it.prototype, TAG))def(it, TAG, {configurable: true, value: tag});
@@ -562,16 +562,10 @@ module.exports = function(key){
 /* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "img/1-2.5b27945.png";
+module.exports = { "default": __webpack_require__(80), __esModule: true };
 
 /***/ }),
 /* 26 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(78), __esModule: true };
-
-/***/ }),
-/* 27 */
 /***/ (function(module, exports) {
 
 module.exports = function(it){
@@ -580,7 +574,7 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 28 */
+/* 27 */
 /***/ (function(module, exports) {
 
 // 7.2.1 RequireObjectCoercible(argument)
@@ -590,11 +584,11 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(17)
-  , document = __webpack_require__(1).document
+  , document = __webpack_require__(3).document
   // in old IE typeof document.createElement is 'object'
   , is = isObject(document) && isObject(document.createElement);
 module.exports = function(it){
@@ -602,7 +596,7 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 30 */
+/* 29 */
 /***/ (function(module, exports) {
 
 // IE 8- don't enum bug keys
@@ -611,26 +605,26 @@ module.exports = (
 ).split(',');
 
 /***/ }),
-/* 31 */
+/* 30 */
 /***/ (function(module, exports) {
 
 exports.f = Object.getOwnPropertySymbols;
 
 /***/ }),
-/* 32 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var shared = __webpack_require__(33)('keys')
+var shared = __webpack_require__(32)('keys')
   , uid    = __webpack_require__(24);
 module.exports = function(key){
   return shared[key] || (shared[key] = uid(key));
 };
 
 /***/ }),
-/* 33 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global = __webpack_require__(1)
+var global = __webpack_require__(3)
   , SHARED = '__core-js_shared__'
   , store  = global[SHARED] || (global[SHARED] = {});
 module.exports = function(key){
@@ -638,7 +632,7 @@ module.exports = function(key){
 };
 
 /***/ }),
-/* 34 */
+/* 33 */
 /***/ (function(module, exports) {
 
 // 7.1.4 ToInteger
@@ -649,17 +643,17 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 35 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.13 ToObject(argument)
-var defined = __webpack_require__(28);
+var defined = __webpack_require__(27);
 module.exports = function(it){
   return Object(defined(it));
 };
 
 /***/ }),
-/* 36 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
@@ -676,31 +670,31 @@ module.exports = function(it, S){
 };
 
 /***/ }),
-/* 37 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global         = __webpack_require__(1)
-  , core           = __webpack_require__(2)
+var global         = __webpack_require__(3)
+  , core           = __webpack_require__(5)
   , LIBRARY        = __webpack_require__(20)
-  , wksExt         = __webpack_require__(38)
-  , defineProperty = __webpack_require__(8).f;
+  , wksExt         = __webpack_require__(37)
+  , defineProperty = __webpack_require__(11).f;
 module.exports = function(name){
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
   if(name.charAt(0) != '_' && !(name in $Symbol))defineProperty($Symbol, name, {value: wksExt.f(name)});
 };
 
 /***/ }),
-/* 38 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports.f = __webpack_require__(0);
+exports.f = __webpack_require__(1);
 
 /***/ }),
-/* 39 */
+/* 38 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 
 
@@ -747,18 +741,18 @@ var listenersKeys = ['beforeEnter', 'enter', 'afterEnter', 'enterCancelled', 'be
 };
 
 /***/ }),
-/* 40 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(76), __esModule: true };
+module.exports = { "default": __webpack_require__(78), __esModule: true };
 
 /***/ }),
-/* 41 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // getting tag from 19.1.3.6 Object.prototype.toString()
 var cof = __webpack_require__(15)
-  , TAG = __webpack_require__(0)('toStringTag')
+  , TAG = __webpack_require__(1)('toStringTag')
   // ES3 wrong here
   , ARG = cof(function(){ return arguments; }()) == 'Arguments';
 
@@ -781,21 +775,21 @@ module.exports = function(it){
 };
 
 /***/ }),
+/* 41 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(3).document && document.documentElement;
+
+/***/ }),
 /* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(1).document && document.documentElement;
-
-/***/ }),
-/* 43 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = !__webpack_require__(5) && !__webpack_require__(12)(function(){
-  return Object.defineProperty(__webpack_require__(29)('div'), 'a', {get: function(){ return 7; }}).a != 7;
+module.exports = !__webpack_require__(8) && !__webpack_require__(13)(function(){
+  return Object.defineProperty(__webpack_require__(28)('div'), 'a', {get: function(){ return 7; }}).a != 7;
 });
 
 /***/ }),
-/* 44 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
@@ -805,21 +799,21 @@ module.exports = Object('z').propertyIsEnumerable(0) ? Object : function(it){
 };
 
 /***/ }),
-/* 45 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var LIBRARY        = __webpack_require__(20)
   , $export        = __webpack_require__(16)
-  , redefine       = __webpack_require__(49)
-  , hide           = __webpack_require__(7)
-  , has            = __webpack_require__(6)
+  , redefine       = __webpack_require__(48)
+  , hide           = __webpack_require__(10)
+  , has            = __webpack_require__(9)
   , Iterators      = __webpack_require__(18)
-  , $iterCreate    = __webpack_require__(90)
+  , $iterCreate    = __webpack_require__(92)
   , setToStringTag = __webpack_require__(23)
-  , getPrototypeOf = __webpack_require__(100)
-  , ITERATOR       = __webpack_require__(0)('iterator')
+  , getPrototypeOf = __webpack_require__(102)
+  , ITERATOR       = __webpack_require__(1)('iterator')
   , BUGGY          = !([].keys && 'next' in [].keys()) // Safari has buggy iterators w/o `next`
   , FF_ITERATOR    = '@@iterator'
   , KEYS           = 'keys'
@@ -881,27 +875,27 @@ module.exports = function(Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCED
 };
 
 /***/ }),
-/* 46 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
-var anObject    = __webpack_require__(4)
-  , dPs         = __webpack_require__(97)
-  , enumBugKeys = __webpack_require__(30)
-  , IE_PROTO    = __webpack_require__(32)('IE_PROTO')
+var anObject    = __webpack_require__(7)
+  , dPs         = __webpack_require__(99)
+  , enumBugKeys = __webpack_require__(29)
+  , IE_PROTO    = __webpack_require__(31)('IE_PROTO')
   , Empty       = function(){ /* empty */ }
   , PROTOTYPE   = 'prototype';
 
 // Create object with fake `null` prototype: use iframe Object with cleared prototype
 var createDict = function(){
   // Thrash, waste and sodomy: IE GC bug
-  var iframe = __webpack_require__(29)('iframe')
+  var iframe = __webpack_require__(28)('iframe')
     , i      = enumBugKeys.length
     , lt     = '<'
     , gt     = '>'
     , iframeDocument;
   iframe.style.display = 'none';
-  __webpack_require__(42).appendChild(iframe);
+  __webpack_require__(41).appendChild(iframe);
   iframe.src = 'javascript:'; // eslint-disable-line no-script-url
   // createDict = iframe.contentWindow.Object;
   // html.removeChild(iframe);
@@ -928,25 +922,25 @@ module.exports = Object.create || function create(O, Properties){
 
 
 /***/ }),
-/* 47 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
-var $keys      = __webpack_require__(48)
-  , hiddenKeys = __webpack_require__(30).concat('length', 'prototype');
+var $keys      = __webpack_require__(47)
+  , hiddenKeys = __webpack_require__(29).concat('length', 'prototype');
 
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O){
   return $keys(O, hiddenKeys);
 };
 
 /***/ }),
-/* 48 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var has          = __webpack_require__(6)
-  , toIObject    = __webpack_require__(9)
-  , arrayIndexOf = __webpack_require__(83)(false)
-  , IE_PROTO     = __webpack_require__(32)('IE_PROTO');
+var has          = __webpack_require__(9)
+  , toIObject    = __webpack_require__(12)
+  , arrayIndexOf = __webpack_require__(85)(false)
+  , IE_PROTO     = __webpack_require__(31)('IE_PROTO');
 
 module.exports = function(object, names){
   var O      = toIObject(object)
@@ -962,20 +956,20 @@ module.exports = function(object, names){
 };
 
 /***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(10);
+
+/***/ }),
 /* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(7);
-
-/***/ }),
-/* 50 */
-/***/ (function(module, exports, __webpack_require__) {
-
 var ctx                = __webpack_require__(19)
-  , invoke             = __webpack_require__(86)
-  , html               = __webpack_require__(42)
-  , cel                = __webpack_require__(29)
-  , global             = __webpack_require__(1)
+  , invoke             = __webpack_require__(88)
+  , html               = __webpack_require__(41)
+  , cel                = __webpack_require__(28)
+  , global             = __webpack_require__(3)
   , process            = global.process
   , setTask            = global.setImmediate
   , clearTask          = global.clearImmediate
@@ -1048,32 +1042,32 @@ module.exports = {
 };
 
 /***/ }),
-/* 51 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.1.15 ToLength
-var toInteger = __webpack_require__(34)
+var toInteger = __webpack_require__(33)
   , min       = Math.min;
 module.exports = function(it){
   return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
 };
 
 /***/ }),
-/* 52 */
+/* 51 */
 /***/ (function(module, exports) {
 
 
 
 /***/ }),
-/* 53 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $at  = __webpack_require__(105)(true);
+var $at  = __webpack_require__(107)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
-__webpack_require__(45)(String, 'String', function(iterated){
+__webpack_require__(44)(String, 'String', function(iterated){
   this._t = String(iterated); // target
   this._i = 0;                // next index
 // 21.1.5.2.1 %StringIteratorPrototype%.next()
@@ -1088,14 +1082,14 @@ __webpack_require__(45)(String, 'String', function(iterated){
 });
 
 /***/ }),
-/* 54 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(108);
-var global        = __webpack_require__(1)
-  , hide          = __webpack_require__(7)
+__webpack_require__(110);
+var global        = __webpack_require__(3)
+  , hide          = __webpack_require__(10)
   , Iterators     = __webpack_require__(18)
-  , TO_STRING_TAG = __webpack_require__(0)('toStringTag');
+  , TO_STRING_TAG = __webpack_require__(1)('toStringTag');
 
 for(var collections = ['NodeList', 'DOMTokenList', 'MediaList', 'StyleSheetList', 'CSSRuleList'], i = 0; i < 5; i++){
   var NAME       = collections[i]
@@ -1106,24 +1100,24 @@ for(var collections = ['NodeList', 'DOMTokenList', 'MediaList', 'StyleSheetList'
 }
 
 /***/ }),
-/* 55 */
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_object_assign__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends__ = __webpack_require__(75);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_meta__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_meta__ = __webpack_require__(203);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_vue_meta___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_vue_meta__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__router_js__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_nuxt_child_js__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_nuxt_link_js__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_nuxt_vue__ = __webpack_require__(143);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__router_js__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_nuxt_child_js__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_nuxt_link_js__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_nuxt_vue__ = __webpack_require__(166);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_nuxt_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_nuxt_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__App_vue__ = __webpack_require__(141);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__App_vue__ = __webpack_require__(164);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__App_vue__);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_4__router_js__["a"]; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return app; });
@@ -1166,6 +1160,7 @@ if (false) {
 
 // Includes external plugins
 
+__webpack_require__(62);
 
 // root instance
 // here we inject the router and store to all child components,
@@ -1212,24 +1207,24 @@ var app = __WEBPACK_IMPORTED_MODULE_1_babel_runtime_helpers_extends___default()(
 
 
 /***/ }),
-/* 56 */
+/* 55 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony default export */ __webpack_exports__["a"] = {};
 
 /***/ }),
-/* 57 */
+/* 56 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_json_stringify__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_promise__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_promise__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_promise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_babel_runtime_core_js_promise__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_typeof__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_typeof__ = __webpack_require__(76);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_typeof___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_typeof__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_core_js_object_keys__ = __webpack_require__(70);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_core_js_object_keys__ = __webpack_require__(72);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_babel_runtime_core_js_object_keys___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_babel_runtime_core_js_object_keys__);
 /* harmony export (immutable) */ __webpack_exports__["c"] = getMatchedComponents;
 /* unused harmony export getMatchedComponentsInstances */
@@ -1278,7 +1273,7 @@ function getContext(context) {
 
     route: context.to ? context.to : context.route,
     error: context.error,
-    base: '//w550.github.io/',
+    base: './',
     env: {}
   };
   var next = context.next;
@@ -1580,29 +1575,29 @@ function escapeGroup(group) {
 }
 
 /***/ }),
-/* 58 */
+/* 57 */
 /***/ (function(module, exports) {
 
 module.exports = require("debug");
 
 /***/ }),
-/* 59 */
+/* 58 */
 /***/ (function(module, exports) {
 
 module.exports = require("lodash");
 
 /***/ }),
-/* 60 */
+/* 59 */
 /***/ (function(module, exports) {
 
 module.exports = require("querystring");
 
 /***/ }),
-/* 61 */
+/* 60 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 
 
@@ -1618,13 +1613,13 @@ module.exports = require("querystring");
 };
 
 /***/ }),
-/* 62 */
+/* 61 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(163);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(204);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_router__);
 
 
@@ -1635,7 +1630,11 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
 
 var _14930694 =  false ? function () {
   return System.import('/Users/wrl/Documents/website/17chang/pages/index.vue');
-} : __webpack_require__(147);
+} : __webpack_require__(175);
+
+var _b6d1b986 =  false ? function () {
+  return System.import('/Users/wrl/Documents/website/17chang/pages/ktvrank.vue');
+} : __webpack_require__(176);
 
 var scrollBehavior = function scrollBehavior(to, from, savedPosition) {
   // savedPosition is only available for popstate navigations.
@@ -1663,15 +1662,57 @@ var scrollBehavior = function scrollBehavior(to, from, savedPosition) {
 
 /* harmony default export */ __webpack_exports__["a"] = new __WEBPACK_IMPORTED_MODULE_1_vue_router___default.a({
   mode: 'history',
-  base: '//w550.github.io/',
+  base: './',
   linkActiveClass: 'nuxt-link-active',
   scrollBehavior: scrollBehavior,
   routes: [{
     path: "/",
     component: _14930694,
     name: "index"
+  }, {
+    path: "/ktvrank",
+    component: _b6d1b986,
+    name: "ktvrank"
   }]
 });
+
+/***/ }),
+/* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*
+ ** 只在生成模式的客户端中使用
+ */
+if (false) {
+  /*
+   ** Google 统计分析脚本
+   */
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;i[r] = i[r] || function () {
+      (i[r].q = i[r].q || []).push(arguments);
+    }, i[r].l = 1 * new Date();a = s.createElement(o), m = s.getElementsByTagName(o)[0];a.async = 1;a.src = g;m.parentNode.insertBefore(a, m);
+  })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+  /*
+   ** 当前页的访问统计
+   */
+  window.ga('create', 'UA-93933275-1', 'auto');
+  window.ga('send', 'pageview');
+  /*
+   ** 应用挂载后
+   */
+  window.onNuxtReady(function (app) {
+    /*
+     ** 每次页面路由发生改变时
+     */
+    app.$nuxt.$on('routeChanged', function (to, from) {
+      /*
+       ** 告诉 Google 统计分析服务 增加新的页面访问统计
+       */
+      window.ga('set', 'page', to.fullPath);
+      window.ga('send', 'pageview');
+    });
+  });
+}
 
 /***/ }),
 /* 63 */
@@ -1679,9 +1720,9 @@ var scrollBehavior = function scrollBehavior(to, from, savedPosition) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_nuxt_loading_vue__ = __webpack_require__(142);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_nuxt_loading_vue__ = __webpack_require__(165);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_nuxt_loading_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_nuxt_loading_vue__);
 
 //
@@ -1698,12 +1739,16 @@ var layouts = {
 
   "_default":  false ? function () {
     return System.import('/Users/wrl/Documents/website/17chang/layouts/default.vue');
-  } : __webpack_require__(145)
+  } : __webpack_require__(172),
+
+  "_h5":  false ? function () {
+    return System.import('/Users/wrl/Documents/website/17chang/layouts/h5.vue');
+  } : __webpack_require__(174)
 
 };
 
 /* harmony default export */ __webpack_exports__["default"] = {
-  head: { "title": "550", "meta": [{ "charset": "utf-8" }, { "name": "viewport", "content": "width=device-width, initial-scale=1" }, { "hid": "description", "name": "description", "content": "作品展示" }], "link": [{ "rel": "icon", "type": "image/x-icon", "href": "/favicon.ico" }] },
+  head: { "title": "一起唱K歌大赛", "meta": [{ "charset": "utf-8" }, { "name": "viewport", "content": "width=device-width, initial-scale=1" }, { "hid": "description", "name": "description", "content": "作品展示" }], "link": [{ "rel": "icon", "type": "image/x-icon", "href": "/favicon.ico" }] },
   data: function data() {
     return {
       layout: null,
@@ -1754,7 +1799,7 @@ var layouts = {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 //
 //
@@ -1855,10 +1900,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__nuxt_child__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Users_wrl_Documents_website_17chang_layouts_error_vue__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__nuxt_child__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Users_wrl_Documents_website_17chang_layouts_error_vue__ = __webpack_require__(173);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__Users_wrl_Documents_website_17chang_layouts_error_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__Users_wrl_Documents_website_17chang_layouts_error_vue__);
 //
 //
@@ -1919,10 +1964,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Footer_vue__ = __webpack_require__(144);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Footer_vue__ = __webpack_require__(167);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_Footer_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_Footer_vue__);
-//
-//
 //
 //
 //
@@ -1966,13 +2009,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(122);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
 //
 //
 //
 //
 //
+
+/* harmony default export */ __webpack_exports__["default"] = {
+  head: {
+    /* script: [
+      { src: 'http://g.tbcdn.cn/mtb/lib-flexible/0.3.2/??flexible_css.js,flexible.js' }
+    ] */
+  }
+};
+
+/***/ }),
+/* 69 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_index_page1_vue__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_index_page1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_index_page1_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_index_page2_vue__ = __webpack_require__(169);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_index_page2_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_index_page2_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_index_page3_vue__ = __webpack_require__(170);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_index_page3_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_index_page3_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_index_page4_vue__ = __webpack_require__(171);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_index_page4_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_index_page4_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_jquery__ = __webpack_require__(131);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_jquery__);
 //
 //
 //
@@ -1981,216 +2047,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
+
+
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = {
+  components: {
+    page1: __WEBPACK_IMPORTED_MODULE_0__components_index_page1_vue___default.a,
+    page2: __WEBPACK_IMPORTED_MODULE_1__components_index_page2_vue___default.a,
+    page3: __WEBPACK_IMPORTED_MODULE_2__components_index_page3_vue___default.a,
+    page4: __WEBPACK_IMPORTED_MODULE_3__components_index_page4_vue___default.a
+  },
   mounted: function mounted() {
     var that = this;
     this.$nextTick(function () {
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#fullpage').fullpage({
+      __WEBPACK_IMPORTED_MODULE_4_jquery___default()('#fullpage').fullpage({
         verticalCentered: true,
         resize: false,
         scrollingSpeed: 800,
@@ -2229,30 +2102,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   methods: {
     run: function run(index) {
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.page1').find('*').css('animationPlayState', 'paused');
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.page2').find('*').css('animationPlayState', 'paused');
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.page3').find('*').css('animationPlayState', 'paused');
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.page4').find('*').css('animationPlayState', 'paused');
-      __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.page' + index).find('*').css('animationPlayState', 'running');
+      __WEBPACK_IMPORTED_MODULE_4_jquery___default()('.page1').find('*').css('animationPlayState', 'paused');
+      __WEBPACK_IMPORTED_MODULE_4_jquery___default()('.page2').find('*').css('animationPlayState', 'paused');
+      __WEBPACK_IMPORTED_MODULE_4_jquery___default()('.page3').find('*').css('animationPlayState', 'paused');
+      __WEBPACK_IMPORTED_MODULE_4_jquery___default()('.page4').find('*').css('animationPlayState', 'paused');
+      __WEBPACK_IMPORTED_MODULE_4_jquery___default()('.page' + index).find('*').css('animationPlayState', 'running');
     },
     jianyin: function jianyin(nextIndex) {
-      var section = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.section');
+      var section = __WEBPACK_IMPORTED_MODULE_4_jquery___default()('.section');
       switch (nextIndex) {
         case 1:
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default()(section[3]).addClass('pagehide').removeClass('pageshow');
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default()(section[0]).removeClass('pagehide').addClass('pageshow');
+          __WEBPACK_IMPORTED_MODULE_4_jquery___default()(section[3]).addClass('pagehide').removeClass('pageshow');
+          __WEBPACK_IMPORTED_MODULE_4_jquery___default()(section[0]).removeClass('pagehide').addClass('pageshow');
           break;
         case 2:
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default()(section[0]).addClass('pagehide').removeClass('pageshow');
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default()(section[1]).removeClass('pagehide').addClass('pageshow');
+          __WEBPACK_IMPORTED_MODULE_4_jquery___default()(section[0]).addClass('pagehide').removeClass('pageshow');
+          __WEBPACK_IMPORTED_MODULE_4_jquery___default()(section[1]).removeClass('pagehide').addClass('pageshow');
           break;
         case 3:
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default()(section[1]).addClass('pagehide').removeClass('pageshow');
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default()(section[2]).removeClass('pagehide').addClass('pageshow');
+          __WEBPACK_IMPORTED_MODULE_4_jquery___default()(section[1]).addClass('pagehide').removeClass('pageshow');
+          __WEBPACK_IMPORTED_MODULE_4_jquery___default()(section[2]).removeClass('pagehide').addClass('pageshow');
           break;
         case 4:
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default()(section[2]).addClass('pagehide').removeClass('pageshow');
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default()(section[3]).removeClass('pagehide').addClass('pageshow');
+          __WEBPACK_IMPORTED_MODULE_4_jquery___default()(section[2]).addClass('pagehide').removeClass('pageshow');
+          __WEBPACK_IMPORTED_MODULE_4_jquery___default()(section[3]).removeClass('pagehide').addClass('pageshow');
           break;
         default:
           break;
@@ -2260,25 +2133,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     svg: function svg(index) {
       if (index === 2) {
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.page2 .line path').css('animationPlayState', 'running');
+        __WEBPACK_IMPORTED_MODULE_4_jquery___default()('.page2 .line path').css('animationPlayState', 'running');
       }
       if (index === 3) {
-        __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.computersvg  path').css('animationPlayState', 'running');
+        __WEBPACK_IMPORTED_MODULE_4_jquery___default()('.computersvg  path').css('animationPlayState', 'running');
       }
     },
     changebg: function changebg(index) {
       switch (index) {
         case 1:
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default()('body').css('background', '#FCAF03');
+          __WEBPACK_IMPORTED_MODULE_4_jquery___default()('body').css('background', '#FCAF03');
           break;
         case 2:
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default()('body').css('background', '#75e0b9');
+          __WEBPACK_IMPORTED_MODULE_4_jquery___default()('body').css('background', '#75e0b9');
           break;
         case 3:
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default()('body').css('background', '#5aa3e0');
+          __WEBPACK_IMPORTED_MODULE_4_jquery___default()('body').css('background', '#5aa3e0');
           break;
         case 4:
-          __WEBPACK_IMPORTED_MODULE_0_jquery___default()('body').css('background', '#ff6f4d');
+          __WEBPACK_IMPORTED_MODULE_4_jquery___default()('body').css('background', '#ff6f4d');
           break;
         default:
           break;
@@ -2288,31 +2161,92 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 };
 
 /***/ }),
-/* 69 */
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = { "default": __webpack_require__(75), __esModule: true };
-
-/***/ }),
 /* 70 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(77), __esModule: true };
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = {
+  layout: 'h5',
+  head: {
+    script: [{ src: 'http://192.168.123.152/17chang/static/js/zepto.min.js' }, { src: 'http://192.168.123.152/17chang/static/js/touch.js' }, { src: 'http://192.168.123.152/17chang/static/js/Chart.js' }, { src: 'http://192.168.123.152/17chang/static/js/ktvrank.js' }]
+  },
+  components: {},
+  mounted: function mounted() {},
+  methods: {}
+};
 
 /***/ }),
 /* 71 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(79), __esModule: true };
+module.exports = { "default": __webpack_require__(77), __esModule: true };
 
 /***/ }),
 /* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = { "default": __webpack_require__(80), __esModule: true };
+module.exports = { "default": __webpack_require__(79), __esModule: true };
 
 /***/ }),
 /* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(81), __esModule: true };
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = { "default": __webpack_require__(82), __esModule: true };
+
+/***/ }),
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2320,7 +2254,7 @@ module.exports = { "default": __webpack_require__(80), __esModule: true };
 
 exports.__esModule = true;
 
-var _assign = __webpack_require__(40);
+var _assign = __webpack_require__(39);
 
 var _assign2 = _interopRequireDefault(_assign);
 
@@ -2341,7 +2275,7 @@ exports.default = _assign2.default || function (target) {
 };
 
 /***/ }),
-/* 74 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2349,11 +2283,11 @@ exports.default = _assign2.default || function (target) {
 
 exports.__esModule = true;
 
-var _iterator = __webpack_require__(72);
+var _iterator = __webpack_require__(74);
 
 var _iterator2 = _interopRequireDefault(_iterator);
 
-var _symbol = __webpack_require__(71);
+var _symbol = __webpack_require__(73);
 
 var _symbol2 = _interopRequireDefault(_symbol);
 
@@ -2368,65 +2302,65 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 };
 
 /***/ }),
-/* 75 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var core  = __webpack_require__(2)
+var core  = __webpack_require__(5)
   , $JSON = core.JSON || (core.JSON = {stringify: JSON.stringify});
 module.exports = function stringify(it){ // eslint-disable-line no-unused-vars
   return $JSON.stringify.apply($JSON, arguments);
 };
 
 /***/ }),
-/* 76 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(109);
-module.exports = __webpack_require__(2).Object.assign;
-
-/***/ }),
-/* 77 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(110);
-module.exports = __webpack_require__(2).Object.keys;
-
-/***/ }),
 /* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(52);
-__webpack_require__(53);
-__webpack_require__(54);
 __webpack_require__(111);
-module.exports = __webpack_require__(2).Promise;
+module.exports = __webpack_require__(5).Object.assign;
 
 /***/ }),
 /* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(112);
-__webpack_require__(52);
-__webpack_require__(113);
-__webpack_require__(114);
-module.exports = __webpack_require__(2).Symbol;
+module.exports = __webpack_require__(5).Object.keys;
 
 /***/ }),
 /* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
+__webpack_require__(51);
+__webpack_require__(52);
 __webpack_require__(53);
-__webpack_require__(54);
-module.exports = __webpack_require__(38).f('iterator');
+__webpack_require__(113);
+module.exports = __webpack_require__(5).Promise;
 
 /***/ }),
 /* 81 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(114);
+__webpack_require__(51);
+__webpack_require__(115);
+__webpack_require__(116);
+module.exports = __webpack_require__(5).Symbol;
+
+/***/ }),
+/* 82 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(52);
+__webpack_require__(53);
+module.exports = __webpack_require__(37).f('iterator');
+
+/***/ }),
+/* 83 */
 /***/ (function(module, exports) {
 
 module.exports = function(){ /* empty */ };
 
 /***/ }),
-/* 82 */
+/* 84 */
 /***/ (function(module, exports) {
 
 module.exports = function(it, Constructor, name, forbiddenField){
@@ -2436,14 +2370,14 @@ module.exports = function(it, Constructor, name, forbiddenField){
 };
 
 /***/ }),
-/* 83 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // false -> Array#indexOf
 // true  -> Array#includes
-var toIObject = __webpack_require__(9)
-  , toLength  = __webpack_require__(51)
-  , toIndex   = __webpack_require__(106);
+var toIObject = __webpack_require__(12)
+  , toLength  = __webpack_require__(50)
+  , toIndex   = __webpack_require__(108);
 module.exports = function(IS_INCLUDES){
   return function($this, el, fromIndex){
     var O      = toIObject($this)
@@ -2462,12 +2396,12 @@ module.exports = function(IS_INCLUDES){
 };
 
 /***/ }),
-/* 84 */
+/* 86 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // all enumerable object keys, includes symbols
-var getKeys = __webpack_require__(13)
-  , gOPS    = __webpack_require__(31)
+var getKeys = __webpack_require__(14)
+  , gOPS    = __webpack_require__(30)
   , pIE     = __webpack_require__(21);
 module.exports = function(it){
   var result     = getKeys(it)
@@ -2482,15 +2416,15 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 85 */
+/* 87 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ctx         = __webpack_require__(19)
-  , call        = __webpack_require__(89)
-  , isArrayIter = __webpack_require__(87)
-  , anObject    = __webpack_require__(4)
-  , toLength    = __webpack_require__(51)
-  , getIterFn   = __webpack_require__(107)
+  , call        = __webpack_require__(91)
+  , isArrayIter = __webpack_require__(89)
+  , anObject    = __webpack_require__(7)
+  , toLength    = __webpack_require__(50)
+  , getIterFn   = __webpack_require__(109)
   , BREAK       = {}
   , RETURN      = {};
 var exports = module.exports = function(iterable, entries, fn, that, ITERATOR){
@@ -2512,7 +2446,7 @@ exports.BREAK  = BREAK;
 exports.RETURN = RETURN;
 
 /***/ }),
-/* 86 */
+/* 88 */
 /***/ (function(module, exports) {
 
 // fast apply, http://jsperf.lnkit.com/fast-apply/5
@@ -2533,12 +2467,12 @@ module.exports = function(fn, args, that){
 };
 
 /***/ }),
-/* 87 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // check on default Array iterator
 var Iterators  = __webpack_require__(18)
-  , ITERATOR   = __webpack_require__(0)('iterator')
+  , ITERATOR   = __webpack_require__(1)('iterator')
   , ArrayProto = Array.prototype;
 
 module.exports = function(it){
@@ -2546,7 +2480,7 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 88 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.2.2 IsArray(argument)
@@ -2556,11 +2490,11 @@ module.exports = Array.isArray || function isArray(arg){
 };
 
 /***/ }),
-/* 89 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // call something on iterator step with safe closing on error
-var anObject = __webpack_require__(4);
+var anObject = __webpack_require__(7);
 module.exports = function(iterator, fn, value, entries){
   try {
     return entries ? fn(anObject(value)[0], value[1]) : fn(value);
@@ -2573,18 +2507,18 @@ module.exports = function(iterator, fn, value, entries){
 };
 
 /***/ }),
-/* 90 */
+/* 92 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var create         = __webpack_require__(46)
+var create         = __webpack_require__(45)
   , descriptor     = __webpack_require__(22)
   , setToStringTag = __webpack_require__(23)
   , IteratorPrototype = {};
 
 // 25.1.2.1.1 %IteratorPrototype%[@@iterator]()
-__webpack_require__(7)(IteratorPrototype, __webpack_require__(0)('iterator'), function(){ return this; });
+__webpack_require__(10)(IteratorPrototype, __webpack_require__(1)('iterator'), function(){ return this; });
 
 module.exports = function(Constructor, NAME, next){
   Constructor.prototype = create(IteratorPrototype, {next: descriptor(1, next)});
@@ -2592,10 +2526,10 @@ module.exports = function(Constructor, NAME, next){
 };
 
 /***/ }),
-/* 91 */
+/* 93 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var ITERATOR     = __webpack_require__(0)('iterator')
+var ITERATOR     = __webpack_require__(1)('iterator')
   , SAFE_CLOSING = false;
 
 try {
@@ -2618,7 +2552,7 @@ module.exports = function(exec, skipClosing){
 };
 
 /***/ }),
-/* 92 */
+/* 94 */
 /***/ (function(module, exports) {
 
 module.exports = function(done, value){
@@ -2626,11 +2560,11 @@ module.exports = function(done, value){
 };
 
 /***/ }),
-/* 93 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getKeys   = __webpack_require__(13)
-  , toIObject = __webpack_require__(9);
+var getKeys   = __webpack_require__(14)
+  , toIObject = __webpack_require__(12);
 module.exports = function(object, el){
   var O      = toIObject(object)
     , keys   = getKeys(O)
@@ -2641,18 +2575,18 @@ module.exports = function(object, el){
 };
 
 /***/ }),
-/* 94 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var META     = __webpack_require__(24)('meta')
   , isObject = __webpack_require__(17)
-  , has      = __webpack_require__(6)
-  , setDesc  = __webpack_require__(8).f
+  , has      = __webpack_require__(9)
+  , setDesc  = __webpack_require__(11).f
   , id       = 0;
 var isExtensible = Object.isExtensible || function(){
   return true;
 };
-var FREEZE = !__webpack_require__(12)(function(){
+var FREEZE = !__webpack_require__(13)(function(){
   return isExtensible(Object.preventExtensions({}));
 });
 var setMeta = function(it){
@@ -2699,11 +2633,11 @@ var meta = module.exports = {
 };
 
 /***/ }),
-/* 95 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var global    = __webpack_require__(1)
-  , macrotask = __webpack_require__(50).set
+var global    = __webpack_require__(3)
+  , macrotask = __webpack_require__(49).set
   , Observer  = global.MutationObserver || global.WebKitMutationObserver
   , process   = global.process
   , Promise   = global.Promise
@@ -2772,21 +2706,21 @@ module.exports = function(){
 };
 
 /***/ }),
-/* 96 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // 19.1.2.1 Object.assign(target, source, ...)
-var getKeys  = __webpack_require__(13)
-  , gOPS     = __webpack_require__(31)
+var getKeys  = __webpack_require__(14)
+  , gOPS     = __webpack_require__(30)
   , pIE      = __webpack_require__(21)
-  , toObject = __webpack_require__(35)
-  , IObject  = __webpack_require__(44)
+  , toObject = __webpack_require__(34)
+  , IObject  = __webpack_require__(43)
   , $assign  = Object.assign;
 
 // should work with symbols and should have deterministic property order (V8 bug)
-module.exports = !$assign || __webpack_require__(12)(function(){
+module.exports = !$assign || __webpack_require__(13)(function(){
   var A = {}
     , B = {}
     , S = Symbol()
@@ -2811,14 +2745,14 @@ module.exports = !$assign || __webpack_require__(12)(function(){
 } : $assign;
 
 /***/ }),
-/* 97 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var dP       = __webpack_require__(8)
-  , anObject = __webpack_require__(4)
-  , getKeys  = __webpack_require__(13);
+var dP       = __webpack_require__(11)
+  , anObject = __webpack_require__(7)
+  , getKeys  = __webpack_require__(14);
 
-module.exports = __webpack_require__(5) ? Object.defineProperties : function defineProperties(O, Properties){
+module.exports = __webpack_require__(8) ? Object.defineProperties : function defineProperties(O, Properties){
   anObject(O);
   var keys   = getKeys(Properties)
     , length = keys.length
@@ -2829,18 +2763,18 @@ module.exports = __webpack_require__(5) ? Object.defineProperties : function def
 };
 
 /***/ }),
-/* 98 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var pIE            = __webpack_require__(21)
   , createDesc     = __webpack_require__(22)
-  , toIObject      = __webpack_require__(9)
-  , toPrimitive    = __webpack_require__(36)
-  , has            = __webpack_require__(6)
-  , IE8_DOM_DEFINE = __webpack_require__(43)
+  , toIObject      = __webpack_require__(12)
+  , toPrimitive    = __webpack_require__(35)
+  , has            = __webpack_require__(9)
+  , IE8_DOM_DEFINE = __webpack_require__(42)
   , gOPD           = Object.getOwnPropertyDescriptor;
 
-exports.f = __webpack_require__(5) ? gOPD : function getOwnPropertyDescriptor(O, P){
+exports.f = __webpack_require__(8) ? gOPD : function getOwnPropertyDescriptor(O, P){
   O = toIObject(O);
   P = toPrimitive(P, true);
   if(IE8_DOM_DEFINE)try {
@@ -2850,12 +2784,12 @@ exports.f = __webpack_require__(5) ? gOPD : function getOwnPropertyDescriptor(O,
 };
 
 /***/ }),
-/* 99 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
-var toIObject = __webpack_require__(9)
-  , gOPN      = __webpack_require__(47).f
+var toIObject = __webpack_require__(12)
+  , gOPN      = __webpack_require__(46).f
   , toString  = {}.toString;
 
 var windowNames = typeof window == 'object' && window && Object.getOwnPropertyNames
@@ -2875,13 +2809,13 @@ module.exports.f = function getOwnPropertyNames(it){
 
 
 /***/ }),
-/* 100 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
-var has         = __webpack_require__(6)
-  , toObject    = __webpack_require__(35)
-  , IE_PROTO    = __webpack_require__(32)('IE_PROTO')
+var has         = __webpack_require__(9)
+  , toObject    = __webpack_require__(34)
+  , IE_PROTO    = __webpack_require__(31)('IE_PROTO')
   , ObjectProto = Object.prototype;
 
 module.exports = Object.getPrototypeOf || function(O){
@@ -2893,13 +2827,13 @@ module.exports = Object.getPrototypeOf || function(O){
 };
 
 /***/ }),
-/* 101 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // most Object methods by ES6 should accept primitives
 var $export = __webpack_require__(16)
-  , core    = __webpack_require__(2)
-  , fails   = __webpack_require__(12);
+  , core    = __webpack_require__(5)
+  , fails   = __webpack_require__(13);
 module.exports = function(KEY, exec){
   var fn  = (core.Object || {})[KEY] || Object[KEY]
     , exp = {};
@@ -2908,10 +2842,10 @@ module.exports = function(KEY, exec){
 };
 
 /***/ }),
-/* 102 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var hide = __webpack_require__(7);
+var hide = __webpack_require__(10);
 module.exports = function(target, src, safe){
   for(var key in src){
     if(safe && target[key])target[key] = src[key];
@@ -2920,16 +2854,16 @@ module.exports = function(target, src, safe){
 };
 
 /***/ }),
-/* 103 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var global      = __webpack_require__(1)
-  , core        = __webpack_require__(2)
-  , dP          = __webpack_require__(8)
-  , DESCRIPTORS = __webpack_require__(5)
-  , SPECIES     = __webpack_require__(0)('species');
+var global      = __webpack_require__(3)
+  , core        = __webpack_require__(5)
+  , dP          = __webpack_require__(11)
+  , DESCRIPTORS = __webpack_require__(8)
+  , SPECIES     = __webpack_require__(1)('species');
 
 module.exports = function(KEY){
   var C = typeof core[KEY] == 'function' ? core[KEY] : global[KEY];
@@ -2940,24 +2874,24 @@ module.exports = function(KEY){
 };
 
 /***/ }),
-/* 104 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.3.20 SpeciesConstructor(O, defaultConstructor)
-var anObject  = __webpack_require__(4)
-  , aFunction = __webpack_require__(27)
-  , SPECIES   = __webpack_require__(0)('species');
+var anObject  = __webpack_require__(7)
+  , aFunction = __webpack_require__(26)
+  , SPECIES   = __webpack_require__(1)('species');
 module.exports = function(O, D){
   var C = anObject(O).constructor, S;
   return C === undefined || (S = anObject(C)[SPECIES]) == undefined ? D : aFunction(S);
 };
 
 /***/ }),
-/* 105 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(34)
-  , defined   = __webpack_require__(28);
+var toInteger = __webpack_require__(33)
+  , defined   = __webpack_require__(27);
 // true  -> String#at
 // false -> String#codePointAt
 module.exports = function(TO_STRING){
@@ -2975,10 +2909,10 @@ module.exports = function(TO_STRING){
 };
 
 /***/ }),
-/* 106 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var toInteger = __webpack_require__(34)
+var toInteger = __webpack_require__(33)
   , max       = Math.max
   , min       = Math.min;
 module.exports = function(index, length){
@@ -2987,34 +2921,34 @@ module.exports = function(index, length){
 };
 
 /***/ }),
-/* 107 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var classof   = __webpack_require__(41)
-  , ITERATOR  = __webpack_require__(0)('iterator')
+var classof   = __webpack_require__(40)
+  , ITERATOR  = __webpack_require__(1)('iterator')
   , Iterators = __webpack_require__(18);
-module.exports = __webpack_require__(2).getIteratorMethod = function(it){
+module.exports = __webpack_require__(5).getIteratorMethod = function(it){
   if(it != undefined)return it[ITERATOR]
     || it['@@iterator']
     || Iterators[classof(it)];
 };
 
 /***/ }),
-/* 108 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var addToUnscopables = __webpack_require__(81)
-  , step             = __webpack_require__(92)
+var addToUnscopables = __webpack_require__(83)
+  , step             = __webpack_require__(94)
   , Iterators        = __webpack_require__(18)
-  , toIObject        = __webpack_require__(9);
+  , toIObject        = __webpack_require__(12);
 
 // 22.1.3.4 Array.prototype.entries()
 // 22.1.3.13 Array.prototype.keys()
 // 22.1.3.29 Array.prototype.values()
 // 22.1.3.30 Array.prototype[@@iterator]()
-module.exports = __webpack_require__(45)(Array, 'Array', function(iterated, kind){
+module.exports = __webpack_require__(44)(Array, 'Array', function(iterated, kind){
   this._t = toIObject(iterated); // target
   this._i = 0;                   // next index
   this._k = kind;                // kind
@@ -3040,46 +2974,46 @@ addToUnscopables('values');
 addToUnscopables('entries');
 
 /***/ }),
-/* 109 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.1 Object.assign(target, source)
 var $export = __webpack_require__(16);
 
-$export($export.S + $export.F, 'Object', {assign: __webpack_require__(96)});
+$export($export.S + $export.F, 'Object', {assign: __webpack_require__(98)});
 
 /***/ }),
-/* 110 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 Object.keys(O)
-var toObject = __webpack_require__(35)
-  , $keys    = __webpack_require__(13);
+var toObject = __webpack_require__(34)
+  , $keys    = __webpack_require__(14);
 
-__webpack_require__(101)('keys', function(){
+__webpack_require__(103)('keys', function(){
   return function keys(it){
     return $keys(toObject(it));
   };
 });
 
 /***/ }),
-/* 111 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var LIBRARY            = __webpack_require__(20)
-  , global             = __webpack_require__(1)
+  , global             = __webpack_require__(3)
   , ctx                = __webpack_require__(19)
-  , classof            = __webpack_require__(41)
+  , classof            = __webpack_require__(40)
   , $export            = __webpack_require__(16)
   , isObject           = __webpack_require__(17)
-  , aFunction          = __webpack_require__(27)
-  , anInstance         = __webpack_require__(82)
-  , forOf              = __webpack_require__(85)
-  , speciesConstructor = __webpack_require__(104)
-  , task               = __webpack_require__(50).set
-  , microtask          = __webpack_require__(95)()
+  , aFunction          = __webpack_require__(26)
+  , anInstance         = __webpack_require__(84)
+  , forOf              = __webpack_require__(87)
+  , speciesConstructor = __webpack_require__(106)
+  , task               = __webpack_require__(49).set
+  , microtask          = __webpack_require__(97)()
   , PROMISE            = 'Promise'
   , TypeError          = global.TypeError
   , process            = global.process
@@ -3093,7 +3027,7 @@ var USE_NATIVE = !!function(){
   try {
     // correct subclassing with @@species support
     var promise     = $Promise.resolve(1)
-      , FakePromise = (promise.constructor = {})[__webpack_require__(0)('species')] = function(exec){ exec(empty, empty); };
+      , FakePromise = (promise.constructor = {})[__webpack_require__(1)('species')] = function(exec){ exec(empty, empty); };
     // unhandled rejections tracking support, NodeJS Promise without it fails @@species test
     return (isNode || typeof PromiseRejectionEvent == 'function') && promise.then(empty) instanceof FakePromise;
   } catch(e){ /* empty */ }
@@ -3271,7 +3205,7 @@ if(!USE_NATIVE){
     this._h = 0;              // <- rejection state, 0 - default, 1 - handled, 2 - unhandled
     this._n = false;          // <- notify
   };
-  Internal.prototype = __webpack_require__(102)($Promise.prototype, {
+  Internal.prototype = __webpack_require__(104)($Promise.prototype, {
     // 25.4.5.3 Promise.prototype.then(onFulfilled, onRejected)
     then: function then(onFulfilled, onRejected){
       var reaction    = newPromiseCapability(speciesConstructor(this, $Promise));
@@ -3298,8 +3232,8 @@ if(!USE_NATIVE){
 
 $export($export.G + $export.W + $export.F * !USE_NATIVE, {Promise: $Promise});
 __webpack_require__(23)($Promise, PROMISE);
-__webpack_require__(103)(PROMISE);
-Wrapper = __webpack_require__(2)[PROMISE];
+__webpack_require__(105)(PROMISE);
+Wrapper = __webpack_require__(5)[PROMISE];
 
 // statics
 $export($export.S + $export.F * !USE_NATIVE, PROMISE, {
@@ -3322,7 +3256,7 @@ $export($export.S + $export.F * (LIBRARY || !USE_NATIVE), PROMISE, {
     return capability.promise;
   }
 });
-$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(91)(function(iter){
+$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(93)(function(iter){
   $Promise.all(iter)['catch'](empty);
 })), PROMISE, {
   // 25.4.4.1 Promise.all(iterable)
@@ -3368,37 +3302,37 @@ $export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(91)(function
 });
 
 /***/ }),
-/* 112 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // ECMAScript 6 symbols shim
-var global         = __webpack_require__(1)
-  , has            = __webpack_require__(6)
-  , DESCRIPTORS    = __webpack_require__(5)
+var global         = __webpack_require__(3)
+  , has            = __webpack_require__(9)
+  , DESCRIPTORS    = __webpack_require__(8)
   , $export        = __webpack_require__(16)
-  , redefine       = __webpack_require__(49)
-  , META           = __webpack_require__(94).KEY
-  , $fails         = __webpack_require__(12)
-  , shared         = __webpack_require__(33)
+  , redefine       = __webpack_require__(48)
+  , META           = __webpack_require__(96).KEY
+  , $fails         = __webpack_require__(13)
+  , shared         = __webpack_require__(32)
   , setToStringTag = __webpack_require__(23)
   , uid            = __webpack_require__(24)
-  , wks            = __webpack_require__(0)
-  , wksExt         = __webpack_require__(38)
-  , wksDefine      = __webpack_require__(37)
-  , keyOf          = __webpack_require__(93)
-  , enumKeys       = __webpack_require__(84)
-  , isArray        = __webpack_require__(88)
-  , anObject       = __webpack_require__(4)
-  , toIObject      = __webpack_require__(9)
-  , toPrimitive    = __webpack_require__(36)
+  , wks            = __webpack_require__(1)
+  , wksExt         = __webpack_require__(37)
+  , wksDefine      = __webpack_require__(36)
+  , keyOf          = __webpack_require__(95)
+  , enumKeys       = __webpack_require__(86)
+  , isArray        = __webpack_require__(90)
+  , anObject       = __webpack_require__(7)
+  , toIObject      = __webpack_require__(12)
+  , toPrimitive    = __webpack_require__(35)
   , createDesc     = __webpack_require__(22)
-  , _create        = __webpack_require__(46)
-  , gOPNExt        = __webpack_require__(99)
-  , $GOPD          = __webpack_require__(98)
-  , $DP            = __webpack_require__(8)
-  , $keys          = __webpack_require__(13)
+  , _create        = __webpack_require__(45)
+  , gOPNExt        = __webpack_require__(101)
+  , $GOPD          = __webpack_require__(100)
+  , $DP            = __webpack_require__(11)
+  , $keys          = __webpack_require__(14)
   , gOPD           = $GOPD.f
   , dP             = $DP.f
   , gOPN           = gOPNExt.f
@@ -3521,9 +3455,9 @@ if(!USE_NATIVE){
 
   $GOPD.f = $getOwnPropertyDescriptor;
   $DP.f   = $defineProperty;
-  __webpack_require__(47).f = gOPNExt.f = $getOwnPropertyNames;
+  __webpack_require__(46).f = gOPNExt.f = $getOwnPropertyNames;
   __webpack_require__(21).f  = $propertyIsEnumerable;
-  __webpack_require__(31).f = $getOwnPropertySymbols;
+  __webpack_require__(30).f = $getOwnPropertySymbols;
 
   if(DESCRIPTORS && !__webpack_require__(20)){
     redefine(ObjectProto, 'propertyIsEnumerable', $propertyIsEnumerable, true);
@@ -3600,7 +3534,7 @@ $JSON && $export($export.S + $export.F * (!USE_NATIVE || $fails(function(){
 });
 
 // 19.4.3.4 Symbol.prototype[@@toPrimitive](hint)
-$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(7)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
+$Symbol[PROTOTYPE][TO_PRIMITIVE] || __webpack_require__(10)($Symbol[PROTOTYPE], TO_PRIMITIVE, $Symbol[PROTOTYPE].valueOf);
 // 19.4.3.5 Symbol.prototype[@@toStringTag]
 setToStringTag($Symbol, 'Symbol');
 // 20.2.1.9 Math[@@toStringTag]
@@ -3609,50 +3543,134 @@ setToStringTag(Math, 'Math', true);
 setToStringTag(global.JSON, 'JSON', true);
 
 /***/ }),
-/* 113 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(37)('asyncIterator');
-
-/***/ }),
-/* 114 */
-/***/ (function(module, exports, __webpack_require__) {
-
-__webpack_require__(37)('observable');
-
-/***/ }),
 /* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(10)();
-// imports
-
-
-// module
-exports.push([module.i, "@charset \"UTF-8\";\n\n/**\n * \n * @authors 吴儒林 (49106868@qq.com,http://wurulin.com)\n * @date    2014-07-07 16:47:24\n * @version $Id$\n */\nbody{\n    background: #fcaf03;\n    transition:background .8s;\n}\n.pagehide{\n    opacity: 1;\n    animation:pagehide 0.2s normal forwards;\n}\n@keyframes pagehide{\n    100%{\n        opacity: 0;\n    }\n}\n.pageshow{\n    opacity: 0;\n    animation:pageshow 0.2s normal forwards;\n}\n@keyframes pageshow{\n    100%{\n        opacity: 1;\n    }\n}\n.header {\n    outline: 0px;\n      background: rgba(255,255,255,.7);\n      border-bottom: 0px solid #E4E4E4;\n}\n\n.header>.nav {\n        transition:all 0.5s;\n}\n\n.header>.nav li {\n    border-color: #fff;\n}\n.header>.nav li  i{\n    width: 80px;\n    height: 0px;\n}\n.header>.nav li  .i,.header>.nav li:hover i{\n     width: 80px;\n    height: 0px;\n}\n.footer {\n    position: absolute;\n    bottom: 15px;\n    line-height: 0px;\n    padding: 0px;\n    margin: 0px;\n    left: 0px;\n    color: #FFF;\n    opacity: 0.5;\n}\n.gotop {\n    animation-play-state: paused;\n    animation: gotop 1s ease-in-out normal forwards;\n}\n@keyframes gotop {\n    100% {\n        top: 0;\n    }\n}\n.gobottom {\n    animation-play-state: paused;\n    animation: gobottom 1s ease-in-out normal forwards;\n}\n@keyframes gobottom {\n    100% {\n        top: 100%;\n    }\n}\n \n /*修改首页右侧小圆点的*/\n#fp-nav.right {right: 15px;}\n#fp-nav span,\n.fp-slidesNav span {\n    border:0px;\n    background: rgba(255,255,255,.7);\n}\n#fp-nav li .active span,\n.fp-slidesNav .active span {\n    background: #fff;\n}\n#fp-nav li .active span,\n.fp-slidesNav .active span{\n    border: 0px;\n}\n#fp-nav li:first-child .active span,\n.fp-slidesNav .active span,#fp-nav li:first-child  span:hover,\n.fp-slidesNav span:hover {\n    background:url(" + __webpack_require__(137) + ") center center no-repeat;\n    height: 31px;\n    width: 31px;\n    left: 0px;top: 0px;\n    background-size: 100%;\n}\n#fp-nav li:nth-child(2) .active span,\n.fp-slidesNav .active span,#fp-nav li:nth-child(2)  span:hover,\n.fp-slidesNav  span:hover {\n    background:url(" + __webpack_require__(138) + ") center center no-repeat;\n    height: 31px;\n    width: 31px;\n    left: 0px;top: 0px;\n    background-size: 100%;\n}\n#fp-nav li:nth-child(3) .active span,\n.fp-slidesNav .active span,#fp-nav li:nth-child(3)  span:hover,\n.fp-slidesNav  span:hover {\n    background:url(" + __webpack_require__(139) + ") center center no-repeat;\n    height: 31px;\n    width: 31px;\n    left: 0px;top: 0px;\n    background-size: 100%;\n    border-radius: 0px;\n}\n#fp-nav li:last-child .active span,\n.fp-slidesNav .active span,#fp-nav li:last-child span:hover,\n.fp-slidesNav  span:hover {\n    background:url(" + __webpack_require__(140) + ") center center no-repeat;\n    height: 31px;\n    width: 31px;\n    left: 0px;top: 0px;\n    background-size: 100%;\n}\n#fp-nav li, .fp-slidesNav li{width: 31px; height: 31px;}\n#fp-nav span, .fp-slidesNav span {width: 7px;  height: 7px; left: 12px; top: 12px; }\n\n/*ie8版本*/\n.page {\n    width: 1100px;\n    margin: auto;\n    padding: 50px 0px 0px 0px;\n}\n.box-left {\n    width: 790px;\n    text-align: left;\n    display: table-cell;\n    vertical-align: middle;\n}\n.box-right {\n    width: 310px;\n    text-align: right;\n    display: table-cell;\n    vertical-align: middle;\n}\n.boxodd-left {\n    text-align: left;\n}\n.boxodd-right {\n    text-align: right;\n}\n/*ie8版本*/\n\n.page1 {\n    width: 612px;\n    height: 509px;\n    position: relative;\n    padding: 50px 0px 0px 0px;\n     /*transition:all 0.5s;*/\n}\n.page1 .left {\n    position: absolute;\n    bottom: 1px;\n    left: 33px;\n    z-index: 2;\n    width: 348px;\n    height: 348px;\n    background: url(" + __webpack_require__(123) + ") center center no-repeat;\n    background-size: 100%;\n    opacity: 0;\n    transform: scale(0.5);\n    animation-play-state: paused;\n    animation: page1left 0.5s ease-out normal forwards;\n}\n@keyframes page1left {\n    100% {\n        opacity: 1;\n        transform: scale(1);\n    }\n}\n.page1 .left .shan {\n    position: absolute;\n    bottom: 273px;\n    left: 15px;\n    z-index: 9;\n    width: 134px;\n    height: 0px;\n    background-position: -159px -326px;\n    animation-play-state: paused;\n    animation: leftshan 0.5s 0.7s ease normal forwards;\n}\n@keyframes leftshan {\n    100% {\n        height: 118px;\n    }\n}\n.page1 .balloon {\n    position: absolute;\n    z-index: 8;\n    top: 0px;\n    left: 92px;\n    width: 35px;\n    height: 35px;\n    opacity: 0;\n    background-position: -373px -408px;\n    animation-play-state: paused;\n    animation: balloon 0.5s 1.7s ease-in normal forwards;\n}\n@keyframes balloon {\n    100% {\n        top: -43px;\n        opacity: 1;\n    }\n}\n.page1 .left .money1 {\n    position: absolute;\n    z-index: 9;\n    width: 122px;\n    height: 147px;\n    background-position: -1367px 0px;\n    transform: scale(0);\n    animation-play-state: paused;\n    animation: money1 0.4s 0.5s ease normal forwards;\n}\n@keyframes money1 {\n    0% {\n        top: 142px;\n        left: 44px;\n        transform: scale(0.1);\n    }\n    100% {\n        top: 25px;\n        left: -23px;\n        transform: scale(1);\n    }\n}\n.page1 .left .money2 {\n    position: absolute;\n    width: 81px;\n    height: 65px;\n    z-index: 10;\n    background-position: -1231px -85px;\n    transform: scale(0);\n    animation-play-state: paused;\n    animation: money2 0.2s 0.6s ease normal forwards;\n}\n@keyframes money2 {\n    0% {\n        top: 142px;\n        left: 44px;\n    }\n    100% {\n        top: 133px;\n        left: 20px;\n        transform: scale(1);\n    }\n}\n.page1 .left .money3 {\n    position: absolute;\n    top: 87px;\n    left: 77px;\n    width: 73px;\n    height: 73px;\n    z-index: 11;\n    background-position: -1535px -76px;\n    transform: scale(0);\n    animation-play-state: paused;\n    animation: money3 0.3s 0.7s ease normal forwards;\n}\n@keyframes money3 {\n    0% {\n        top: 142px;\n        left: 74px;\n    }\n    100% {\n        top: 87px;\n        left: 77px;\n        transform: scale(1);\n    }\n}\n.page1 .left .money4 {\n    position: absolute;\n    top: 165px;\n    left: 83px;\n    width: 61px;\n    height: 62px;\n    z-index: 11;\n    background-position: -1677px -87px;\n     transform: scale(0);\n    animation-play-state: paused;\n    animation: money4 0.3s 0.6s ease normal forwards;\n}\n@keyframes money4 {\n   \n    100% {\n        transform: scale(1);\n    }\n}\n.page1 .right-box {\n    position: absolute;\n    bottom: 0px;\n    left: 137px;\n    z-index: 3;\n    overflow: hidden;\n    width: 445px;\n    height: 0px;\n    transform-origin: left bottom;\n    animation-play-state: paused;\n    animation: page1right 0.7s 0.3s ease normal forwards;\n}\n@keyframes page1right {\n    100% {\n        height: 546px;\n    }\n}\n.page1 .right {\n    position: absolute;\n    bottom: 1px;\n    left: 0px;\n    z-index: 3;\n    width: 445px;\n    height: 446px;\n    background: url(" + __webpack_require__(124) + ") center center no-repeat;\n    background-size: 100%;\n    transform: rotate(0);\n}\n.page1 .right .shan {\n    position: absolute;\n    right: 10px;\n    bottom: 398px;\n    z-index: 6;\n    width: 151px;\n    height: 0px;\n    background-position: -100px -46px;\n    animation-play-state: paused;\n    animation: rightshan 0.3s 1.1s normal forwards;\n}\n@keyframes rightshan {\n    100% {\n        height: 102px;\n    }\n}\n.page1 .right .shanxiaocao {\n    position: absolute;\n    right: 134px;\n    bottom: 388px;\n    width: 40px;\n    height: 0px;\n    z-index: 7;\n    background-position: -41px -125px;\n    animation-play-state: paused;\n    animation: shanxiaocao 0.3s 1.1s normal forwards;\n}\n@keyframes shanxiaocao {\n    100% {\n        height: 24px;\n    }\n}\n.page1 .right .groud1 {\n    position: absolute;\n    top: 25px;\n    right: 2px;\n    z-index: 4;\n    width: 0px;\n    height: 74px;\n    background-position: -316px -75px;\n    animation-play-state: paused;\n    animation: groud1 0.2s 0.9s normal forwards;\n}\n@keyframes groud1 {\n    100% {\n        width: 219px;\n        height: 74px;\n    }\n}\n.page1 .right .groud2 {\n    position: absolute;\n    top: 36px;\n    right: 21px;\n    z-index: 5;\n    width: 0px;\n    height: 41px;\n    background-position: -576px -108px;\n    animation-play-state: paused;\n    animation: groud2 0.2s 1s normal forwards;\n}\n@keyframes groud2 {\n    100% {\n        width: 177px;\n    }\n}\n.page1 .right .groud3 {\n    position: absolute;\n    top: 270px;\n    right: 174px;\n    overflow: hidden;\n    width: 0px;\n    height: 54px;\n    background: #836946;\n    background-position: -0px -710px;\n    transform: skewX(-45deg);\n    animation-play-state: paused;\n    animation: groud3 0.3s 1.3s normal forwards;\n}\n@keyframes groud3 {\n    100% {\n        width: 245px;\n    }\n}\n.page1 .right .groud4 {\n    position: absolute;\n    top: 250px;\n    right: 153px;\n    z-index: 22;\n    overflow: hidden;\n    width: 247px;\n    height: 54px;\n    transform: skewX(-45deg);\n}\n.page1 .right .ktvfont {\n    position: absolute;\n    right: 122px;\n    bottom: 291px;\n    width: 184px;\n    height: 0px;\n    z-index: 20;\n    background-position: -1764px -371px;\n    animation-play-state: paused;\n    animation: ktvfont 0.2s 1.8s normal forwards;\n}\n@keyframes ktvfont {\n    100% {\n        height: 72px;\n    }\n}\n.page1 .right .ktv {\n    position: absolute;\n    right: 98px;\n    bottom: 175px;\n    width: 247px;\n    height: 0px;\n    z-index: 20;\n    background-position: -925px -324px;\n    text-align: center;\n    animation-play-state: paused;\n    animation: ktv 0.4s 1.5s normal forwards;\n}\n@keyframes ktv {\n    100% {\n        height: 119px;\n    }\n}\n.page1 .right .deng {\n    position: absolute;\n    top: 2px;\n    right: 33px;\n    z-index: 7;\n    width: 172px;\n    height: 9px;\n    background-position: -1280px -434px;\n    text-align: center;\n    opacity: 0;\n    animation-play-state: paused;\n    animation: deng 0.8s 2s linear normal infinite forwards;\n}\n@keyframes deng {\n    100% {\n        opacity: 1;\n    }\n}\n.page1 .car-box .car {\n    position: absolute;\n    right: -120px;\n    bottom: 0px;\n    width: 112px;\n    height: 52px;\n    background-position: -1519px -391px;\n    transform: skewX(45deg);\n    animation-play-state: paused;\n    animation: car 4s 2s ease normal infinite forwards;\n}\n@keyframes car {\n    0% {\n        left: 110%;\n    }\n    3% {\n        left: 110%;\n    }\n    30% {\n        left: 30%;\n    }\n    60% {\n        left: 30%;\n    }\n    75% {\n        left: -52%;\n    }\n    100% {\n        left: -52%;\n    }\n}\n.page1 .right .xiaocao {\n    position: absolute;\n    right: 315px;\n    bottom: 174px;\n    width: 46px;\n    height: 0px;\n    z-index: 7;\n    background-position: -1829px -122px;\n    animation-play-state: paused;\n    animation: xiaocao 0.2s 1.3s normal forwards;\n}\n@keyframes xiaocao {\n    100% {\n        height: 27px;\n    }\n}\n.stips {\n    background: url(" + __webpack_require__(126) + ");\n}\n.page1 .cloud1 {\n    position: absolute;\n    top: 141px;\n    right: -1px;\n    z-index: 7;\n    width: 158px;\n    height: 87px;\n    background-position: -660px -357px;\n    animation-play-state: paused;\n    animation: cloud1 0.5s linear normal forwards, cloudmove1 7s 1s linear infinite alternate forwards;\n}\n@keyframes cloudmove1 {\n    0% {\n        margin: 0px 0px 0px 0px;\n    }\n    50% {\n        margin: 0px -20px 0px 0px;\n    }\n    100% {\n        margin: 0px 10px 0px 0px;\n    }\n}\n@keyframes cloud1 {\n    0% {\n        margin: 0px -20px 0px 0px;\n        opacity: 0;\n        transform: scale(1.1);\n    }\n    100% {\n        margin: 0px;\n        opacity: 1;\n    }\n}\n@keyframes cloud2 {\n    0% {\n        margin: 0px 0px 0px -20px;\n        opacity: 0;\n        transform: scale(1.1);\n    }\n    100% {\n        margin: 0px;\n        opacity: 1;\n    }\n}\n.page1 .cloud2 {\n    position: absolute;\n    top: 114px;\n    right: -1px;\n    z-index: 4;\n    width: 96px;\n    height: 60px;\n    background-position: 0px -383px;\n    animation-play-state: paused;\n    animation: cloud1 0.5s linear normal forwards, cloudmove2 9s 1s linear infinite alternate forwards;\n}\n@keyframes cloudmove2 {\n    0% {\n        margin: 0px 0px 0px 0px;\n    }\n    50% {\n        margin: 0px 50px 0px 0px;\n    }\n    100% {\n        margin: 0px -50px 0px 0px;\n    }\n}\n.page1 .cloud4 {\n    position: absolute;\n    top: 53px;\n    left: -3px;\n    z-index: 0;\n    width: 97px;\n    height: 60px;\n    background-position: -487px -383px;\n    animation-play-state: paused;\n    animation: cloud2 0.5s linear normal forwards, cloudmove4 2s 1s linear infinite alternate forwards;\n}\n@keyframes cloudmove4 {\n    0% {\n        margin: 0px 0px 0px 0px;\n    }\n    50% {\n        margin: 0px 0px 0px 15px;\n    }\n    100% {\n        margin: 0px 0px 0px 40px;\n    }\n}\n.page1 .phone {\n    position: absolute;\n    top: 0px;\n    left: 165px;\n    z-index: 2;\n    width: 205px;\n    height: 410px;\n    background: url(" + __webpack_require__(125) + ") center center no-repeat;\n    background-size: 100%;\n}\n/*第二帧动画开始*/\n\n.page2 {\n    z-index: 200;\n    width: 656px;\n    height: 427px;\n    float: right;\n    position: relative;\n     transition:all 0.5s;\n}\n.page2 .stips {\n    background: url(" + __webpack_require__(129) + ");\n}\n.page2 .card1 {\n    position: absolute;\n    top: 27px;\n    right: 43px;\n    z-index: 204;\n    width: 298px;\n    height: 332px;\n    transform: rotate(0deg);\n    background-position: -787px -95px;\n    transform-origin: bottom;\n    transform:rotate(-15deg);\n    opacity: 0;\n    animation-play-state: paused;\n    animation: card1 0.5s 2s ease normal forwards;\n}\n@keyframes card1 {\n    0%{\n        opacity: 1;\n    }\n    100% {\n        transform: rotate(0deg);\n        opacity: 1;\n    }\n}\n.page2 .card2 {\n    position: absolute;\n    top: 59px;\n    right: 23px;\n    z-index: 203;\n    width: 289px;\n    height: 298px;\n    background-position: -1110px -129px;\n    opacity: 0;\n    transform-origin: bottom;\n     transform:rotate(-25deg);\n    animation-play-state: paused;\n    animation: card1 0.4s 2.2s ease normal forwards;\n    \n}\n.page2 .card3 {\n    position: absolute;\n    top: 104px;\n    z-index: 202;\n    right: 4px;\n    width: 262px;\n    opacity: 0;\n    height: 236px;\n    background-position: -1426px -186px;\n     transform:rotate(-45deg);\n    transform-origin: bottom;\n    animation-play-state: paused;\n    animation: card1 0.3s 2.3s ease normal forwards;\n}\n.page2 .magic {\n    position: absolute;\n    left: 268px;\n    top: 158px;\n    z-index: 240;\n    width: 125px;\n    height: 88px;\n    background-position:-1896px -643px;\n    animation-play-state: paused;\n    animation: magic 1s ease normal forwards;\n}\n@keyframes magic {\n    50% {\n        margin: 20px 0px 0px 0px;\n        transform: rotateZ(7deg);\n    }\n     100% {\n        margin: 0px 0px 0px 0px;\n        transform: rotateZ(0deg);\n    }\n}\n.page2 .magicbox {\n    position: absolute;\n    top: 0px;\n    left: 0px;\n    z-index: 240;\n    overflow: hidden;\n    width: 450px;\n    height: 280px;\n}\n.page2 .magicbox .diamond {\n    position: absolute;\n   top: 236px;\n   left: 238px;\n    z-index: 241;\n    width: 145px;\n    height: 130px;\n    background-position: -569px -297px;\n    transform: scale(0);\n    animation-play-state: paused;\n    animation: diamond 0.5s 0.5s normal forwards;\n}\n@keyframes diamond {\n    100% {\n        top: 136px;\n   left: 138px;\n        transform: scale(1);\n    }\n}\n.page2 .magicbox .Starbig {\n    position: absolute;\n    top: 382px;\n    left: 275px;\n    width: 39px;\n    height: 128px;\n    background-position: -430px -297px;\n     transform: scale(.1);\n    animation-play-state: paused;\n    animation: Starbig 1.2s 1s normal forwards;\n}\n@keyframes Starbig {\n    100% {\n        top: 82px;\n    left: 205px;\n        transform: scale(1);\n    }\n}\n.page2 .magicbox .Starsmall {\n    position: absolute;\n    top: 281px; left: 289px;\n    width: 64px;height: 41px;\n    background-position: -308px -386px;\n    animation-play-state: paused;\n    transform: scale(.1);\n    animation: Starsmall 1s 1.1s normal forwards;\n}\n@keyframes Starsmall {\n    100% {\n        top: 221px; left: 89px;\n        transform: scale(1);\n    }\n}\n.page2 .magicbox .Ray {\n    position: absolute;\n    left: 161px;\n    top: 184px;\n    width: 193px;\n    height: 97px;\n    background-position: -1928px -330px;\n    opacity: 0.5;\n    animation-play-state: paused;\n    animation: ray 5s 1.2s ease alternate infinite forwards;\n}\n@keyframes ray {\n    \n    10%{\n        opacity: 0.3;\n    }\n    30%{\n        opacity: 0.7;\n    }\n    50%{\n        opacity: 1;\n    }\n    70%{\n        opacity: 0.7;\n    }\n    80%{\n        opacity: 0.5;\n    }\n    100%{\n        opacity: 1;\n    }\n\n}\n.page2 .magicbox .Ray2 {\n    position: absolute;\n    bottom: 1px; \n    left: 29px;\n    width: 142px;\n    height: 52px;\n    background-position: -1740px -375px;\n}\n\n.page2 .magicbox .Circle1 {\n    position: absolute;\n     top: 290px;\n    left: 279px;\n    width: 17px;\n    height: 17px;\n    background-position: -826px -715px;\n    animation-play-state: paused;\n    animation:Circledou1 4s  ease normal infinite forwards;\n}\n@keyframes Circledou1 {\n    60%{\n        opacity: 0.9;\n    }\n    100%{\n        top: 230px;\n        left: 320px;\n        opacity: 0;\n    }\n    \n}\n.page2 .magicbox .Circle2 {\n    position: absolute;\n     top: 293px;\n    left: 262px;\n    width: 5px;\n    height: 4px;\n    background-position: -779px -727px;\n    animation-play-state: paused;\n  animation:Circle2 5s  normal infinite forwards;\n}\n\n@keyframes Circle2 {\n    100% {\n        top: 203px;\n    left: 262px;\n    opacity: 0;\n    }\n}\n.page2 .magicbox .Circle3 {\n    position: absolute;\n    top: 296px;\n    left: 220px;\n    width: 7px;\n    height: 7px;\n    background-position:-706px -724px;\n    animation-play-state: paused;\n    animation: Circle3 4s   normal infinite forwards;\n}\n@keyframes Circle3 {\n    100% {\n        top: 206px;\n        left: 160px;\n        opacity: 0;\n    }\n}\n.page2 .hat {\n    position: absolute;\n    bottom: 15px;\n    left: 153px;\n    z-index: 210;\n    width: 213px;\n    height: 162px;\n    background-position: -60px -265px;\n}\n.page2 .phone {\n    position: absolute;\n    left: 287px;\n    bottom: 40px;\n    z-index: 205;\n    width: 279px;\n    height: 383px;\n    background: url(" + __webpack_require__(128) + ");\n    opacity: 0;\n    animation-play-state: paused;\n    animation: page2beformagic 0.7s 1.2s normal forwards;\n}\n@keyframes page2beformagic {\n    0%{\n        margin: 0px 0px -10px 0px;\n    }\n   100% {\n        opacity: 1;\n    }\n}\n.page2 .Chip1 {\n    position: absolute;\n    top: 0px;\n    left: 258px;\n    margin: -30px 0px 0px 0px;/*\n        transform: rotate(130deg);*/\n    opacity: 0;\n    z-index: 290;\n    width: 75px;\n    height: 57px;\n    background-position: -1414px -674px;\n    animation-play-state: paused;\n    animation: Chip1 1s 2.2s ease-out normal forwards;\n}\n@keyframes Chip1 {\n    100% {\n        opacity: 1;\n    margin: 0px;\n        transform: rotate(0deg);\n    }\n}\n.page2 .Chip2 {\n    position: absolute;\n    top: 127px;\n    left: 300px;\n    z-index: 290;\n    margin: -60px 0px 0px 0px;\n      /*  transform: rotate(360deg);*/\n        opacity: 0;\n    width: 67px;\n    height: 32px;\n    background-position: -1733px -699px;\n    animation-play-state: paused;\n    animation: Chip2 0.5s 2.7s ease-out normal forwards;\n}\n@keyframes Chip2 {\n    \n    100% {\n        margin: 0px;\n        transform: rotate(0deg);\n        opacity: 1;\n    }\n}\n.page2 .Chip3 {\n    position: absolute;\n    top: 15px;\n    z-index: 290;\n    right: 71px;\n    width: 91px;\n    height: 89px;\n    background-position: -1553px -642px;\n    margin: -15px 0px 0px 0px;\n    opacity: 0;\n/*        transform: rotate(360deg);\n*/    animation-play-state: paused;\n    animation: Chip3 1s 2.2s ease-out normal forwards;\n}\n@keyframes Chip3 {\n\n    100% {\n        margin:  0px;\n        transform: rotate(0deg);\n        opacity: 1;\n    }\n}\n.page2 .coin {\n    position: absolute;\n    bottom: 51px;\n    left: 323px;\n    z-index: 250;\n    width: 203px;\n    height: 96px;\n    opacity: 0;\n    background-position: -922px -635px;\n    animation-play-state: paused;\n    animation: page2beformagic 0.4s 1s normal forwards;\n}\n.page2 .money {\n    position: absolute;\n    bottom: 61px;\n    z-index: 250;\n    right: 60px;\n    width: 121px;\n    opacity: 0;\n    height: 107px;\n    background-position: -1212px -626px;\n    animation-play-state: paused;\n    animation: page2beformagic 0.3s 1.2s normal forwards;\n}\n\n.page2 .banner {\n    position: absolute;\n    bottom: 0px;\n    right: 0px;\n    z-index: 280;\n    width: 567px;\n    height: 97px;\n    opacity: 0;\n    background-position: -91px -634px;\n     animation-play-state: paused;\n    animation: page2beformagic 0.2s 1s normal forwards;\n}\n\n.page2 .line {\n    position: absolute;\n    z-index: 200;\n    width: 480px;\n    height: 277px;\n    top: 27px;\n    opacity: 0;\n    background: url(" + __webpack_require__(127) + ") center center no-repeat;\n    stroke:#1c3f19;\n    stroke-width:4;\n    stroke-opacity:0.1;\n    animation-play-state: paused;\n    animation: lineshow 0.5s 1.3s linear forwards;\n}\n@keyframes lineshow {\n    to {\n        opacity: 1;\n    }\n}\n.page2 .line line {\n    stroke:#1c3f19;\n    stroke-width:4;\n    stroke-opacity:0.1;\n    animation-play-state: paused;\n    animation: line 1s 1.6s linear forwards;\n    stroke-dasharray: 300;\n    stroke-dashoffset: 300;\n}\n@keyframes line {\n    to {\n        stroke-dashoffset: 0;\n    }\n}\n/*第三个动画开始*/\n\n.page3 {\n    position: relative;\n    width: 573px;\n    height: 429px;\n    overflow: hidden;\n     transition:all 0.5s;\n}\n.page3 .stips {\n    background: url(" + __webpack_require__(131) + ");\n}\n.computersvg {\n    position: absolute;\n    left: 96px;\n    top: 103px;\n    width: 376px;\n    height: 258px;\n    z-index: 305;\n    border-radius: 5px;\n}\n.computersvg path {\n    animation-play-state: paused;\n    animation: computersvg 1s linear forwards;\n    stroke-dasharray: 1600;\n    stroke-dashoffset: 1600;\n}\n@keyframes computersvg {\n    to {\n        stroke-dashoffset: 0;\n    }\n}\n.page3 .computer {\n    position: absolute;\n    left: 96px;\n    top: 103px;\n    width: 376px;\n    height: 258px;\n    padding: 12px;\n    z-index: 305;\n}\n.page3 .computerzhezhao {\n    position: absolute;\n    left: 246px;\n    top: 101px;\n    z-index: 306;\n    background-position:  -1884px -184px;\n    width: 225px;\n    height: 246px;\n    opacity: 0;\n    animation-play-state: paused;\n    animation: computerzhezhao 0.3s 1s normal forwards;\n}\n@keyframes computerzhezhao {\n    100% {\n        opacity: 1;\n    }\n}\n.computer .colorblock1 {\n    position: absolute;\n    top: 12px;\n    left: 12px;\n    width: 19px;\n    height: 207px;\n    background: #fc8c06;\n    opacity: 0;\n    animation-play-state: paused;\n    animation: colorblock1 0.3s normal forwards;\n}\n.computer .colorblock2 {\n    position: absolute;\n    top: 12px;\n    left: 30px;\n    width: 0px;\n    height: 207px;\n    background: #ffc306;\n    animation-play-state: paused;\n    animation: colorblock2 0.5s 0.3s normal forwards;\n}\n.colorblock2 .music {\n    margin: 22px 0px 18px 50px;\n    width: 59px;\n    height: 58px;\n    background-position: -1472px -669px;\n    opacity: 0;\n    animation-play-state: paused;\n    animation: load 0.5s 0.8s ease normal forwards;\n}\n.colorblock2 .load {\n    margin: 0px auto;\n    width: 85px;\n    height: 40px;\n    opacity: 0;\n     background-position: -1652px -687px;\n    animation-play-state: paused;\n    animation: load 0.5s 0.8s ease normal forwards;\n}\n@keyframes load {\n    100% {\n        opacity: 1;\n    }\n}\n.colorblock2 .jindubox {\n    position: relative;\n    overflow: hidden;\n    margin:10px auto;\n    padding: 0px;\n    height: 37px;\n    width: 84px;\n}\n.colorblock2 .jindutiao {\n    width: 0px;\n    height: 10px;\n    margin: 2px 0px;\n    list-style: none;\n    background-position: -1055px -691px;\n}\n.colorblock2 .d1 {\n    position: absolute;\n    top: 24px;\n    animation-play-state: paused;\n    animation: d1 6s 1.5s  normal infinite    forwards;\n}\n.colorblock2 .d2 {\n    position: absolute;\n    top: 24px;\n    animation-play-state: paused;\n    animation: d1 6s 3s  normal infinite    forwards;\n}\n.colorblock2 .d3 {\n    position: absolute;\n    top: 24px;\n    animation-play-state: paused;\n    animation: d1 6s 4.5s  normal infinite    forwards;\n}\n.colorblock2 .d4 {\n    position: absolute;\n    top: 24px;\n    animation-play-state: paused;\n    animation: d1 6s 6s  normal infinite    forwards;\n}\n\n@keyframes d1 {\n    0% {\n                top: 24px;\n                width: 1px;\n            }\n            12.5% {\n                top: 24px;\n                width: 84px;\n            }\n            25% {\n               top: 12px;\n                width: 84px;\n                \n            }\n            37.5% {\n               top: 12px;\n                width: 84px;\n                \n            }\n            50% {\n                top: 0px;\n                width: 84px;\n                \n            }\n            62.5% {\n                top: 0px;\n                width: 84px;\n                opacity: 1;\n            }\n            75% {\n               top: -12px;\n                width: 84px;\n                opacity: 0;\n            }\n            87.5% {\n               top: -12px;\n                width: 84px;\n                \n            }\n            100% {\n                \n                top: -12px;\n                width: 84px;\n            }\n}\n\n\n.computer .colorblock3 {\n    position: absolute;\n    bottom: 142px;\n    left: 156px;\n     width: 104px;\n    height: 0px;\n    line-height: 104px;\n    text-align: center;\n    background: #b781ff;\n    animation-play-state: paused;\n    animation: colorblock3 0.5s 1.3s normal forwards;\n}\n.computer .colorblock3 .music{\n    width: 28px;height: 60px;\n    margin: 22px 41px;\n    opacity: 0;\n    vertical-align: middle;\n    background-position: -2062px -667px;\n    animation-play-state: paused;\n    animation: load 0.5s 1.8s ease normal forwards;\n}\n.computer .colorblock4 {\n    position: absolute;\n    top: 12px;\n    right: 12px;\n    width: 0px;\n    height: 104px;\n    background: #5bd999;\n    animation-play-state: paused;\n    animation: colorblock4 0.5s 1.8s normal forwards;\n}\n.computer .colorblock5 {\n    position: absolute;\n    top: 116px;\n    left: 156px;\n    width: 0px;\n    height: 0px;\n    display:flex;\n    text-align: left;\n    -moz-box-align: center;\n    padding-left: 30px;\n    -moz-box-pack: center;\n    align-items: center;\n    background: #7658f8;\n    animation-play-state: paused;\n    animation: colorblock5 1s 0.8s normal forwards;\n}\n.computer .colorblock5 .music {\n    width: 66px;\n    height: 66px;\n    background-position: -1848px -662px;\n    opacity: 0;\n    animation-play-state: paused;\n    animation: load 0.5s 1.8s ease normal forwards;\n}\n@keyframes colorblock1 {\n    100% {\n        opacity: 1;\n    }\n}\n@keyframes colorblock2 {\n    100% {\n        width: 126px;\n    }\n}\n@keyframes colorblock3 {\n    100% {\n        height: 104px;\n    }\n}\n@keyframes colorblock4 {\n    100% {\n        width: 104px;\n    }\n}\n@keyframes colorblock5 {\n    0% {\n        height: 1px;\n    }\n    50% {\n        width: 208px;\n        height: 1px;\n    }\n    100% {\n        width: 208px;\n        height: 103px;\n    }\n}\n.page3 .phone {\n    position: absolute;\n    right: 58px;\n    bottom: 14px;\n    z-index: 330;\n    width: 127px;\n    height: 257px;\n    opacity: 0;\n    background: url(" + __webpack_require__(130) + ");\n    animation-play-state: paused;\n    animation: page3phone 1s 1.5s ease normal forwards;\n}\n@keyframes page3phone {\n    0% {\n        bottom: 50px;\n    }\n    100% {\n        opacity: 1;\n    }\n}\n.page3 .phone div {\n    position: absolute;\n    opacity: 0;\n}\n\n.page3 .phone .xinhao1 {\n    top: -5px;\n    left: -5px;\n    width: 15px;\n    height: 15px;\n    background-position: 0px 0px;\n    animation-play-state: paused;\n    animation: xinhao1 1.3s 2.3s ease normal infinite;\n    background: url(" + __webpack_require__(132) + ");\n}\n@keyframes xinhao1 {\n    0%{\n        opacity: 1;\n    }\n    100% {\n        top: -7px;\n        left: -7px;\n        opacity: 0;\n    }\n}\n.page3 .phone .xinhao2 {\n    top: -13px;\n    left: -13px;\n    width: 22px;\n    height: 22px;\n    background-position: 0px 0px;\n    animation-play-state: paused;\n    animation: xinhao2 1.3s 2.6s ease normal infinite;\n     background: url(" + __webpack_require__(133) + ");\n}\n@keyframes xinhao2 {\n    0%{\n        opacity: 1;\n    }\n    100% {\n        top: -15px;\n        left: -15px;\n        opacity: 0;\n    }\n}\n.page3 .phone .xinhao3 {\n    top: -23px;\n    left: -23px;\n    width: 30px;\n    height: 30px;\n    background-position: 0px 0px;\n    animation-play-state: paused;\n    animation: xinhao3 1.3s 2.9s ease normal infinite;\n     background: url(" + __webpack_require__(134) + ");\n}\n@keyframes xinhao3 {\n    0%{\n        opacity: 1;\n    }\n    100% {\n        top: -25px;\n        left: -25px;\n        opacity: 0;\n    }\n}\n\n\n.page3 .Gear1 {\n    position: absolute;\n    top: 0px;\n    right: 0px;\n    z-index: 301;\n    width: 209px;\n    height: 212px;\n    background-position: -1577px -231px;\n    animation-play-state: paused;\n    animation: Gear 10s linear infinite normal forwards;\n}\n.page3 .Gear2 {\n    position: absolute;\n    right: 0px;\n    bottom: 104px;\n    z-index: 301;\n    width: 112px;\n    height: 114px;\n    background-position: -1395px -331px;\n    animation-play-state: paused;\n    animation: Gear 3s linear infinite normal forwards;\n}\n.page3 .Gear3 {\n    position: absolute;\n    bottom: 98px;\n    left: 61px;\n    z-index: 301;\n    width: 91px;\n    height: 93px;\n    background-position: -1206px -350px;\n    animation-play-state: paused;\n    animation: Gear 2s linear infinite normal forwards;\n}\n@keyframes Gear {\n    100% {\n        transform: rotate(360deg);\n    }\n}\n.page3 .Rocket {\n    position: absolute;\n    top: 5px;\n    left: 52px;\n    z-index: 320;\n    width: 174px;\n    height: 175px;\n    opacity: 0;\n    background-position: -72px -268px;\n    animation-play-state: paused;\n    animation: rocketfadein 0.5s 0.8s ease forwards, rocket 5s 0.5s linear alternate infinite forwards;\n}\n@keyframes rocket {\n    0%, 100% {\n        transform: translate3d(0);\n    }\n    10%,\n    30%,\n    50%,\n    70%,\n    90% {\n        transform: translate3d(-3px, -3px, -3px);\n    }\n    20%,\n    40%,\n    60%,\n    80% {\n        transform: translate3d(3px, 3px, 3px);\n    }\n}\n@keyframes rocketfadein {\n    0% {\n        margin: 60px 0px 0px -30px;\n        transform: scale(0.9);\n    }\n    100% {\n        opacity: 1;\n    }\n}\n.page3 .huxian-box {\n    position: absolute;\n    overflow: hidden;\n    bottom: 0px;\n    right: -10px;\n    width: 0px;\n    height: 309px;\n    animation-play-state: paused;\n    animation: huxian 0.3s 0.2s linear normal forwards;\n}\n.page3 .huxian {\n    position: absolute;\n    top: 0px;\n    right: -65px;\n    z-index: 319;\n    width: 545px;\n    height: 309px;\n    background-position:-528px -136px;\n}\n.page3 .huxian1box {\n   position: absolute;\n    overflow: hidden;\n    bottom: 0px;\n    left: 0px;\n    width: 103px;\n    height: 0px;\n    animation-play-state: paused;\n    animation: huxian1 0.4s 0.5s linear normal forwards;\n}\n.page3 .huxian1 {\n    position: absolute;\n    bottom: 0px;\n    left: 0px;\n    z-index: 319;\n    width: 545px;\n    height: 309px;\n    background-position:-425px -136px;\n}\n@keyframes huxian1 {\n    100% {\n        height: 309px;\n    }\n}\n@keyframes huxian {\n    100% {\n        width: 480px;\n    }\n}\n.page3 .xingxing {\n    position: absolute;\n    top: 127px;\n    right: 22px;\n    z-index: 320;\n    width: 10px;\n    height: 10px;\n    background-position: -1068px -434px;\n    opacity: 0;\n    animation-play-state: paused;\n    animation: xingxing 0.3s normal forwards;\n}\n@keyframes xingxing {\n    100% {\n        opacity: 1;\n    }\n}\n/*第四个动画开始*/\n\n.page4 {\n    position: relative;\n    width: 597px; height: 455px; float: right;\n    overflow: hidden;\n     transition:all 0.5s;\n}\n.page4 .stips {\n    background: url(" + __webpack_require__(136) + ") left center no-repeat;\n}\n.page4 .Street{\n    width: 0px; height: 76px;\n    background-position:-54px -445px;\n    position: absolute;\n    bottom: 0px;\n    left: 0px;\n    z-index: 500;\n    animation-play-state: paused;\n    animation: Street 1s linear normal forwards;\n}\n@keyframes Street {\n    100% {\n        width:563px;\n    }\n}\n.page4 .phone {\n    position: absolute;\n    bottom: 81px;\n    left: 214px;\n    z-index: 500;\n    width: 203px;\n    height: 0px;\n    background: url(" + __webpack_require__(135) + ");\n    animation-play-state: paused;\n    animation: page4phone 0.5s 1.1s normal forwards;\n}\n@keyframes page4phone {\n    100% {\n        height:363px;\n    }\n}\n.page4 .Building-red{\n    width: 67px;\n    height: 0px;\n    position: absolute;\n    background-position: -778px 0px;\n    bottom: 54px;left: 156px;\n    z-index: 505;\n    animation-play-state: paused;\n    animation: Building-red 0.5s 0.5s normal forwards;\n}\n@keyframes Building-red {\n    100% {\n        height:270px;\n    }\n}\n.page4 .Building-yellow{\n    width: 82px;\n    height: 0px;\n    position: absolute;\n    background-position: -1022px -139px;\n    bottom: 53px;left: 214px;\n    z-index: 507;\n    animation-play-state: paused;\n    animation: Building-yellow 0.5s 0.6s normal forwards;\n}\n@keyframes Building-yellow {\n    100% {\n        height:132px;\n    }\n}\n.page4 .Building-green{\n    width: 91px;\n    height: 0px;\n    position: absolute;\n    background-position: -1175px -184px;\n    bottom: 53px;left: 291px;\n    z-index: 509;\n    animation-play-state: paused;\n    animation: Building-green 0.5s 0.8s normal forwards;\n}\n@keyframes Building-green {\n    100% {\n        height:86px;\n    }\n}\n.page4 .Building-Purple{\n    width: 83px;\n    height: 0px;\n    position: absolute;\n    background-position: -1205px -353px;\n    bottom: 53px;left: 353px;\n    z-index: 507;\n    animation-play-state: paused;\n    animation: Building-Purple 0.5s 0.7s normal forwards;\n}\n@keyframes Building-Purple {\n    100% {\n        height:169px;\n    }\n}\n.page4 .Building-yellow2{\n    width: 83px;\n    height: 0px;\n    position: absolute;\n    background-position: -1028px -448px;\n    bottom: 39px;left: 394px;\n    z-index: 509;\n    animation-play-state: paused;\n    animation: Building-yellow2 0.5s 0.9s normal forwards;\n}\n@keyframes Building-yellow2 {\n    100% {\n        height:74px;\n    }\n}\n.page4 .Building-Gray1{\n    width: 52px;\n    height: 0px;\n    position: absolute;\n    background-position:-695px -124px;\n    bottom: 74px;left: 55px;\n    z-index: 507;\n    animation-play-state: paused;\n    animation: Building-Gray1 0.5s 1.6s normal forwards;\n}\n@keyframes Building-Gray1 {\n    100% {\n        height:146px;\n    }\n}\n.page4 .Building-Gray2{\n    width: 33px;\n    height: 0px;\n    position: absolute;\n    background-position:-516px -224px;\n    bottom: 74px;left: 25px;\n    z-index: 501;\n    animation-play-state: paused;\n    animation: Building-Gray2 0.5s 1.7s normal forwards;\n}\n@keyframes Building-Gray2 {\n    100% {\n        height:46px;\n    }\n}\n.page4 .Building-Gray3{\n    width: 53px;\n    height: 0px;\n    position: absolute;\n    background-position:-598px -206px;\n    bottom: 74px;left: 98px;\n    z-index: 501;\n    animation-play-state: paused;\n    animation: Building-Gray3 0.5s 1.8s normal forwards;\n}\n@keyframes Building-Gray3 {\n    100% {\n        height:64px;\n    }\n}\n.page4 .tree1{\n    width: 55px;\n    height: 0px;\n    position: absolute;\n    background-position: -744px -437px;\n    bottom: 38px; right: 81px;\n    z-index: 510;\n    animation-play-state: paused;\n    animation: tree1 0.5s 1s normal forwards;\n}\n@keyframes tree1 {\n    100% {\n        height:85px;\n    }\n}\n.page4 .tree2{\n    width: 34px;\n    height: 0px;\n    position: absolute;\n    background-position: -686px -470px;\n    bottom: 63px; right: 67px;\n    animation-play-state: paused;\n    animation: tree2 0.5s 1.1s normal forwards;\n}\n@keyframes tree2 {\n    100% {\n        height:51px;\n    }\n}\n.page4 .tree3{\n    width: 74px;\n    height: 0px;\n    position: absolute;\n    background-position: -868px -460px;\n    bottom: 56px; left: 24px;\n    z-index: 510;\n    animation-play-state: paused;\n    animation: tree3 0.5s 1.9s normal forwards;\n}\n@keyframes tree3 {\n    100% {\n        height:62px;\n    }\n}\n.page4 .tree4{\n    width: 38px;\n    height: 0px;\n    position: absolute;\n    background-position: -920px -196px;\n    bottom: 54px; left: 125px;\n    z-index: 503;\n    animation-play-state: paused;\n    animation: tree4 0.5s 0.8s normal forwards;\n}\n@keyframes tree4 {\n    100% {\n        height:74px;\n    }\n}\n.page4 .could{\n     width: 62px;\n    height: 43px;\n    position: absolute;\n    background-position: -1726px -228px;\n    bottom: 150px; right: 120px;\n    z-index: 508;\n    opacity: 0;\n    animation-play-state: paused;\n    animation: page4could 0.5s 1.2s normal forwards;\n}\n@keyframes page4could {\n    100% {\n         right: 125px;\n        opacity: 1;\n    }\n}\n.page4 .msg1{\n     width: 152px;\n    height: 152px;\n    position: absolute;\n    background-position: 0px -119px;\n    bottom: 309px; right: 30px;\n    animation-play-state: paused;\n    opacity: 0;\n      transform:rotate(-10deg) scale(0.7);\n    animation: page4msg1 0.5s 2.4s normal forwards;\n}\n@keyframes page4msg1 {\n    100% {\n         right: 15px;\n           transform:rotate(-10deg) scale(0.7);\n        opacity: 1;\n    }\n}\n.page4 .msg2{\n     width: 102px;\n    height: 106px;\n    position: absolute;\n    background-position: -344px -164px;\n    bottom: 245px; left: 55px;\n    animation-play-state: paused;\n    opacity: 0;\n    transform:rotate(10deg) scale(0.7);\n    animation: page4msg2 0.5s 2.4s normal forwards;\n}\n@keyframes page4msg2 {\n    100% {\n         transform:rotate(0deg) scale(0.7);\n        opacity: 1;\n    }\n}\n.page4 .msg3{\n     width: 81px;\n    height: 97px;\n    position: absolute;\n    background-position: -216px -173px;\n    bottom: 353px; left: 85px;\n    animation-play-state: paused;\n    opacity: 0;\n    transform:scale(0.7);\n    animation: page4msg3 0.5s 2.4s normal forwards;\n}\n@keyframes page4msg3 {\n    100% {\n        bottom: 353px;\n          transform: scale(0.7);\n        opacity: 1;\n    }\n}\n.page4 .xiaocao1{\n     width: 51px;\n    height: 0px;\n    position: absolute;\n    background-position: -1573px -253px;\n    bottom: 49px; right: 279px;\n    z-index: 511;\n    animation-play-state: paused;\n    animation: xiaocao1 0.5s 0.9s normal forwards;\n}\n@keyframes xiaocao1 {\n    100% {\n        height:18px;\n    }\n}\n.page4 .xiaocao2{\n     width: 68px;\n    height: 0px;\n    position: absolute;\n    background-position: -1321px -252px;\n    bottom: 138px; right: 230px;\n    z-index: 509;\n    animation-play-state: paused;\n    animation: xiaocao2 0.5s 1.2s normal forwards;\n}\n@keyframes xiaocao2 {\n    100% {\n        height:18px;\n    }\n}\n.page4 .xiaocao3{\n     width: 62px;\n    height: 0px;\n    position: absolute;\n    background-position: -1443px -253px;\n    bottom: 182px; right: 309px;\n    z-index: 505;\n    animation-play-state: paused;\n    animation: xiaocao3 0.5s 1s normal forwards;\n}\n@keyframes xiaocao3 {\n    100% {\n        height:18px;\n    }\n}\n.page4 .balloon{\n    width: 45px;\n    height: 69px;\n    position: absolute;\n    background-position: -1391px -453px;\n    bottom: 0px;\n    right: 70px;\n    opacity: 0;\n    animation-play-state: paused;\n    animation: page4balloon 1s 2.9s linear normal forwards,page4balloonmove 3s 4s linear infinite alternate forwards;\n}\n@keyframes page4balloon {\n    0% {\n        transform: scale(0);\n    }\n    100% {\n        bottom: 154px;\n        opacity: 1;\n    }\n}\n@keyframes page4balloonmove {\n    0% {\n        bottom: 154px;\n        opacity: 1;\n    }\n    16.806% {\n        bottom: 156px;\n        right: 72px;\n    }\n    33.4448% {\n        bottom: 158px;\n        right: 74px;\n    }\n    50.3344% {\n        bottom: 159px;\n        right: 76px;\n    }\n    67.0011% {\n        bottom: 158px;\n        right: 78px;\n    }\n    83.9465% {\n        bottom: 156px;\n        right: 80px;\n    }\n    100% {\n        bottom: 154px;\n        right: 82px;\n         opacity: 1;\n    }\n}\n.page4 .Light-left{\n    width: 111px;\n    height: 156px;\n    position: absolute;\n    background-position: -1700px -366px;\n    bottom: 184px;right: 250px;\n    z-index: 504;\n    animation-play-state: paused;\n    transform-origin:15% 100%;\n    transform:rotate(-10deg);\n    opacity: 0;\n    animation:lightshow 0.2s 1.5s ease normal forwards, Light-left 2s linear alternate infinite forwards;\n}\n@keyframes lightshow {\n   100% {\n        opacity: 1;\n    }\n}\n@keyframes Light-left {\n   100% {\n        transform:rotate(10deg);\n    }\n}\n.page4 .Light-right{\n    width: 124px;\n    height: 140px;\n    position: absolute;\n    background-position: -1478px -381px;\n    bottom: 214px;right: 186px;\n    z-index: 504;\n    animation-play-state: paused;\n    transform-origin:100% 100%;\n    transform:rotate(10deg);\n    opacity: 0;\n    animation:lightshow 0.2s 1.5s ease normal forwards, Light-right 3s linear alternate infinite forwards;\n}\n@keyframes Light-right {\n    100% {\n        transform:rotate(-10deg);\n    }\n}", ""]);
-
-// exports
-
+__webpack_require__(36)('asyncIterator');
 
 /***/ }),
 /* 116 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(10)();
-// imports
-
-
-// module
-exports.push([module.i, "\nhtml, body\n{\n  background-color: #fff;\n  color: #2e2f30;\n  letter-spacing: 0.5px;\n  font-family: \"Source Sans Pro\", Arial, sans-serif;\n  height: 100vh;\n  margin: 0;\n}\nfooter\n{\n  padding: 20px;\n  text-align: center;\n  border-top: 1px solid #ddd;\n}\na, a:hover, a:focus, a:visited\n{\n  color: #41B883;\n}\n.logo {\n  width: 243px;\n  height: 218px;\n}\n.page-enter-active, .page-leave-active\n{\n  transition: opacity .5s\n}\n.page-enter, .page-leave-active\n{\n  opacity: 0\n}\n", ""]);
-
-// exports
-
+__webpack_require__(36)('observable');
 
 /***/ }),
 /* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(10)();
+exports = module.exports = __webpack_require__(0)();
+// imports
+
+
+// module
+exports.push([module.i, "@charset \"UTF-8\";\n\n/**\n * \n * @authors 吴儒林 (49106868@qq.com)\n * @date    2014-07-07 16:47:24\n * @version $Id$\n */\n\nbody {\n    background: #FCAF03;\n    transition: background .8s;\n}\n\n.pagehide {\n    opacity: 1;\n    animation: pagehide 0.2s normal forwards;\n}\n\n@keyframes pagehide {\n    100% {\n        opacity: 0;\n    }\n}\n\n.pageshow {\n    opacity: 0;\n    animation: pageshow 0.2s normal forwards;\n}\n\n@keyframes pageshow {\n    100% {\n        opacity: 1;\n    }\n}\n\n.header {\n    outline: 0px;\n    background: rgba(255, 255, 255, .7);\n    border-bottom: 0px solid #E4E4E4;\n}\n\n.header>.nav {\n    transition: all 0.5s;\n}\n\n.header>.nav li {\n    border-color: #fff;\n}\n\n.header>.nav li i {\n    width: 80px;\n    height: 0px;\n}\n\n.header>.nav li .i,\n.header>.nav li:hover i {\n    width: 80px;\n    height: 0px;\n}\n\n.footer {\n    position: absolute;\n    bottom: 15px;\n    line-height: 0px;\n    padding: 0px;\n    margin: 0px;\n    left: 0px;\n    color: #FFF;\n    opacity: 0.5;\n}\n\n.gotop {\n    animation-play-state: paused;\n    animation: gotop 1s ease-in-out normal forwards;\n}\n\n@keyframes gotop {\n    100% {\n        top: 0;\n    }\n}\n\n.gobottom {\n    animation-play-state: paused;\n    animation: gobottom 1s ease-in-out normal forwards;\n}\n\n@keyframes gobottom {\n    100% {\n        top: 100%;\n    }\n}\n\n\n/*修改首页右侧小圆点的*/\n\n#fp-nav > ul > li > a >span {\n    background: #ffffff;\n}\n\n#fp-nav > ul > li > .active >span {\n    height: 32px !important;\n    width: 32px !important;\n    display: inline-block;\n    background: url(" + __webpack_require__(146) + ") center center no-repeat;\n    position: absolute;\n    left: -4px;\n    top: -4px;\n}\n\n#fp-nav > ul > li:nth-of-type(2) > .active >span {\n    background: url(" + __webpack_require__(147) + ") center center no-repeat;\n}\n\n#fp-nav > ul > li:nth-of-type(3) > .active >span {\n    background: url(" + __webpack_require__(148) + ") center center no-repeat;\n}\n\n#fp-nav > ul > li:nth-of-type(4) > .active >span {\n    background: url(" + __webpack_require__(149) + ") center center no-repeat;\n}\n\n.stips {\n    -webkit-transform: translate3d(0, 0, 0);\n    -moz-transform: translate3d(0, 0, 0);\n    -ms-transform: translate3d(0, 0, 0);\n    transform: translate3d(0, 0, 0);\n    -webkit-backface-visibility: hidden;\n    -moz-backface-visibility: hidden;\n    -ms-backface-visibility: hidden;\n    backface-visibility: hidden;\n    -webkit-perspective: 1000;\n    -moz-perspective: 1000;\n    -ms-perspective: 1000;\n    perspective: 1000;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 118 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)();
+// imports
+
+
+// module
+exports.push([module.i, "@charset \"UTF-8\";\n\n/**\n * \n * @authors 吴儒林 (49106868#qq.com)\n * @date    2015-09-11 16:24:12\n * @version $Id$\n */\n\nhtml,\nbody,\ndiv,\nspan,\napplet,\nobject,\niframe,\nh1,\nh2,\nh3,\nh4,\nh5,\nh6,\np,\nblockquote,\npre,\na,\nabbr,\nacronym,\naddress,\nbig,\ncite,\ncode,\ndel,\ndfn,\nem,\nimg,\nins,\nkbd,\nq,\ns,\nsamp,\nsmall,\nstrike,\nstrong,\nsub,\nsup,\ntt,\nvar,\nb,\nu,\ni,\ncenter,\ndl,\ndt,\ndd,\nol,\nul,\nli,\nfieldset,\nform,\ninput,\nbutton,\nlabel,\nlegend,\ntable,\ncaption,\ntbody,\ntfoot,\nthead,\ntr,\nth,\ntd,\narticle,\naside,\ncanvas,\ndetails,\nembed,\nfigure,\nfigcaption,\n.footer,\nheader,\nhgroup,\nmenu,\nnav,\noutput,\nruby,\nsection,\nsummary,\ntime,\nmark,\naudio,\nvideo {\n    box-sizing: border-box;\n    margin: 0;\n    padding: 0;\n    outline: none;\n    font: inherit;\n    font-size: 62.5%;\n    -webkit-user-select: none;\n    -webkit-appearance: none;\n}\n\nbody {\n    font-family: Arial, Tahoma, sans-serif;\n    line-height: 1;\n}\n\nol,\nul,\nli {\n    list-style: none;\n}\n\nhtml,\nbody,\narticle {\n    height: 100%;\n    min-width: 100%;\n    position: relative;\n}\n\n#container {\n    position: absolute;\n    background: transparent;\n    overflow: hidden;\n    width: 100%;\n    height: 100%;\n    max-width: 480px;\n    z-index: 1;\n}\n\n.homescreen {\n    width: 100%;\n    height: 100%;\n    position: absolute;\n    -webkit-transform-origin: 50% 50%;\n    left: 0%;\n    opacity: .95;\n    background: url('/include/images/1.jpg') center top / cover no-repeat;\n}\n\n\n/*effects*/\n\n#controlcenter {\n    -webkit-flex: 1;\n    -ms-flex: 1;\n    flex: 1;\n    width: 100%;\n    height: 100%;\n    position: relative;\n    background: url(" + __webpack_require__(150) + ") center center / cover no-repeat;\n    display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-flex-grow: 3;\n    -ms-flex-positive: 3;\n    flex-grow: 3;\n    -webkit-flex-flow: column;\n    -ms-flex-flow: column;\n    flex-flow: column;\n}\n\n\narticle {\n    position: fixed;\n    height: 100%;\n    width: 100%;\n    display: -moz-box;\n    -moz-box-orient: vertical;\n    display: -webkit-box;\n    -webkit-box-orient: vertical;\n    display: box;\n    box-orient: vertical;\n    /* display: -webkit-flex;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-flex-grow: 2;\n    -ms-flex-positive: 2;\n    flex-grow: 2;\n    -webkit-flex-flow: column;\n    -ms-flex-flow: column;\n    flex-flow: column;*/\n    z-index: 300;\n}\n\narticle>section:first-of-type {\n    height: 100%;\n    width: 100%;\n}\n\narticle>section:first-of-type>.joingame {\n    position: absolute;\n    right: 0px;\n    top: 22px;\n    width: 237px;\n    height: 117px;\n    background: url(" + __webpack_require__(154) + ") center center no-repeat;\n    zoom: 0.5;\n}\n\narticle>section:first-of-type>.active,\narticle>section:first-of-type>.joingame:hover {\n    -webkit-filter: brightness(.8);\n    /* background: url(~assets/img/ktvrank/ksong_btn_ed@2x.png) center center no-repeat;*/\n}\n\narticle>section:last-of-type {\n    -webkit-flex: 1;\n    flex: 1;\n    display: box;\n    display: -webkit-box;\n    width: 100%;\n    -webkit-box-flex: 1.0;\n    -moz-box-flex: 1.0;\n    box-flex: 1.0;\n}\n\n#controlcenter .top {\n    position: relative;\n    height: 95px;\n}\n\n#controlcenter .center {\n   position: absolute;\n   left: 50%;\n   margin:0px 0px 0px -95px;\n   bottom:100px;\n}\n\n#controlcenter .center>.ul {\n    width: 240px;\n    height: 240px;\n    position: absolute;\n    left: 50%;\n    top: 50%;\n    margin: -120px 0px 0px -120px;\n    z-index: 9999;\n}\n\n\n\n@-webkit-keyframes shang {\n    0% {\n        opacity: 0;\n        -webkit-transform: rotate(180deg) translate(0, -25px);\n        transform: rotate(180deg) translate(0, -25px)\n    }\n    100% {\n        opacity: 1;\n        -webkit-transform: rotate(180deg) translate(0, 25px);\n        transform: rotate(180deg) translate(0, 25px)\n    }\n}\n\n@keyframes shang {\n    0% {\n        opacity: 0;\n        -webkit-transform: rotate(180deg) translate(0, -25px);\n        transform: rotate(180deg) translate(0, -25px)\n    }\n    100% {\n        opacity: 1;\n        -webkit-transform: rotate(180deg) translate(0, 25px);\n        transform: rotate(180deg) translate(0, 25px)\n    }\n}\n\n\n\n@-webkit-keyframes xia {\n    0% {\n        opacity: 0;\n        -webkit-transform: rotate(0deg) translate(0, -25px);\n        transform: rotate(0deg) translate(0, -25px)\n    }\n    100% {\n        opacity: 1;\n        -webkit-transform: rotate(0deg) translate(0, 25px);\n        transform: rotate(0deg) translate(0, 25px)\n    }\n}\n\n@keyframes xia {\n    0% {\n        opacity: 0;\n        -webkit-transform: rotate(0deg) translate(0, -25px);\n        transform: rotate(0deg) translate(0, -25px)\n    }\n    100% {\n        opacity: 1;\n        -webkit-transform: rotate(0deg) translate(0, 25px);\n        transform: rotate(0deg) translate(0, 25px)\n    }\n}\n\n#controlcenter .center>.chart {\n    width: 240px;\n    height: 194px;\n    position: absolute;\n    left: 50%;\n    top: 50%;\n    margin: -120px 0px 0px -120px;\n    z-index: 9999;\n    /* background: url(~assets/img/ktvrank/shuxing@2x.png) center center no-repeat;\n    background-size: 100%;*/\n}\n\n#controlcenter .center>.chart>canvas {\n    width: 240px;\n    height: 194px;\n    -webkit-tap-highlight-color: rgba(255, 255, 255, .0);\n}\n\n#controlcenter .center>.ul>li {\n    width: 5px;\n    height: 5px;\n    left: 0px;\n    top: 0px;\n    background: rgba(255, 204, 47, 1);\n    position: absolute;\n    border-radius: 10px;\n    transition: all .5s;\n}\n\n#controlcenter .center>.ul>li:first-of-type {\n    width: 6px;\n    height: 6px;\n    left: 45px;\n    top: 45px;\n}\n\n#controlcenter .center>.ul>li:first-of-type[active=\"true\"] {\n    left: 116px;\n    top: 15px;\n}\n\n#controlcenter .center>.ul>li:nth-of-type(2) {\n    width: 5px;\n    height: 5px;\n    left: 60px;\n    top: 90px;\n    opacity: .6;\n}\n\n#controlcenter .center>.ul>li:nth-of-type(2)[active=\"true\"] {\n    left: 190px;\n    top: 70px;\n}\n\n#controlcenter .center>.ul>li:nth-of-type(3) {\n    width: 3px;\n    height: 3px;\n    left: 20px;\n    top: 80px;\n    background: #ffffff;\n    opacity: .9;\n}\n\n#controlcenter .center>.ul>li:nth-of-type(3)[active=\"true\"],\n#controlcenter .center>.ul>li:nth-of-type(4)[active=\"true\"],\n#controlcenter .center>.ul>li:nth-of-type(5)[active=\"true\"],\n#controlcenter .center>.ul>li:nth-of-type(7)[active=\"true\"],\n#controlcenter .center>.ul>li:nth-of-type(10)[active=\"true\"] {\n    display: none;\n}\n\n#controlcenter .center>.ul>li:nth-of-type(4) {\n    width: 2px;\n    height: 2px;\n    left: 70px;\n    top: 70px;\n    background: #ffffff;\n    opacity: .9;\n}\n\n#controlcenter .center>.ul>li:nth-of-type(5) {\n    width: 3px;\n    height: 3px;\n    left: 70px;\n    top: 35px;\n    background: #ffffff;\n    opacity: .6;\n}\n\n#controlcenter .center>.ul>li:nth-of-type(6) {\n    width: 6px;\n    height: 6px;\n    left: 180px;\n    top: 80px;\n}\n\n#controlcenter .center>.ul>li:nth-of-type(6)[active=\"true\"] {\n    left: 71px;\n    top: 155px;\n}\n\n#controlcenter .center>.ul>li:nth-of-type(7) {\n    width: 2px;\n    height: 2px;\n    left: 185px;\n    top: 70px;\n    background: #ffffff;\n    opacity: .8;\n}\n\n#controlcenter .center>.ul>li:nth-of-type(8) {\n    width: 5px;\n    height: 5px;\n    left: 200px;\n    top: 55px;\n    background: rgba(253, 148, 38, 1);\n}\n\n#controlcenter .center>.ul>li:nth-of-type(8)[active=\"true\"] {\n    left: 41px;\n    top: 70px;\n}\n\n#controlcenter .center>.ul>li:nth-of-type(9) {\n    width: 4px;\n    height: 4px;\n    left: 220px;\n    top: 85px;\n}\n\n#controlcenter .center>.ul>li:nth-of-type(9)[active=\"true\"] {\n    left: 161px;\n    top: 155px;\n}\n\n#controlcenter .center>.ul>li:nth-of-type(10) {\n    width: 2px;\n    height: 2px;\n    left: 180px;\n    top: 30px;\n    background: #ffffff;\n    opacity: .8;\n}\n\n#controlcenter .center>.ul>li[active=\"true\"] {\n    width: 6px;\n    height: 6px;\n    background: rgba(255, 204, 47, 1);\n    opacity: 1;\n    border: 1px solid rgba(0, 0, 0, 0.2);\n}\n\n#controlcenter .center > div:first-of-type {\n    width: 190px;\n    height: 190px;\n    position: relative;\n    overflow: hidden;\n}\n\n#controlcenter .center > div:first-of-type>.cup {\n    position: absolute;\n    width: 380px;\n    height: 272px;\n    zoom: 0.5;\n    background: url(" + __webpack_require__(152) + ") center top no-repeat;\n    z-index: 99;\n    display: -webkit-box;\n    display: box;\n    -webkit-box-pack: center;\n    box-pack: center;\n}\n\n#controlcenter .center > div:first-of-type>.cup>i {\n    position: absolute;\n    width: 39px;\n    height: 40px;\n    background: url(" + __webpack_require__(163) + ") center top no-repeat;\n    z-index: 109;\n    left: 130px;\n    top: 0px;\n}\n\n#controlcenter .center > div:first-of-type>.cup>i[active=\"true\"] {\n    -webkit-animation: star 1s normal;\n    animation: star 1s normal;\n}\n\n@-webkit-keyframes star {\n    100% {\n        -webkit-transform: rotate(360deg);\n        transform: rotate(360deg);\n    }\n}\n\n@keyframes star {\n    100% {\n        -webkit-transform: rotate(360deg);\n        transform: rotate(360deg);\n    }\n}\n\n#controlcenter .center > div:first-of-type>.cup>span {\n    display: block;\n    padding-left: 150px;\n    height: 38px;\n    font-size: 4.1rem;\n    text-shadow: -4px 1px 3px rgba(0, 0, 0, .2);\n    color: #ffffff;\n    margin: 198px 0px 0px 0px;\n    background: url(" + __webpack_require__(162) + ") bottom left no-repeat;\n}\n\n#controlcenter .center > div:first-of-type >div:nth-of-type(2) {\n    width: 190px;\n    height: 120px;\n    position: relative;\n    overflow: hidden;\n}\n\n#controlcenter .center > div:first-of-type >.description {}\n\n#controlcenter .center > div:first-of-type >.description>ul {\n    padding: 30px 0px 0px 0px;\n}\n\n#controlcenter .center > div:first-of-type >.description>ul>li {\n    font-size: 1.4rem;\n    color: #dddddd;\n    margin: 0px 0px 9px 0px;\n    text-align: center;\n}\n\n#controlcenter .center > div:first-of-type >.description>ul>li>span {\n    font-size: 1.6rem;\n    color: #fcd330;\n}\n\n#controlcenter .center > div:first-of-type >div >.red1 {\n    width: 190px;\n    height: 190px;\n    border-radius: 100%;\n    background: rgba(225, 0, 0, 0.2);\n    display: -webkit-box;\n    display: box;\n    -webkit-box-align: center;\n    box-align: center;\n    -webkit-box-pack: center;\n    box-pack: center;\n}\n\n#controlcenter .center > div:first-of-type >div >.red1 >.red2 {\n    width: 145px;\n    height: 145px;\n    border-radius: 100%;\n    background: rgba(225, 0, 0, 0.5);\n    display: -webkit-box;\n    display: box;\n    -webkit-box-align: center;\n    box-align: center;\n    -webkit-box-pack: center;\n    box-pack: center;\n}\n\n#controlcenter .center > div:first-of-type >div >.red1 >.red2>.red3 {\n    width: 105px;\n    height: 105px;\n    border-radius: 100%;\n    background: rgba(225, 0, 0, 0.8);\n    display: -webkit-box;\n    display: box;\n    -webkit-box-align: center;\n    box-align: center;\n    -webkit-box-pack: center;\n    box-pack: center;\n}\n\n#controlcenter .userface {\n    position: absolute;\n    width: 160px;\n    height: 160px;\n    border-radius: 100%;\n    top: 0px;\n    left: 50%;\n    overflow: hidden;\n    text-align: center;\n    margin: -80px 0px 0px -80px;\n    border: 7px solid rgba(218, 226, 234, 0.4);\n    zoom: 0.5;\n}\n\n#controlcenter .userface>img {\n    width: 160px;\n    height: 160px;\n}\n\n#controlcenter .phoneadd {\n    position: absolute;\n    top: 50px;\n    width: 100%;\n    display: -webkit-box;\n    display: box;\n    padding: 0px 40px;\n}\n\n#controlcenter .phoneadd >div {\n    -webkit-box-flex: 1;\n    box-flex: 1;\n    width: 1px;\n    display: -webkit-box;\n    display: box;\n    -webkit-box-align: center;\n    box-align: center;\n    -webkit-box-pack: center;\n    box-pack: center;\n}\n\n#controlcenter .phoneadd >div>span:last-of-type {\n    color: #8f8f8f;\n    font-size: 1.2rem;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    display: inline-block;\n    max-width: 80px;\n}\n\n#controlcenter .phoneadd >div:first-of-type {\n    border-right: 1px solid #8f8f8f;\n}\n\n#controlcenter .phoneadd >div:first-of-type>span:first-of-type {\n    width: 20px;\n    height: 25px;\n    zoom: 0.45;\n    display: inline-block;\n    background: url(" + __webpack_require__(153) + ") center center no-repeat;\n    background-size: 100% 100%;\n    margin: 0px 10px 0px 0px;\n}\n\n#controlcenter .phoneadd >div:last-of-type>span:first-of-type {\n    width: 20px;\n    height: 25px;\n    zoom: 0.45;\n    display: inline-block;\n    background: url(" + __webpack_require__(151) + ") center center no-repeat;\n    background-size: 100% 100%;\n    margin: 0px 10px 0px 0px;\n}\n\n#controlcenter .songname {\n    position: absolute;\n    top: 75px;\n    text-align: center;\n    width: 100%;\n}\n\n#controlcenter .songname>span {\n    font-size: 1.6rem;\n    color: #ffffff;\n    padding: 0px 10px 0px 25px;\n    background: url(" + __webpack_require__(160) + ") 0px 0px / 21px 16px no-repeat, url(" + __webpack_require__(161) + ") 100% 80% / 5px 6px no-repeat;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    display: inline-block;\n    max-width: 280px;\n}\n\n#controlcenter .footer {\n    width: 100%;\n    height: 45px;\n    background: rgba(0, 0, 0, 0.7);\n}\n\n#controlcenter .footer>ul {\n    display: -webkit-box;\n    display: box;\n    -webkit-flex-grow: 3;\n    -ms-flex-positive: 3;\n    flex-grow: 3;\n    -webkit-flex-flow: column;\n    -ms-flex-flow: colimn;\n    flex-flow: colimn;\n    height: 100%;\n}\n\n#controlcenter .footer>ul>li:first-of-type {\n    -webkit-box-flex: 1;\n    box-flex: 1;\n    background: url(" + __webpack_require__(159) + ") 10px center no-repeat;\n    background-size: 80%;\n}\n\n#controlcenter .footer>ul>li:nth-of-type(2),\n#controlcenter .footer>ul>li:last-of-type {\n    width: 70px;\n    text-align: center;\n    display: -webkit-box;\n    display: box;\n    -webkit-box-align: center;\n    box-align: center;\n    -webkit-box-pack: center;\n    box-pack: center;\n}\n\n#controlcenter .footer>ul>li:nth-of-type(2)>a {\n    background: url(" + __webpack_require__(158) + ") center center no-repeat;\n    display: inline-block;\n    width: 110px;\n    height: 50px;\n    zoom: 0.5;\n}\n\n#controlcenter .footer>ul>li:nth-of-type(2)>a:hover {\n    background: url(" + __webpack_require__(157) + ") center center no-repeat;\n}\n\n#controlcenter .footer>ul>li:last-of-type>a {\n    background: url(" + __webpack_require__(156) + ") center center no-repeat;\n    display: inline-block;\n    width: 110px;\n    height: 50px;\n    zoom: 0.5;\n}\n\n#controlcenter .footer>ul>li:last-of-type>a:hover {\n    background: url(" + __webpack_require__(155) + ") center center no-repeat;\n}\n\n#controlcenter .suoxiao {\n    -webkit-animation: suoxiao .6s normal forwards;\n    animation: suoxiao .6s normal forwards;\n}\n\n@-webkit-keyframes suoxiao {\n    100% {\n        -webkit-transform: scale(0);\n        transform: scale(0)\n    }\n}\n\n@keyframes suoxiao {\n    100% {\n        -webkit-transform: scale(0);\n        transform: scale(0)\n    }\n}\n\n#controlcenter .bianda {\n    -webkit-animation: bianda 0.6s normal forwards;\n    animation: bianda 0.6s normal forwards;\n}\n\n@-webkit-keyframes bianda {\n    0% {\n        -webkit-transform: scale(0);\n        transform: scale(0)\n    }\n    100% {\n        -webkit-transform: scale(1);\n        transform: scale(1)\n    }\n}\n\n@keyframes bianda {\n    0% {\n        -webkit-transform: scale(0);\n        transform: scale(0)\n    }\n    100% {\n        -webkit-transform: scale(1);\n        transform: scale(1)\n    }\n}\n\n\n\n/**\n * iPhone 4/4s portrait\n */\n\n@media only screen and (max-device-width: 360px) and (max-device-width: 567px)  {\n    #controlcenter .center{\n        zoom:0.7;\n    }\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 119 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)();
+// imports
+
+
+// module
+exports.push([module.i, "\n.page1[data-v-1d873eba] {\n    width: 612px;\n    height: 509px;\n    position: relative;\n    margin: auto;\n}\n.page1 .left[data-v-1d873eba] {\n    position: absolute;\n    bottom: 1px;\n    left: 33px;\n    z-index: 2;\n    width: 348px;\n    height: 348px;\n    background: url(" + __webpack_require__(132) + ") center center no-repeat;\n    background-size: 100%;\n    opacity: 0;\n    -ms-transform: scale(0.5);\n        transform: scale(0.5);\n    animation-play-state: paused;\n    animation: page1left 0.5s ease-out normal forwards;\n}\n@keyframes page1left {\n100% {\n        opacity: 1;\n        transform: scale(1);\n}\n}\n.page1 .left .shan[data-v-1d873eba] {\n    position: absolute;\n    bottom: 273px;\n    left: 15px;\n    z-index: 9;\n    width: 134px;\n    height: 0px;\n    background-position: -159px -326px;\n    animation-play-state: paused;\n    animation: leftshan 0.5s 0.7s ease normal forwards;\n}\n@keyframes leftshan {\n100% {\n        height: 118px;\n}\n}\n.page1 .balloon[data-v-1d873eba] {\n    position: absolute;\n    z-index: 8;\n    top: 0px;\n    left: 92px;\n    width: 35px;\n    height: 35px;\n    opacity: 0;\n    background-position: -373px -408px;\n    animation-play-state: paused;\n    animation: balloon 0.5s 1.7s ease-in normal forwards;\n}\n@keyframes balloon {\n100% {\n        top: -43px;\n        opacity: 1;\n}\n}\n.page1 .left .money1[data-v-1d873eba] {\n    position: absolute;\n    z-index: 9;\n    width: 122px;\n    height: 147px;\n    background-position: -1367px 0px;\n    -ms-transform: scale(0);\n        transform: scale(0);\n    animation-play-state: paused;\n    animation: money1 0.4s 0.5s ease normal forwards;\n}\n@keyframes money1 {\n0% {\n        top: 142px;\n        left: 44px;\n        transform: scale(0.1);\n}\n100% {\n        top: 25px;\n        left: -23px;\n        transform: scale(1);\n}\n}\n.page1 .left .money2[data-v-1d873eba] {\n    position: absolute;\n    width: 81px;\n    height: 65px;\n    z-index: 10;\n    background-position: -1231px -85px;\n    -ms-transform: scale(0);\n        transform: scale(0);\n    animation-play-state: paused;\n    animation: money2 0.2s 0.6s ease normal forwards;\n}\n@keyframes money2 {\n0% {\n        top: 142px;\n        left: 44px;\n}\n100% {\n        top: 133px;\n        left: 20px;\n        transform: scale(1);\n}\n}\n.page1 .left .money3[data-v-1d873eba] {\n    position: absolute;\n    top: 87px;\n    left: 77px;\n    width: 73px;\n    height: 73px;\n    z-index: 11;\n    background-position: -1535px -76px;\n    -ms-transform: scale(0);\n        transform: scale(0);\n    animation-play-state: paused;\n    animation: money3 0.3s 0.7s ease normal forwards;\n}\n@keyframes money3 {\n0% {\n        top: 142px;\n        left: 74px;\n}\n100% {\n        top: 87px;\n        left: 77px;\n        transform: scale(1);\n}\n}\n.page1 .left .money4[data-v-1d873eba] {\n    position: absolute;\n    top: 165px;\n    left: 83px;\n    width: 61px;\n    height: 62px;\n    z-index: 11;\n    background-position: -1677px -87px;\n    -ms-transform: scale(0);\n        transform: scale(0);\n    animation-play-state: paused;\n    animation: money4 0.3s 0.6s ease normal forwards;\n}\n@keyframes money4 {\n100% {\n        transform: scale(1);\n}\n}\n.page1 .right-box[data-v-1d873eba] {\n    position: absolute;\n    bottom: 0px;\n    left: 137px;\n    z-index: 3;\n    overflow: hidden;\n    width: 445px;\n    height: 0px;\n    -ms-transform-origin: left bottom;\n        transform-origin: left bottom;\n    animation-play-state: paused;\n    animation: page1right 0.7s 0.3s ease normal forwards;\n}\n@keyframes page1right {\n100% {\n        height: 546px;\n}\n}\n.page1 .right[data-v-1d873eba] {\n    position: absolute;\n    bottom: 1px;\n    left: 0px;\n    z-index: 3;\n    width: 445px;\n    height: 446px;\n    background: url(" + __webpack_require__(133) + ") center center no-repeat;\n    background-size: 100%;\n    -ms-transform: rotate(0);\n        transform: rotate(0);\n}\n.page1 .right .shan[data-v-1d873eba] {\n    position: absolute;\n    right: 10px;\n    bottom: 398px;\n    z-index: 6;\n    width: 151px;\n    height: 0px;\n    background-position: -100px -46px;\n    animation-play-state: paused;\n    animation: rightshan 0.3s 1.1s normal forwards;\n}\n@keyframes rightshan {\n100% {\n        height: 102px;\n}\n}\n.page1 .right .shanxiaocao[data-v-1d873eba] {\n    position: absolute;\n    right: 134px;\n    bottom: 388px;\n    width: 40px;\n    height: 0px;\n    z-index: 7;\n    background-position: -41px -125px;\n    animation-play-state: paused;\n    animation: shanxiaocao 0.3s 1.1s normal forwards;\n}\n@keyframes shanxiaocao {\n100% {\n        height: 24px;\n}\n}\n.page1 .right .groud1[data-v-1d873eba] {\n    position: absolute;\n    top: 25px;\n    right: 2px;\n    z-index: 4;\n    width: 0px;\n    height: 74px;\n    background-position: -316px -75px;\n    animation-play-state: paused;\n    animation: groud1 0.2s 0.9s normal forwards;\n}\n@keyframes groud1 {\n100% {\n        width: 219px;\n        height: 74px;\n}\n}\n.page1 .right .groud2[data-v-1d873eba] {\n    position: absolute;\n    top: 36px;\n    right: 21px;\n    z-index: 5;\n    width: 0px;\n    height: 41px;\n    background-position: -576px -108px;\n    animation-play-state: paused;\n    animation: groud2 0.2s 1s normal forwards;\n}\n@keyframes groud2 {\n100% {\n        width: 177px;\n}\n}\n.page1 .right .groud3[data-v-1d873eba] {\n    position: absolute;\n    top: 270px;\n    right: 174px;\n    overflow: hidden;\n    width: 0px;\n    height: 54px;\n    background: #836946;\n    background-position: -0px -710px;\n    -ms-transform: skewX(-45deg);\n        transform: skewX(-45deg);\n    animation-play-state: paused;\n    animation: groud3 0.3s 1.3s normal forwards;\n}\n@keyframes groud3 {\n100% {\n        width: 245px;\n}\n}\n.page1 .right .groud4[data-v-1d873eba] {\n    position: absolute;\n    top: 250px;\n    right: 153px;\n    z-index: 22;\n    overflow: hidden;\n    width: 247px;\n    height: 54px;\n    -ms-transform: skewX(-45deg);\n        transform: skewX(-45deg);\n}\n.page1 .right .ktvfont[data-v-1d873eba] {\n    position: absolute;\n    right: 122px;\n    bottom: 291px;\n    width: 184px;\n    height: 0px;\n    z-index: 20;\n    background-position: -1764px -371px;\n    animation-play-state: paused;\n    animation: ktvfont 0.2s 1.8s normal forwards;\n}\n@keyframes ktvfont {\n100% {\n        height: 72px;\n}\n}\n.page1 .right .ktv[data-v-1d873eba] {\n    position: absolute;\n    right: 98px;\n    bottom: 175px;\n    width: 247px;\n    height: 0px;\n    z-index: 20;\n    background-position: -925px -324px;\n    text-align: center;\n    animation-play-state: paused;\n    animation: ktv 0.4s 1.5s normal forwards;\n}\n@keyframes ktv {\n100% {\n        height: 119px;\n}\n}\n.page1 .right .deng[data-v-1d873eba] {\n    position: absolute;\n    top: 2px;\n    right: 33px;\n    z-index: 7;\n    width: 172px;\n    height: 9px;\n    background-position: -1280px -434px;\n    text-align: center;\n    opacity: 0;\n    animation-play-state: paused;\n    animation: deng 0.8s 2s linear normal infinite forwards;\n}\n@keyframes deng {\n100% {\n        opacity: 1;\n}\n}\n.page1 .car-box .car[data-v-1d873eba] {\n    position: absolute;\n    right: -120px;\n    bottom: 0px;\n    width: 112px;\n    height: 52px;\n    background-position: -1519px -391px;\n    -ms-transform: skewX(45deg);\n        transform: skewX(45deg);\n    animation-play-state: paused;\n    animation: car 4s 2s ease normal infinite forwards;\n}\n@keyframes car {\n0% {\n        left: 110%;\n}\n3% {\n        left: 110%;\n}\n30% {\n        left: 30%;\n}\n60% {\n        left: 30%;\n}\n75% {\n        left: -52%;\n}\n100% {\n        left: -52%;\n}\n}\n.page1 .right .xiaocao[data-v-1d873eba] {\n    position: absolute;\n    right: 315px;\n    bottom: 174px;\n    width: 46px;\n    height: 0px;\n    z-index: 7;\n    background-position: -1829px -122px;\n    animation-play-state: paused;\n    animation: xiaocao 0.2s 1.3s normal forwards;\n}\n@keyframes xiaocao {\n100% {\n        height: 27px;\n}\n}\n.stips[data-v-1d873eba] {\n    background: url(" + __webpack_require__(135) + ");\n}\n.page1 .cloud1[data-v-1d873eba] {\n    position: absolute;\n    top: 141px;\n    right: -1px;\n    z-index: 7;\n    width: 158px;\n    height: 87px;\n    background-position: -660px -357px;\n    animation-play-state: paused;\n    animation: cloud1 0.5s linear normal forwards, cloudmove1 7s 1s linear infinite alternate forwards;\n}\n@keyframes cloudmove1 {\n0% {\n        margin: 0px 0px 0px 0px;\n}\n50% {\n        margin: 0px -20px 0px 0px;\n}\n100% {\n        margin: 0px 10px 0px 0px;\n}\n}\n@keyframes cloud1 {\n0% {\n        margin: 0px -20px 0px 0px;\n        opacity: 0;\n        transform: scale(1.1);\n}\n100% {\n        margin: 0px;\n        opacity: 1;\n}\n}\n@keyframes cloud2 {\n0% {\n        margin: 0px 0px 0px -20px;\n        opacity: 0;\n        transform: scale(1.1);\n}\n100% {\n        margin: 0px;\n        opacity: 1;\n}\n}\n.page1 .cloud2[data-v-1d873eba] {\n    position: absolute;\n    top: 114px;\n    right: -1px;\n    z-index: 4;\n    width: 96px;\n    height: 60px;\n    background-position: 0px -383px;\n    animation-play-state: paused;\n    animation: cloud1 0.5s linear normal forwards, cloudmove2 9s 1s linear infinite alternate forwards;\n}\n@keyframes cloudmove2 {\n0% {\n        margin: 0px 0px 0px 0px;\n}\n50% {\n        margin: 0px 50px 0px 0px;\n}\n100% {\n        margin: 0px -50px 0px 0px;\n}\n}\n.page1 .cloud4[data-v-1d873eba] {\n    position: absolute;\n    top: 53px;\n    left: -3px;\n    z-index: 0;\n    width: 97px;\n    height: 60px;\n    background-position: -487px -383px;\n    animation-play-state: paused;\n    animation: cloud2 0.5s linear normal forwards, cloudmove4 2s 1s linear infinite alternate forwards;\n}\n@keyframes cloudmove4 {\n0% {\n        margin: 0px 0px 0px 0px;\n}\n50% {\n        margin: 0px 0px 0px 15px;\n}\n100% {\n        margin: 0px 0px 0px 40px;\n}\n}\n.page1 .phone[data-v-1d873eba] {\n    position: absolute;\n    top: 0px;\n    left: 165px;\n    z-index: 2;\n    width: 205px;\n    height: 410px;\n    background: url(" + __webpack_require__(134) + ") center center no-repeat;\n    background-size: 100%;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 120 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)();
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*第二帧动画开始*/\n.page2[data-v-1d95563b] {\n    width: 656px;\n    height: 427px;\n    position: relative;\n    margin: auto;\n}\n.page2 .stips[data-v-1d95563b] {\n    background: url(" + __webpack_require__(138) + ");\n}\n.page2 .card1[data-v-1d95563b] {\n    position: absolute;\n    top: 27px;\n    right: 43px;\n    z-index: 204;\n    width: 298px;\n    height: 332px;\n    -ms-transform: rotate(0deg);\n        transform: rotate(0deg);\n    background-position: -787px -95px;\n    -ms-transform-origin: bottom;\n        transform-origin: bottom;\n    -ms-transform: rotate(-15deg);\n        transform: rotate(-15deg);\n    opacity: 0;\n    animation-play-state: paused;\n    animation: card1 0.5s 2s ease normal forwards;\n}\n@keyframes card1 {\n0% {\n        opacity: 1;\n}\n100% {\n        transform: rotate(0deg);\n        opacity: 1;\n}\n}\n.page2 .card2[data-v-1d95563b] {\n    position: absolute;\n    top: 59px;\n    right: 23px;\n    z-index: 203;\n    width: 289px;\n    height: 298px;\n    background-position: -1110px -129px;\n    opacity: 0;\n    -ms-transform-origin: bottom;\n        transform-origin: bottom;\n    -ms-transform: rotate(-25deg);\n        transform: rotate(-25deg);\n    animation-play-state: paused;\n    animation: card1 0.4s 2.2s ease normal forwards;\n}\n.page2 .card3[data-v-1d95563b] {\n    position: absolute;\n    top: 104px;\n    z-index: 202;\n    right: 4px;\n    width: 262px;\n    opacity: 0;\n    height: 236px;\n    background-position: -1426px -186px;\n    -ms-transform: rotate(-45deg);\n        transform: rotate(-45deg);\n    -ms-transform-origin: bottom;\n        transform-origin: bottom;\n    animation-play-state: paused;\n    animation: card1 0.3s 2.3s ease normal forwards;\n}\n.page2 .magic[data-v-1d95563b] {\n    position: absolute;\n    left: 268px;\n    top: 158px;\n    z-index: 240;\n    width: 125px;\n    height: 88px;\n    background-position: -1896px -643px;\n    animation-play-state: paused;\n    animation: magic 1s ease normal forwards;\n}\n@keyframes magic {\n50% {\n        margin: 20px 0px 0px 0px;\n        transform: rotateZ(7deg);\n}\n100% {\n        margin: 0px 0px 0px 0px;\n        transform: rotateZ(0deg);\n}\n}\n.page2 .magicbox[data-v-1d95563b] {\n    position: absolute;\n    top: 0px;\n    left: 0px;\n    z-index: 240;\n    overflow: hidden;\n    width: 450px;\n    height: 280px;\n}\n.page2 .magicbox .diamond[data-v-1d95563b] {\n    position: absolute;\n    top: 236px;\n    left: 238px;\n    z-index: 241;\n    width: 145px;\n    height: 130px;\n    background-position: -569px -297px;\n    -ms-transform: scale(0);\n        transform: scale(0);\n    animation-play-state: paused;\n    animation: diamond 0.5s 0.5s normal forwards;\n}\n@keyframes diamond {\n100% {\n        top: 136px;\n        left: 138px;\n        transform: scale(1);\n}\n}\n.page2 .magicbox .Starbig[data-v-1d95563b] {\n    position: absolute;\n    top: 382px;\n    left: 275px;\n    width: 39px;\n    height: 128px;\n    background-position: -430px -297px;\n    -ms-transform: scale(.1);\n        transform: scale(.1);\n    animation-play-state: paused;\n    animation: Starbig 1.2s 1s normal forwards;\n}\n@keyframes Starbig {\n100% {\n        top: 82px;\n        left: 205px;\n        transform: scale(1);\n}\n}\n.page2 .magicbox .Starsmall[data-v-1d95563b] {\n    position: absolute;\n    top: 281px;\n    left: 289px;\n    width: 64px;\n    height: 41px;\n    background-position: -308px -386px;\n    animation-play-state: paused;\n    -ms-transform: scale(.1);\n        transform: scale(.1);\n    animation: Starsmall 1s 1.1s normal forwards;\n}\n@keyframes Starsmall {\n100% {\n        top: 221px;\n        left: 89px;\n        transform: scale(1);\n}\n}\n.page2 .magicbox .Ray[data-v-1d95563b] {\n    position: absolute;\n    left: 161px;\n    top: 184px;\n    width: 193px;\n    height: 97px;\n    background-position: -1928px -330px;\n    opacity: 0.5;\n    animation-play-state: paused;\n    animation: ray 5s 1.2s ease alternate infinite forwards;\n}\n@keyframes ray {\n10% {\n        opacity: 0.3;\n}\n30% {\n        opacity: 0.7;\n}\n50% {\n        opacity: 1;\n}\n70% {\n        opacity: 0.7;\n}\n80% {\n        opacity: 0.5;\n}\n100% {\n        opacity: 1;\n}\n}\n.page2 .magicbox .Ray2[data-v-1d95563b] {\n    position: absolute;\n    bottom: 1px;\n    left: 29px;\n    width: 142px;\n    height: 52px;\n    background-position: -1740px -375px;\n}\n.page2 .magicbox .Circle1[data-v-1d95563b] {\n    position: absolute;\n    top: 290px;\n    left: 279px;\n    width: 17px;\n    height: 17px;\n    background-position: -826px -715px;\n    animation-play-state: paused;\n    animation: Circledou1 4s ease normal infinite forwards;\n}\n@keyframes Circledou1 {\n60% {\n        opacity: 0.9;\n}\n100% {\n        top: 230px;\n        left: 320px;\n        opacity: 0;\n}\n}\n.page2 .magicbox .Circle2[data-v-1d95563b] {\n    position: absolute;\n    top: 293px;\n    left: 262px;\n    width: 5px;\n    height: 4px;\n    background-position: -779px -727px;\n    animation-play-state: paused;\n    animation: Circle2 5s normal infinite forwards;\n}\n@keyframes Circle2 {\n100% {\n        top: 203px;\n        left: 262px;\n        opacity: 0;\n}\n}\n.page2 .magicbox .Circle3[data-v-1d95563b] {\n    position: absolute;\n    top: 296px;\n    left: 220px;\n    width: 7px;\n    height: 7px;\n    background-position: -706px -724px;\n    animation-play-state: paused;\n    animation: Circle3 4s normal infinite forwards;\n}\n@keyframes Circle3 {\n100% {\n        top: 206px;\n        left: 160px;\n        opacity: 0;\n}\n}\n.page2 .hat[data-v-1d95563b] {\n    position: absolute;\n    bottom: 15px;\n    left: 153px;\n    z-index: 210;\n    width: 213px;\n    height: 162px;\n    background-position: -60px -265px;\n}\n.page2 .phone[data-v-1d95563b] {\n    position: absolute;\n    left: 287px;\n    bottom: 40px;\n    z-index: 205;\n    width: 279px;\n    height: 383px;\n    background: url(" + __webpack_require__(137) + ");\n    opacity: 0;\n    animation-play-state: paused;\n    animation: page2beformagic 0.7s 1.2s normal forwards;\n}\n@keyframes page2beformagic {\n0% {\n        margin: 0px 0px -10px 0px;\n}\n100% {\n        opacity: 1;\n}\n}\n.page2 .Chip1[data-v-1d95563b] {\n    position: absolute;\n    top: 0px;\n    left: 258px;\n    margin: -30px 0px 0px 0px;\n    /*\n        transform: rotate(130deg);*/\n    opacity: 0;\n    z-index: 290;\n    width: 75px;\n    height: 57px;\n    background-position: -1414px -674px;\n    animation-play-state: paused;\n    animation: Chip1 1s 2.2s ease-out normal forwards;\n}\n@keyframes Chip1 {\n100% {\n        opacity: 1;\n        margin: 0px;\n        transform: rotate(0deg);\n}\n}\n.page2 .Chip2[data-v-1d95563b] {\n    position: absolute;\n    top: 127px;\n    left: 300px;\n    z-index: 290;\n    margin: -60px 0px 0px 0px;\n    /*  transform: rotate(360deg);*/\n    opacity: 0;\n    width: 67px;\n    height: 32px;\n    background-position: -1733px -699px;\n    animation-play-state: paused;\n    animation: Chip2 0.5s 2.7s ease-out normal forwards;\n}\n@keyframes Chip2 {\n100% {\n        margin: 0px;\n        transform: rotate(0deg);\n        opacity: 1;\n}\n}\n.page2 .Chip3[data-v-1d95563b] {\n    position: absolute;\n    top: 15px;\n    z-index: 290;\n    right: 71px;\n    width: 91px;\n    height: 89px;\n    background-position: -1553px -642px;\n    margin: -15px 0px 0px 0px;\n    opacity: 0;\n    /*        transform: rotate(360deg);\n*/\n    animation-play-state: paused;\n    animation: Chip3 1s 2.2s ease-out normal forwards;\n}\n@keyframes Chip3 {\n100% {\n        margin: 0px;\n        transform: rotate(0deg);\n        opacity: 1;\n}\n}\n.page2 .coin[data-v-1d95563b] {\n    position: absolute;\n    bottom: 51px;\n    left: 323px;\n    z-index: 250;\n    width: 203px;\n    height: 96px;\n    opacity: 0;\n    background-position: -922px -635px;\n    animation-play-state: paused;\n    animation: page2beformagic 0.4s 1s normal forwards;\n}\n.page2 .money[data-v-1d95563b] {\n    position: absolute;\n    bottom: 61px;\n    z-index: 250;\n    right: 60px;\n    width: 121px;\n    opacity: 0;\n    height: 107px;\n    background-position: -1212px -626px;\n    animation-play-state: paused;\n    animation: page2beformagic 0.3s 1.2s normal forwards;\n}\n.page2 .banner[data-v-1d95563b] {\n    position: absolute;\n    bottom: 0px;\n    right: 0px;\n    z-index: 280;\n    width: 567px;\n    height: 97px;\n    opacity: 0;\n    background-position: -91px -634px;\n    animation-play-state: paused;\n    animation: page2beformagic 0.2s 1s normal forwards;\n}\n.page2 .line[data-v-1d95563b] {\n    position: absolute;\n    z-index: 200;\n    width: 480px;\n    height: 277px;\n    top: 27px;\n    opacity: 0;\n    background: url(" + __webpack_require__(136) + ") center center no-repeat;\n    stroke: #1c3f19;\n    stroke-width: 4;\n    stroke-opacity: 0.1;\n    animation-play-state: paused;\n    animation: lineshow 0.5s 1.3s linear forwards;\n}\n@keyframes lineshow {\nto {\n        opacity: 1;\n}\n}\n.page2 .line line[data-v-1d95563b] {\n    stroke: #1c3f19;\n    stroke-width: 4;\n    stroke-opacity: 0.1;\n    animation-play-state: paused;\n    animation: line 1s 1.6s linear forwards;\n    stroke-dasharray: 300;\n    stroke-dashoffset: 300;\n}\n@keyframes line {\nto {\n        stroke-dashoffset: 0;\n}\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 121 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)();
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*第三个动画开始*/\n.page3[data-v-1da36dbc] {\n    position: relative;\n    width: 573px;\n    height: 429px;\n    overflow: hidden;\n    margin: auto;\n}\n.page3 .stips[data-v-1da36dbc] {\n    background: url(" + __webpack_require__(140) + ");\n}\n.computersvg[data-v-1da36dbc] {\n    position: absolute;\n    left: 96px;\n    top: 103px;\n    width: 376px;\n    height: 258px;\n    z-index: 305;\n    border-radius: 5px;\n}\n.computersvg path[data-v-1da36dbc] {\n    animation-play-state: paused;\n    animation: computersvg 1s linear forwards;\n    stroke-dasharray: 1600;\n    stroke-dashoffset: 1600;\n}\n@keyframes computersvg {\nto {\n        stroke-dashoffset: 0;\n}\n}\n.page3 .computer[data-v-1da36dbc] {\n    position: absolute;\n    left: 96px;\n    top: 103px;\n    width: 376px;\n    height: 258px;\n    padding: 12px;\n    z-index: 305;\n}\n.page3 .computerzhezhao[data-v-1da36dbc] {\n    position: absolute;\n    left: 246px;\n    top: 101px;\n    z-index: 306;\n    background-position: -1884px -184px;\n    width: 225px;\n    height: 246px;\n    opacity: 0;\n    animation-play-state: paused;\n    animation: computerzhezhao 0.3s 1s normal forwards;\n}\n@keyframes computerzhezhao {\n100% {\n        opacity: 1;\n}\n}\n.computer .colorblock1[data-v-1da36dbc] {\n    position: absolute;\n    top: 12px;\n    left: 12px;\n    width: 19px;\n    height: 207px;\n    background: #fc8c06;\n    opacity: 0;\n    animation-play-state: paused;\n    animation: colorblock1 0.3s normal forwards;\n}\n.computer .colorblock2[data-v-1da36dbc] {\n    position: absolute;\n    top: 12px;\n    left: 30px;\n    width: 0px;\n    height: 207px;\n    background: #ffc306;\n    animation-play-state: paused;\n    animation: colorblock2 0.5s 0.3s normal forwards;\n}\n.colorblock2 .music[data-v-1da36dbc] {\n    margin: 22px 0px 18px 50px;\n    width: 59px;\n    height: 58px;\n    background-position: -1472px -669px;\n    opacity: 0;\n    animation-play-state: paused;\n    animation: load 0.5s 0.8s ease normal forwards;\n}\n.colorblock2 .load[data-v-1da36dbc] {\n    margin: 0px auto;\n    width: 85px;\n    height: 40px;\n    opacity: 0;\n    background-position: -1652px -687px;\n    animation-play-state: paused;\n    animation: load 0.5s 0.8s ease normal forwards;\n}\n@keyframes load {\n100% {\n        opacity: 1;\n}\n}\n.colorblock2 .jindubox[data-v-1da36dbc] {\n    position: relative;\n    overflow: hidden;\n    margin: 10px auto;\n    padding: 0px;\n    height: 37px;\n    width: 84px;\n}\n.colorblock2 .jindutiao[data-v-1da36dbc] {\n    width: 0px;\n    height: 10px;\n    margin: 2px 0px;\n    list-style: none;\n    background-position: -1055px -691px;\n}\n.colorblock2 .d1[data-v-1da36dbc] {\n    position: absolute;\n    top: 24px;\n    animation-play-state: paused;\n    animation: d1 6s 1.5s normal infinite forwards;\n}\n.colorblock2 .d2[data-v-1da36dbc] {\n    position: absolute;\n    top: 24px;\n    animation-play-state: paused;\n    animation: d1 6s 3s normal infinite forwards;\n}\n.colorblock2 .d3[data-v-1da36dbc] {\n    position: absolute;\n    top: 24px;\n    animation-play-state: paused;\n    animation: d1 6s 4.5s normal infinite forwards;\n}\n.colorblock2 .d4[data-v-1da36dbc] {\n    position: absolute;\n    top: 24px;\n    animation-play-state: paused;\n    animation: d1 6s 6s normal infinite forwards;\n}\n@keyframes d1 {\n0% {\n        top: 24px;\n        width: 1px;\n}\n12.5% {\n        top: 24px;\n        width: 84px;\n}\n25% {\n        top: 12px;\n        width: 84px;\n}\n37.5% {\n        top: 12px;\n        width: 84px;\n}\n50% {\n        top: 0px;\n        width: 84px;\n}\n62.5% {\n        top: 0px;\n        width: 84px;\n        opacity: 1;\n}\n75% {\n        top: -12px;\n        width: 84px;\n        opacity: 0;\n}\n87.5% {\n        top: -12px;\n        width: 84px;\n}\n100% {\n        top: -12px;\n        width: 84px;\n}\n}\n.computer .colorblock3[data-v-1da36dbc] {\n    position: absolute;\n    bottom: 142px;\n    left: 156px;\n    width: 104px;\n    height: 0px;\n    line-height: 104px;\n    text-align: center;\n    background: #b781ff;\n    animation-play-state: paused;\n    animation: colorblock3 0.5s 1.3s normal forwards;\n}\n.computer .colorblock3 .music[data-v-1da36dbc] {\n    width: 28px;\n    height: 60px;\n    margin: 22px 41px;\n    opacity: 0;\n    vertical-align: middle;\n    background-position: -2062px -667px;\n    animation-play-state: paused;\n    animation: load 0.5s 1.8s ease normal forwards;\n}\n.computer .colorblock4[data-v-1da36dbc] {\n    position: absolute;\n    top: 12px;\n    right: 12px;\n    width: 0px;\n    height: 104px;\n    background: #5bd999;\n    animation-play-state: paused;\n    animation: colorblock4 0.5s 1.8s normal forwards;\n}\n.computer .colorblock5[data-v-1da36dbc] {\n    position: absolute;\n    top: 116px;\n    left: 156px;\n    width: 0px;\n    height: 0px;\n    display: -ms-flexbox;\n    display: flex;\n    text-align: left;\n    -moz-box-align: center;\n    padding-left: 30px;\n    -moz-box-pack: center;\n    -ms-flex-align: center;\n        align-items: center;\n    background: #7658f8;\n    animation-play-state: paused;\n    animation: colorblock5 1s 0.8s normal forwards;\n}\n.computer .colorblock5 .music[data-v-1da36dbc] {\n    width: 66px;\n    height: 66px;\n    background-position: -1848px -662px;\n    opacity: 0;\n    animation-play-state: paused;\n    animation: load 0.5s 1.8s ease normal forwards;\n}\n@keyframes colorblock1 {\n100% {\n        opacity: 1;\n}\n}\n@keyframes colorblock2 {\n100% {\n        width: 126px;\n}\n}\n@keyframes colorblock3 {\n100% {\n        height: 104px;\n}\n}\n@keyframes colorblock4 {\n100% {\n        width: 104px;\n}\n}\n@keyframes colorblock5 {\n0% {\n        height: 1px;\n}\n50% {\n        width: 208px;\n        height: 1px;\n}\n100% {\n        width: 208px;\n        height: 103px;\n}\n}\n.page3 .phone[data-v-1da36dbc] {\n    position: absolute;\n    right: 58px;\n    bottom: 14px;\n    z-index: 330;\n    width: 127px;\n    height: 257px;\n    opacity: 0;\n    background: url(" + __webpack_require__(139) + ");\n    animation-play-state: paused;\n    animation: page3phone 1s 1.5s ease normal forwards;\n}\n@keyframes page3phone {\n0% {\n        bottom: 50px;\n}\n100% {\n        opacity: 1;\n}\n}\n.page3 .phone div[data-v-1da36dbc] {\n    position: absolute;\n    opacity: 0;\n}\n.page3 .phone .xinhao1[data-v-1da36dbc] {\n    top: -5px;\n    left: -5px;\n    width: 15px;\n    height: 15px;\n    background-position: 0px 0px;\n    animation-play-state: paused;\n    animation: xinhao1 1.3s 2.3s ease normal infinite;\n    background: url(" + __webpack_require__(141) + ");\n}\n@keyframes xinhao1 {\n0% {\n        opacity: 1;\n}\n100% {\n        top: -7px;\n        left: -7px;\n        opacity: 0;\n}\n}\n.page3 .phone .xinhao2[data-v-1da36dbc] {\n    top: -13px;\n    left: -13px;\n    width: 22px;\n    height: 22px;\n    background-position: 0px 0px;\n    animation-play-state: paused;\n    animation: xinhao2 1.3s 2.6s ease normal infinite;\n    background: url(" + __webpack_require__(142) + ");\n}\n@keyframes xinhao2 {\n0% {\n        opacity: 1;\n}\n100% {\n        top: -15px;\n        left: -15px;\n        opacity: 0;\n}\n}\n.page3 .phone .xinhao3[data-v-1da36dbc] {\n    top: -23px;\n    left: -23px;\n    width: 30px;\n    height: 30px;\n    background-position: 0px 0px;\n    animation-play-state: paused;\n    animation: xinhao3 1.3s 2.9s ease normal infinite;\n    background: url(" + __webpack_require__(143) + ");\n}\n@keyframes xinhao3 {\n0% {\n        opacity: 1;\n}\n100% {\n        top: -25px;\n        left: -25px;\n        opacity: 0;\n}\n}\n.page3 .Gear1[data-v-1da36dbc] {\n    position: absolute;\n    top: 0px;\n    right: 0px;\n    z-index: 301;\n    width: 209px;\n    height: 212px;\n    background-position: -1577px -231px;\n    animation-play-state: paused;\n    animation: Gear 10s linear infinite normal forwards;\n}\n.page3 .Gear2[data-v-1da36dbc] {\n    position: absolute;\n    right: 0px;\n    bottom: 104px;\n    z-index: 301;\n    width: 112px;\n    height: 114px;\n    background-position: -1395px -331px;\n    animation-play-state: paused;\n    animation: Gear 3s linear infinite normal forwards;\n}\n.page3 .Gear3[data-v-1da36dbc] {\n    position: absolute;\n    bottom: 98px;\n    left: 61px;\n    z-index: 301;\n    width: 91px;\n    height: 93px;\n    background-position: -1206px -350px;\n    animation-play-state: paused;\n    animation: Gear 2s linear infinite normal forwards;\n}\n@keyframes Gear {\n100% {\n        transform: rotate(360deg);\n}\n}\n.page3 .Rocket[data-v-1da36dbc] {\n    position: absolute;\n    top: 5px;\n    left: 52px;\n    z-index: 320;\n    width: 174px;\n    height: 175px;\n    opacity: 0;\n    background-position: -72px -268px;\n    animation-play-state: paused;\n    animation: rocketfadein 0.5s 0.8s ease forwards, rocket 5s 0.5s linear alternate infinite forwards;\n}\n@keyframes rocket {\n0%,\n    100% {\n        transform: translate3d(0);\n}\n10%,\n    30%,\n    50%,\n    70%,\n    90% {\n        transform: translate3d(-3px, -3px, -3px);\n}\n20%,\n    40%,\n    60%,\n    80% {\n        transform: translate3d(3px, 3px, 3px);\n}\n}\n@keyframes rocketfadein {\n0% {\n        margin: 60px 0px 0px -30px;\n        transform: scale(0.9);\n}\n100% {\n        opacity: 1;\n}\n}\n.page3 .huxian-box[data-v-1da36dbc] {\n    position: absolute;\n    overflow: hidden;\n    bottom: 0px;\n    right: -10px;\n    width: 0px;\n    height: 309px;\n    animation-play-state: paused;\n    animation: huxian 0.3s 0.2s linear normal forwards;\n}\n.page3 .huxian[data-v-1da36dbc] {\n    position: absolute;\n    top: 0px;\n    right: -65px;\n    z-index: 319;\n    width: 545px;\n    height: 309px;\n    background-position: -528px -136px;\n}\n.page3 .huxian1box[data-v-1da36dbc] {\n    position: absolute;\n    overflow: hidden;\n    bottom: 0px;\n    left: 0px;\n    width: 103px;\n    height: 0px;\n    animation-play-state: paused;\n    animation: huxian1 0.4s 0.5s linear normal forwards;\n}\n.page3 .huxian1[data-v-1da36dbc] {\n    position: absolute;\n    bottom: 0px;\n    left: 0px;\n    z-index: 319;\n    width: 545px;\n    height: 309px;\n    background-position: -425px -136px;\n}\n@keyframes huxian1 {\n100% {\n        height: 309px;\n}\n}\n@keyframes huxian {\n100% {\n        width: 480px;\n}\n}\n.page3 .xingxing[data-v-1da36dbc] {\n    position: absolute;\n    top: 127px;\n    right: 22px;\n    z-index: 320;\n    width: 10px;\n    height: 10px;\n    background-position: -1068px -434px;\n    opacity: 0;\n    animation-play-state: paused;\n    animation: xingxing 0.3s normal forwards;\n}\n@keyframes xingxing {\n100% {\n        opacity: 1;\n}\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 122 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)();
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*第四个动画开始*/\n.page4[data-v-1db1853d] {\n    position: relative;\n    width: 597px;\n    height: 455px;\n    margin: auto;\n}\n.page4 .stips[data-v-1db1853d] {\n    background: url(" + __webpack_require__(145) + ") left center no-repeat;\n}\n.page4 .Street[data-v-1db1853d] {\n    width: 0px;\n    height: 76px;\n    background-position: -54px -445px;\n    position: absolute;\n    bottom: 0px;\n    left: 0px;\n    z-index: 500;\n    animation-play-state: paused;\n    animation: Street 1s linear normal forwards;\n}\n@keyframes Street {\n100% {\n        width: 563px;\n}\n}\n.page4 .phone[data-v-1db1853d] {\n    position: absolute;\n    bottom: 81px;\n    left: 214px;\n    z-index: 500;\n    width: 203px;\n    height: 0px;\n    background: url(" + __webpack_require__(144) + ");\n    animation-play-state: paused;\n    animation: page4phone 0.5s 1.1s normal forwards;\n}\n@keyframes page4phone {\n100% {\n        height: 363px;\n}\n}\n.page4 .Building-red[data-v-1db1853d] {\n    width: 67px;\n    height: 0px;\n    position: absolute;\n    background-position: -778px 0px;\n    bottom: 54px;\n    left: 156px;\n    z-index: 505;\n    animation-play-state: paused;\n    animation: Building-red 0.5s 0.5s normal forwards;\n}\n@keyframes Building-red {\n100% {\n        height: 270px;\n}\n}\n.page4 .Building-yellow[data-v-1db1853d] {\n    width: 82px;\n    height: 0px;\n    position: absolute;\n    background-position: -1022px -139px;\n    bottom: 53px;\n    left: 214px;\n    z-index: 507;\n    animation-play-state: paused;\n    animation: Building-yellow 0.5s 0.6s normal forwards;\n}\n@keyframes Building-yellow {\n100% {\n        height: 132px;\n}\n}\n.page4 .Building-green[data-v-1db1853d] {\n    width: 91px;\n    height: 0px;\n    position: absolute;\n    background-position: -1175px -184px;\n    bottom: 53px;\n    left: 291px;\n    z-index: 509;\n    animation-play-state: paused;\n    animation: Building-green 0.5s 0.8s normal forwards;\n}\n@keyframes Building-green {\n100% {\n        height: 86px;\n}\n}\n.page4 .Building-Purple[data-v-1db1853d] {\n    width: 83px;\n    height: 0px;\n    position: absolute;\n    background-position: -1205px -353px;\n    bottom: 53px;\n    left: 353px;\n    z-index: 507;\n    animation-play-state: paused;\n    animation: Building-Purple 0.5s 0.7s normal forwards;\n}\n@keyframes Building-Purple {\n100% {\n        height: 169px;\n}\n}\n.page4 .Building-yellow2[data-v-1db1853d] {\n    width: 83px;\n    height: 0px;\n    position: absolute;\n    background-position: -1028px -448px;\n    bottom: 39px;\n    left: 394px;\n    z-index: 509;\n    animation-play-state: paused;\n    animation: Building-yellow2 0.5s 0.9s normal forwards;\n}\n@keyframes Building-yellow2 {\n100% {\n        height: 74px;\n}\n}\n.page4 .Building-Gray1[data-v-1db1853d] {\n    width: 52px;\n    height: 0px;\n    position: absolute;\n    background-position: -695px -124px;\n    bottom: 74px;\n    left: 55px;\n    z-index: 507;\n    animation-play-state: paused;\n    animation: Building-Gray1 0.5s 1.6s normal forwards;\n}\n@keyframes Building-Gray1 {\n100% {\n        height: 146px;\n}\n}\n.page4 .Building-Gray2[data-v-1db1853d] {\n    width: 33px;\n    height: 0px;\n    position: absolute;\n    background-position: -516px -224px;\n    bottom: 74px;\n    left: 25px;\n    z-index: 501;\n    animation-play-state: paused;\n    animation: Building-Gray2 0.5s 1.7s normal forwards;\n}\n@keyframes Building-Gray2 {\n100% {\n        height: 46px;\n}\n}\n.page4 .Building-Gray3[data-v-1db1853d] {\n    width: 53px;\n    height: 0px;\n    position: absolute;\n    background-position: -598px -206px;\n    bottom: 74px;\n    left: 98px;\n    z-index: 501;\n    animation-play-state: paused;\n    animation: Building-Gray3 0.5s 1.8s normal forwards;\n}\n@keyframes Building-Gray3 {\n100% {\n        height: 64px;\n}\n}\n.page4 .tree1[data-v-1db1853d] {\n    width: 55px;\n    height: 0px;\n    position: absolute;\n    background-position: -744px -437px;\n    bottom: 38px;\n    right: 81px;\n    z-index: 510;\n    animation-play-state: paused;\n    animation: tree1 0.5s 1s normal forwards;\n}\n@keyframes tree1 {\n100% {\n        height: 85px;\n}\n}\n.page4 .tree2[data-v-1db1853d] {\n    width: 34px;\n    height: 0px;\n    position: absolute;\n    background-position: -686px -470px;\n    bottom: 63px;\n    right: 67px;\n    animation-play-state: paused;\n    animation: tree2 0.5s 1.1s normal forwards;\n}\n@keyframes tree2 {\n100% {\n        height: 51px;\n}\n}\n.page4 .tree3[data-v-1db1853d] {\n    width: 74px;\n    height: 0px;\n    position: absolute;\n    background-position: -868px -460px;\n    bottom: 56px;\n    left: 24px;\n    z-index: 510;\n    animation-play-state: paused;\n    animation: tree3 0.5s 1.9s normal forwards;\n}\n@keyframes tree3 {\n100% {\n        height: 62px;\n}\n}\n.page4 .tree4[data-v-1db1853d] {\n    width: 38px;\n    height: 0px;\n    position: absolute;\n    background-position: -920px -196px;\n    bottom: 54px;\n    left: 125px;\n    z-index: 503;\n    animation-play-state: paused;\n    animation: tree4 0.5s 0.8s normal forwards;\n}\n@keyframes tree4 {\n100% {\n        height: 74px;\n}\n}\n.page4 .could[data-v-1db1853d] {\n    width: 62px;\n    height: 43px;\n    position: absolute;\n    background-position: -1726px -228px;\n    bottom: 150px;\n    right: 120px;\n    z-index: 508;\n    opacity: 0;\n    animation-play-state: paused;\n    animation: page4could 0.5s 1.2s normal forwards;\n}\n@keyframes page4could {\n100% {\n        right: 125px;\n        opacity: 1;\n}\n}\n.page4 .msg1[data-v-1db1853d] {\n    width: 152px;\n    height: 152px;\n    position: absolute;\n    background-position: 0px -119px;\n    bottom: 309px;\n    right: 30px;\n    animation-play-state: paused;\n    opacity: 0;\n    -ms-transform: rotate(-10deg) scale(0.7);\n        transform: rotate(-10deg) scale(0.7);\n    animation: page4msg1 0.5s 2.4s normal forwards;\n}\n@keyframes page4msg1 {\n100% {\n        right: 15px;\n        transform: rotate(-10deg) scale(0.7);\n        opacity: 1;\n}\n}\n.page4 .msg2[data-v-1db1853d] {\n    width: 102px;\n    height: 106px;\n    position: absolute;\n    background-position: -344px -164px;\n    bottom: 245px;\n    left: 55px;\n    animation-play-state: paused;\n    opacity: 0;\n    -ms-transform: rotate(10deg) scale(0.7);\n        transform: rotate(10deg) scale(0.7);\n    animation: page4msg2 0.5s 2.4s normal forwards;\n}\n@keyframes page4msg2 {\n100% {\n        transform: rotate(0deg) scale(0.7);\n        opacity: 1;\n}\n}\n.page4 .msg3[data-v-1db1853d] {\n    width: 81px;\n    height: 97px;\n    position: absolute;\n    background-position: -216px -173px;\n    bottom: 353px;\n    left: 85px;\n    animation-play-state: paused;\n    opacity: 0;\n    -ms-transform: scale(0.7);\n        transform: scale(0.7);\n    animation: page4msg3 0.5s 2.4s normal forwards;\n}\n@keyframes page4msg3 {\n100% {\n        bottom: 353px;\n        transform: scale(0.7);\n        opacity: 1;\n}\n}\n.page4 .xiaocao1[data-v-1db1853d] {\n    width: 51px;\n    height: 0px;\n    position: absolute;\n    background-position: -1573px -253px;\n    bottom: 49px;\n    right: 279px;\n    z-index: 511;\n    animation-play-state: paused;\n    animation: xiaocao1 0.5s 0.9s normal forwards;\n}\n@keyframes xiaocao1 {\n100% {\n        height: 18px;\n}\n}\n.page4 .xiaocao2[data-v-1db1853d] {\n    width: 68px;\n    height: 0px;\n    position: absolute;\n    background-position: -1321px -252px;\n    bottom: 138px;\n    right: 230px;\n    z-index: 509;\n    animation-play-state: paused;\n    animation: xiaocao2 0.5s 1.2s normal forwards;\n}\n@keyframes xiaocao2 {\n100% {\n        height: 18px;\n}\n}\n.page4 .xiaocao3[data-v-1db1853d] {\n    width: 62px;\n    height: 0px;\n    position: absolute;\n    background-position: -1443px -253px;\n    bottom: 182px;\n    right: 309px;\n    z-index: 505;\n    animation-play-state: paused;\n    animation: xiaocao3 0.5s 1s normal forwards;\n}\n@keyframes xiaocao3 {\n100% {\n        height: 18px;\n}\n}\n.page4 .balloon[data-v-1db1853d] {\n    width: 45px;\n    height: 69px;\n    position: absolute;\n    background-position: -1391px -453px;\n    bottom: 0px;\n    right: 70px;\n    opacity: 0;\n    animation-play-state: paused;\n    animation: page4balloon 1s 2.9s linear normal forwards, page4balloonmove 3s 4s linear infinite alternate forwards;\n}\n@keyframes page4balloon {\n0% {\n        transform: scale(0);\n}\n100% {\n        bottom: 154px;\n        opacity: 1;\n}\n}\n@keyframes page4balloonmove {\n0% {\n        bottom: 154px;\n        opacity: 1;\n}\n16.806% {\n        bottom: 156px;\n        right: 72px;\n}\n33.4448% {\n        bottom: 158px;\n        right: 74px;\n}\n50.3344% {\n        bottom: 159px;\n        right: 76px;\n}\n67.0011% {\n        bottom: 158px;\n        right: 78px;\n}\n83.9465% {\n        bottom: 156px;\n        right: 80px;\n}\n100% {\n        bottom: 154px;\n        right: 82px;\n        opacity: 1;\n}\n}\n.page4 .Light-left[data-v-1db1853d] {\n    width: 111px;\n    height: 156px;\n    position: absolute;\n    background-position: -1700px -366px;\n    bottom: 184px;\n    right: 250px;\n    z-index: 504;\n    animation-play-state: paused;\n    -ms-transform-origin: 15% 100%;\n        transform-origin: 15% 100%;\n    -ms-transform: rotate(-10deg);\n        transform: rotate(-10deg);\n    opacity: 0;\n    animation: lightshow 0.2s 1.5s ease normal forwards, Light-left 2s linear alternate infinite forwards;\n}\n@keyframes lightshow {\n100% {\n        opacity: 1;\n}\n}\n@keyframes Light-left {\n100% {\n        transform: rotate(10deg);\n}\n}\n.page4 .Light-right[data-v-1db1853d] {\n    width: 124px;\n    height: 140px;\n    position: absolute;\n    background-position: -1478px -381px;\n    bottom: 214px;\n    right: 186px;\n    z-index: 504;\n    animation-play-state: paused;\n    -ms-transform-origin: 100% 100%;\n        transform-origin: 100% 100%;\n    -ms-transform: rotate(10deg);\n        transform: rotate(10deg);\n    opacity: 0;\n    animation: lightshow 0.2s 1.5s ease normal forwards, Light-right 3s linear alternate infinite forwards;\n}\n@keyframes Light-right {\n100% {\n        transform: rotate(-10deg);\n}\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 123 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)();
+// imports
+exports.i(__webpack_require__(118), "");
+
+// module
+exports.push([module.i, "\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 124 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)();
+// imports
+
+
+// module
+exports.push([module.i, "\nhtml,\nbody {\n    background-color: #fff;\n    color: #2e2f30;\n    letter-spacing: 0.5px;\n    font-family: \"Source Sans Pro\", Arial, sans-serif;\n    height: 100vh;\n    margin: 0;\n     background: #FCAF03;\n    transition: background .8s;\n}\nfooter {\n    padding: 20px;\n    text-align: center;\n    border-top: 1px solid #ddd;\n}\na,\na:hover,\na:focus,\na:visited {\n    color: #41B883;\n}\nhtml,\nbody,\ndiv,\nspan,\napplet,\nobject,\niframe,\nh1,\nh2,\nh3,\nh4,\nh5,\nh6,\np,\nblockquote,\npre,\na,\nabbr,\nacronym,\naddress,\nbig,\ncite,\ncode,\ndel,\ndfn,\nem,\nimg,\nins,\nkbd,\nq,\ns,\nsamp,\nsmall,\nstrike,\nstrong,\nsub,\nsup,\ntt,\nvar,\nb,\nu,\ni,\ncenter,\ndl,\ndt,\ndd,\nol,\nul,\nli,\nfieldset,\nform,\nlabel,\nlegend,\ntable,\ncaption,\ntbody,\ntfoot,\nthead,\ntr,\nth,\ntd,\narticle,\naside,\ncanvas,\ndetails,\nembed,\nfigure,\nfigcaption,\nfooter,\nheader,\nhgroup,\nmenu,\nnav,\noutput,\nruby,\nsection,\nsummary,\ntime,\nmark,\naudio,\nvideo {\n    box-sizing: border-box;\n    margin: 0;\n    padding: 0;\n    outline: none;\n    border: 0;\n    vertical-align: baseline;\n    font: inherit;\n}\nbody {\n    font-size: 12px;\n    font-family: \"Microsoft YaHei\", \"\\5FAE\\8F6F\\96C5\\9ED1\", Arial, Tahoma, sans-serif;\n    line-height: 1;\n}\narticle,\naside,\ndetails,\nfigcaption,\nfigure,\nfooter,\nheader,\nhgroup,\nmenu,\nnav,\nsection {\n    display: block;\n}\nol,\nul {\n    list-style: none;\n}\nblockquote,\nq {\n    quotes: none;\n}\nblockquote:before,\nblockquote:after,\nq:before,\nq:after {\n    content: '';\n    content: none;\n}\nstrong {\n    font-weight: bold;\n}\ntable {\n    border-spacing: 0;\n    border-collapse: collapse;\n}\nimg {\n    border: 0;\n}\np {\n    color: #333;\n    font-size: 1.2em;\n    line-height: 1.0em;\n}\narea {\n    outline: none;\n    blr: expression_r(this.onFocus=this.blur());\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 125 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)();
 // imports
 
 
@@ -3663,12 +3681,12 @@ exports.push([module.i, "/*!\r\n * fullPage 2.9.3\r\n * https://github.com/alvar
 
 
 /***/ }),
-/* 118 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(10)();
+exports = module.exports = __webpack_require__(0)();
 // imports
-exports.i(__webpack_require__(115), "");
+exports.i(__webpack_require__(117), "");
 
 // module
 exports.push([module.i, "\n", ""]);
@@ -3677,10 +3695,24 @@ exports.push([module.i, "\n", ""]);
 
 
 /***/ }),
-/* 119 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(10)();
+exports = module.exports = __webpack_require__(0)();
+// imports
+
+
+// module
+exports.push([module.i, "\n#__nuxt,.h5 {\n   height: 100%;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 128 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)();
 // imports
 
 
@@ -3691,10 +3723,10 @@ exports.push([module.i, "\n.title[data-v-74f7cc44]\n{\n  margin-top: 15px;\n  fo
 
 
 /***/ }),
-/* 120 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(10)();
+exports = module.exports = __webpack_require__(0)();
 // imports
 
 
@@ -3705,10 +3737,10 @@ exports.push([module.i, "\n.progress[data-v-fcb072a2] {\n  position: fixed;\n  t
 
 
 /***/ }),
-/* 121 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(10)();
+exports = module.exports = __webpack_require__(0)();
 // imports
 
 
@@ -3719,7 +3751,7 @@ exports.push([module.i, "\n.container\n{\n  margin: 0;\n  width: 100%;\n  paddin
 
 
 /***/ }),
-/* 122 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -13946,127 +13978,211 @@ return jQuery;
 
 
 /***/ }),
-/* 123 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "img/1.8183f65.png";
 
 /***/ }),
-/* 124 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "img/2.6e64894.png";
 
 /***/ }),
-/* 125 */
+/* 134 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "img/phone.850d4db.png";
 
 /***/ }),
-/* 126 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "img/stips.5398430.png";
 
 /***/ }),
-/* 127 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "img/diandian.7e11108.png";
 
 /***/ }),
-/* 128 */
+/* 137 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "img/phone.ed9284a.png";
 
 /***/ }),
-/* 129 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "img/stips.d4bd4fd.png";
 
 /***/ }),
-/* 130 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "img/phone.cf0badb.png";
 
 /***/ }),
-/* 131 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "img/stips.fbf3735.png";
 
 /***/ }),
-/* 132 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "img/xinhao1.f6bc3f4.png";
 
 /***/ }),
-/* 133 */
+/* 142 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAMAAADzapwJAAAAM1BMVEUAAAD///////////////////////////////////////////////////////////////+3leKCAAAAEHRSTlMAwEAwgNDwIBCg4HBgsFCQQfr5qQAAAHNJREFUGNNt0EsOgCAMBFBAoPzt/U+rKKC0neXLZJJWbQklakSMG5qKI+2HGlfy0hO/uDBH3Qu+ZgPDlqbSa1St2qM7+oOo7eqAKHipq2IvG6qA81y+DIzTLPONg3G71StxWnOO82p+uJXbmTOk5+s8INgFU+sHlnt8KXUAAAAASUVORK5CYII="
 
 /***/ }),
-/* 134 */
+/* 143 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAAM1BMVEUAAAD///////////////////////////////////////////////////////////////+3leKCAAAAEHRSTlMAoDBQEIBAwPAg0JBgcOCwLpWXagAAAJRJREFUKM+d0UsOwzAIBNDxBxuSOOn9T1shIlVtgUVm+zQIBPyMRWVezSNZ83Wn/uFhZqEfbOcNXls+ze0iIvnSxUZcvJ2K4XnASd+sqRhq6XBjSx3wsytyDbSl2ll5BGonrUhFdSIrs6RlApKjuIesP9xDrTpbQib9LsLMdDZ0dkN6Vg95KCPl+ZircXIYDySRHtsbAPcKu8JGJ2wAAAAASUVORK5CYII="
 
 /***/ }),
-/* 135 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "img/phone.d06c344.png";
 
 /***/ }),
-/* 136 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "img/stips.1a8179c.png";
 
 /***/ }),
-/* 137 */
+/* 146 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAXNJREFUeNrUVz1vwjAQJYgJOneHGWYyt3PVP1FmMneHGWboSnY6p3OZyZzOzdxkDWfpkCLkjzufI9QnPSVynDz77HvnRE3T9O6Ffu+OkIpPgCPflwfM/o/AV+Ac79vIgRmShIix5gvgC6FfCdwCzyHEVVjXwDEzSltXFChrnngIKyyBsUT8GdfXF4ltQ7rCvtdsrOu6pnhVmOJGHGr6fgE33N0eG4RP+LGq1XbG9rVmALFP2HUv1RrhKwrgStOuBjPjiutmnRmE2xEoNe3TEA73R8zzTuz1geiCnYjPHV4+CyVeGma1sDjhm+FZzhU3efMTplTcElVm9GFxwoJrMiM0EilOhhS0zrxCd5Li6LvhDkLh3FZa+4Sclcw+labaDm2Vi0/XgYIiXpmqkiNih1Am840zoaDGVKxCOtwO04bSr+jCXlX4fyTnNom4CuW7YQAsYe7R+db9Eiw0NYY6434kEv6rqSr2y6nhIcX/74/iRYABALabXrSWG+/YAAAAAElFTkSuQmCC"
 
 /***/ }),
-/* 138 */
+/* 147 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAUVJREFUeNrsl7ETwTAUxtWZdGfWuWaddcbMipXdzuy/MGNmrpmZvbuu9XL3uYtKk6JJ71y/u29p0v7yvJe8sOI4rhSlaqVAlfC/gTdgpWqSMZvcJw/IdTwLyQc45OY6mOtxcyPylrxJA1gpW42BV+SWZHE3cgBwRzLvRF6T71nhU3Ivx1QcsQBlzts5g5m65GEW+FBTcQ+ShVgVRO1qgrNCHMngvuat3UUxv8EbGNQtXwT3DB1sngjuG4K7SbitOFDylsPDHcM9xebhrmG4q2osMkVoLmek66vz4Rt4slEE6FwsdZNPFvGE3zNGu0S0Il3JC7TWEddalZeJm2IeGx9LwLx25JnimyEPPyMykfbkecZfh//4POUiESFVL/3cxwtPXZDb8MfKbqMWWqiXAMX6dplg53sTUV517zer/MdSwk3qIcAA6E5H/zOXDLQAAAAASUVORK5CYII="
 
 /***/ }),
-/* 139 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "img/lefe-3.d494c36.png";
 
 /***/ }),
-/* 140 */
+/* 149 */
 /***/ (function(module, exports) {
 
 module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB8AAAAfCAYAAAAfrhY5AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAARpJREFUeNrslzsOgzAMhgnqVPbsYS4zB+AAzD1Fdw7QmV6CnoKdnc5hZ4eVOpIHhEqahylD+aVfIPH4jJPYgU3TFOylMNhR/ws/eTyb4FGCh63hHJyDUzyfawQ34Brcmr6QGc72K9pEL3AJ7n3hEfgOFpYZVZkocEic4Q8HsHEA4ZdUC48JeQbfXJYatxhjnVTwmS08J1zOV1t4SghXWYxt004pYQqPN6ik3BQe7dlY5AacwRQ+YIGgVGcz4RpC8LjWbNbgNSG8sV3nLXYniq+uXGp7STD2la616uA9diWfABKfPZzEADpHeKoLgFns2zNsElwzvhKv88XOpvCFz8uvmAEGzEy7qJLqvgsen5+KFzv+WA74L/UWYABNYESscGkO+QAAAABJRU5ErkJggg=="
 
 /***/ }),
-/* 141 */
+/* 150 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "img/2.eca338a.jpg";
+
+/***/ }),
+/* 151 */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAZCAYAAAAxFw7TAAAAAXNSR0IArs4c6QAAA4ZJREFUOBGVlVtI03EUx7f/phsGm0VYmpVGYgWJUBBiWg+ZEUGajHoqgx6stzndsh4aIeicF3rIJHrrLYoKCkIrvDwUQmmQUdqFErwgYWqRbur6nLnfnzkv5A/Ozv17fr/zO7//jIYVlt/vzzKZTEW49xuNxhR4ABoIhUKf4PfKy8s/w5csY6ylrq4u22w2+wE5EutTOqDzyA9nZ2er3W53r7ILN0crTU1NF9CboTiS/kCPkFvn5+d/aJpmokgGlIPtDLyEwrnIyZC+dMDGxsZLWG+KB6C7VKe4e0SPXBBewFo4hQewCuLGY/yG8JHZWS7Odqqa4W76448NXE2n30n0e4q8vxqBAnojAta8VjCv12tltwPkv5aiZo5aCN8HjQWDwctiVIvgBLvd7mLX+SSE6GUHvFF2omLgAfw/sWfJSWWHxRHnbY/HM6UCa2pq1gP2Fv06wXLjBVxMNfxtbW2tXcVRVG78jugULBXAg6JwCU+FqxUfH1+HnEn1Pqhobm6uBN4P+C6LxeJTcRH+WDi+bDM/MrQGjrtoULGfEDvrNEfsE6G+vn6Q5ncDrHxilvV1gRnSNJxWUQicjhgNHEN2nij65OTkoLJzJCVvwKY/CgpKbhBap7ETNWupKlH6gr1HdJvNhurVHA6Hidu8JjZ8b2AhkWUxl5tgcdhHZSfhp0OwvAB90dMrKCGCnIAO5+TkjCCXiY1+XtUDEaJyewUwfBkEn40OqqysbKcdxdAwviRoI/4h9JMVFRWd0bHI50TH98TIcRLYwTdJwlBEP8I3FpVgbGhoyBDd5XINSF6Uz8ArOcwOX5I7Rr/Tw41luMsAvEXgKI3PJ7E/OmklmUJbyeuCtgN4kc206DfFlD8g8RQ0BOU5nU41CsviMdzbmMcOnGmA3QfMIYHSw/AKBAKlOLpRUuDP2fWWiGsJo3gygy9fnjToFUc9r4J0QHl2MzMzxwB7xxHSoTYGWS5i0RKbFMS/E94zMTFxnHv4rYJ0QDFUVVWNT09PFxD4EXU3w/6MYJsKRk7E1gbYHmI+0O+j2H4pv3C9h9HGyHE7SdxBYhe+Qp6mmWO2IR+AvkDS52H4orUsoETwtUmzWq0ClgpoK9xCgUPIg+wsj1n8LnGxa0VACfT5fJnsqgNRnpYM7ggvKJ+/BpnHZdeqgJLB8ffC5O9BAyyPF/R+WaS1GOVm+QBs/p+cfy7MlTNuq2qiAAAAAElFTkSuQmCC"
+
+/***/ }),
+/* 152 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "img/goldcupbank@2x.3db01f6.png";
+
+/***/ }),
+/* 153 */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAZCAYAAAAxFw7TAAAAAXNSR0IArs4c6QAAAsNJREFUOBGdVUtoE1EUzUyCE2M0uImoRdyIiyL4IRTcxI0bNy10UalduTIfAoEOgeIiC3+QlpSQj1noSqqutCBx4UZdCC4EoSiILlREMaWLTI0m5Oc54yTzOi+KzYXbe989557cefPmVXH9w4rFYhjwRfi4RXuDeDsajT6z1lJQpAoKmUxmF2xRUZRLw/Ber3ezXq/P67ped+IeZ4Frv99fRrgA/9ntdjPwp8hdqqqegev8IXB2ozTHumjShPl8ftLtdj8EqYZJJvB478QGbMNRCL5ELdDpdKbi8fiqiKvigjkmSDBiqgWnGOusEWPe5zLvmyQI4CRBND3uk5xRwEyuiA8T1EjAYxkiUcwFzOSKmCQI8geLMCESHbmJCdwBLAniRdwjihdzI51O7xgwrYQ1YlyCe9eJS4LVanURpDX4sWAw+BxvnfvE06AwZ40YfA3cJcQtJh0bomgcxxQPkB7hGpOY+4lH3MM17H2r1ZpKJBJv/yztv247tbNKpbIeCoVu+Xw+L6o8d3vhGoQ34CVMNpNKpb7aHXY2dEIbdrmwZ2ogENjHWq1W+451V8Sd+V8Fs9nsfk3TJtFwCtMdYCOm41Svms3majKZ/Maa0yRBCB32er1XQJyFS7gl0ENcaTQalyH80aqZYUsDv2N8TncwkR9oAxNVEJ/gy/hMNrBDCGeBn0P0Av8BbE78ngeCpVLpPEgrcAXE++12ex5v8QvWkuVyuTGPx8PrbQYgp52NRCLm+TUFC4XCcYAv4DshxkvhuqQypICbZwE9V9HzC346Fou9Ng82issUQ0/5f8WoD+419rCXGqypvOaxCOMX1g3D0FncjrGHvdSgFiectgTKOKyb2xEj1+rhDU+bpiD/EfH+e8Q4igm9YRWjjlki/WtrFM1+70FOaGAPPuEsbYyixB72UgPDbXqQSNf4iMInoOX6DVX6F0sCF59RAAAAAElFTkSuQmCC"
+
+/***/ }),
+/* 154 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "img/ksong_btn_nor@2x.c8f505f.png";
+
+/***/ }),
+/* 155 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "img/ksong_download_ed@2x.65fbe83.png";
+
+/***/ }),
+/* 156 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "img/ksong_download_nor@2x.08f5fcd.png";
+
+/***/ }),
+/* 157 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "img/ksong_open_ed@2x.b22089a.png";
+
+/***/ }),
+/* 158 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "img/ksong_open_nor@2x.485afa2.png";
+
+/***/ }),
+/* 159 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "img/logo@2x.c7408ce.png";
+
+/***/ }),
+/* 160 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "img/music_a@2x.3b750cf.png";
+
+/***/ }),
+/* 161 */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAALCAYAAABGbhwYAAAAAXNSR0IArs4c6QAAAOFJREFUGBljYEADn8+piN7fr8CBJszAhCzw85y2FicLz1NZEYErq1YxMCPLoShkZGWxYGBkYAUqUPbR1JHCqRBZAp3N+PuSrj3jf6YIBiZGlv//GdQYGRnswIr+MywHmv71/7//H//8Y5zCwsjAtASoSAYkCVSEAIwMkWAxJqBbGP8LMf1n/D8NKPCI4f//p0D8Aa7y//+XILH/DAzX//9jWIlsBsOvy/pJTAyMc0GKfzH8kePSvfIYphHF1zBBbDSKQkaGvxAT/v//+ukf0ztsGmBijD8v6kX+Pq9jBROA0QDgU0KWAroYZAAAAABJRU5ErkJggg=="
+
+/***/ }),
+/* 162 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "img/rank@2x.83e397f.png";
+
+/***/ }),
+/* 163 */
+/***/ (function(module, exports) {
+
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACcAAAAoCAYAAAB99ePgAAAAAXNSR0IArs4c6QAAApVJREFUWAnNl09IVFEUh+eNhuIY6sKFIBSSiyAiF6KCkOjGVi2CCCJBhCCXLYK2rVu2Exem4kLdugoRpFolLsyFGQxGmwgS/1POTN+JGZi5817vvneubzzw8d4997xzfpz75r47qZRDKxQKDQ7TuUuFsGH4A7ddZU27SkSep1APEw5z6lPRrRY4BbEfcEWfNZVy1bmHiGksCmrnes+FOCc56NS6tKzMlpwk1iZBUFeZqNLtGTdt2twulvWJjwjZUh75+JN10aGvpXYZ14/JKjGqIWbQEGQOu41HIg21yzoWUi1sPuTxmNO0qBH2zVYZ4yxjL2YJ1T53n6ItIYWvMX83JCZwWrOstktmGxcoMtIES9UP58YSBg0PmbgZqUDUYArIO/YYViEPUSxH8Ao8ACff3X/6SdYDb+AXuDA5GLyGeN3kwVaYhA24SHtP8nHI/HclCfBgCGahdPzhNhE7oMoU9FWIxFEHL2AXLoNtIWJSREq3rnPdAXcvKsmUdsLzHWnP87LcyDfwFXyDWtouxV/CDXQdVAihi2kYhUX4DUnYCUXkPbf/khDcDs/hM1yEfSLpMwj7BFY0sGpAggGYBtntNSZ7peyZd6qKaB0kbYYJ2IQo9oFg+bqU/gRppQQ/T5Em+Ak29oUg+T8b2WKdSvglyU99wbLaDPHnlrFuwuhGr0Xb5IAgZ7rkjcLbIQLXNKpiLWtZwbdl9363M37ORHx0rRPkrOZnxzivJiIkqAgC3vkpwzcf9IytX7usUidoaYP8ttr0cXQoA0dG974zrtNmV3eOPewYEcuGkHn8OcNXmyFdGjE6d6s2SnyqIkyOWntFgRs+IbFc6mWVqixhnstcUUHt9raigKoLXZM9bwFaqyZjOv4CVrKhe0WfnK8AAAAASUVORK5CYII="
+
+/***/ }),
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(155)
-__webpack_require__(156)
+__webpack_require__(195)
+__webpack_require__(196)
 
-var Component = __webpack_require__(11)(
+var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(63),
   /* template */
-  __webpack_require__(148),
+  __webpack_require__(182),
   /* scopeId */
   null,
   /* cssModules */
@@ -14080,18 +14196,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 142 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(159)
+__webpack_require__(200)
 
-var Component = __webpack_require__(11)(
+var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(64),
   /* template */
-  __webpack_require__(153),
+  __webpack_require__(188),
   /* scopeId */
   "data-v-fcb072a2",
   /* cssModules */
@@ -14105,14 +14221,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 143 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(11)(
+var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(65),
   /* template */
-  __webpack_require__(152),
+  __webpack_require__(187),
   /* scopeId */
   null,
   /* cssModules */
@@ -14126,14 +14242,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 144 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Component = __webpack_require__(11)(
+var Component = __webpack_require__(2)(
   /* script */
   null,
   /* template */
-  __webpack_require__(149),
+  __webpack_require__(183),
   /* scopeId */
   null,
   /* cssModules */
@@ -14147,18 +14263,118 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 145 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(160)
+__webpack_require__(190)
 
-var Component = __webpack_require__(11)(
+var Component = __webpack_require__(2)(
+  /* script */
+  null,
+  /* template */
+  __webpack_require__(177),
+  /* scopeId */
+  "data-v-1d873eba",
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/wrl/Documents/website/17chang/components/index/page1.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] page1.vue: functional components are not supported with templates, they should use render functions.")}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 169 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(191)
+
+var Component = __webpack_require__(2)(
+  /* script */
+  null,
+  /* template */
+  __webpack_require__(178),
+  /* scopeId */
+  "data-v-1d95563b",
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/wrl/Documents/website/17chang/components/index/page2.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] page2.vue: functional components are not supported with templates, they should use render functions.")}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 170 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(192)
+
+var Component = __webpack_require__(2)(
+  /* script */
+  null,
+  /* template */
+  __webpack_require__(179),
+  /* scopeId */
+  "data-v-1da36dbc",
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/wrl/Documents/website/17chang/components/index/page3.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] page3.vue: functional components are not supported with templates, they should use render functions.")}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 171 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(193)
+
+var Component = __webpack_require__(2)(
+  /* script */
+  null,
+  /* template */
+  __webpack_require__(180),
+  /* scopeId */
+  "data-v-1db1853d",
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/wrl/Documents/website/17chang/components/index/page4.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] page4.vue: functional components are not supported with templates, they should use render functions.")}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 172 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(201)
+
+var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(66),
   /* template */
-  __webpack_require__(154),
+  __webpack_require__(189),
   /* scopeId */
   null,
   /* cssModules */
@@ -14172,18 +14388,18 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 146 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(158)
+__webpack_require__(199)
 
-var Component = __webpack_require__(11)(
+var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(67),
   /* template */
-  __webpack_require__(151),
+  __webpack_require__(186),
   /* scopeId */
   "data-v-74f7cc44",
   /* cssModules */
@@ -14197,18 +14413,43 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 147 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(157)
+__webpack_require__(198)
 
-var Component = __webpack_require__(11)(
+var Component = __webpack_require__(2)(
   /* script */
   __webpack_require__(68),
   /* template */
-  __webpack_require__(150),
+  __webpack_require__(185),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/wrl/Documents/website/17chang/layouts/h5.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] h5.vue: functional components are not supported with templates, they should use render functions.")}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 175 */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(197)
+
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(69),
+  /* template */
+  __webpack_require__(184),
   /* scopeId */
   "data-v-52050809",
   /* cssModules */
@@ -14222,56 +14463,103 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 148 */
-/***/ (function(module, exports) {
+/* 176 */
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    attrs: {
-      "id": "__nuxt"
-    }
-  }, [_c('nuxt-loading', {
-    ref: "loading"
-  }), (_vm.layout) ? _c(_vm.layout, {
-    tag: "component"
-  }) : _vm._e()], 1)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
+
+/* styles */
+__webpack_require__(194)
+
+var Component = __webpack_require__(2)(
+  /* script */
+  __webpack_require__(70),
+  /* template */
+  __webpack_require__(181),
+  /* scopeId */
+  "data-v-277025d0",
+  /* cssModules */
+  null
+)
+Component.options.__file = "/Users/wrl/Documents/website/17chang/pages/ktvrank.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key !== "__esModule"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] ktvrank.vue: functional components are not supported with templates, they should use render functions.")}
+
+module.exports = Component.exports
+
 
 /***/ }),
-/* 149 */
+/* 177 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _vm._m(0)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('footer', [_vm._v("\n  Visit our website for more documentation : "), _c('a', {
-    attrs: {
-      "href": "https://nuxtjs.org",
-      "target": "_blank"
-    }
-  }, [_vm._v("nuxtjs.org")])])
+  return _c('div', {
+    staticClass: "section"
+  }, [_c('div', {
+    staticClass: " page1"
+  }, [_c('div', {
+    staticClass: " stips cloud1"
+  }), _c('div', {
+    staticClass: " stips cloud2"
+  }), _c('div', {
+    staticClass: " stips cloud4"
+  }), _c('div', {
+    staticClass: " left"
+  }, [_c('div', {
+    staticClass: " stips shan"
+  }), _c('div', {
+    staticClass: " stips balloon"
+  }), _c('div', {
+    staticClass: " stips money1"
+  }), _c('div', {
+    staticClass: " stips money2"
+  }), _c('div', {
+    staticClass: " stips money3"
+  }), _c('div', {
+    staticClass: " stips money4"
+  })]), _c('div', {
+    staticClass: " right-box"
+  }, [_c('div', {
+    staticClass: " right"
+  }, [_c('div', {
+    staticClass: " stips shan"
+  }), _c('div', {
+    staticClass: "stips shanxiaocao"
+  }), _c('div', {
+    staticClass: " stips groud1"
+  }), _c('div', {
+    staticClass: " stips groud2"
+  }), _c('div', {
+    staticClass: " stips groud3 car-box"
+  }), _c('div', {
+    staticClass: " groud4 car-box"
+  }, [_c('div', {
+    staticClass: " stips car"
+  })]), _c('div', {
+    staticClass: " stips ktvfont"
+  }), _c('div', {
+    staticClass: " stips ktv"
+  }, [_c('div', {
+    staticClass: " stips deng"
+  })]), _c('div', {
+    staticClass: " stips xiaocao"
+  })])]), _c('div', {
+    staticClass: " phone"
+  })])])
 }]}
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 150 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 178 */
+/***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
-    attrs: {
-      "id": "fullpage"
-    }
-  }, [_vm._m(0), _c('div', {
     staticClass: "section"
   }, [_c('div', {
-    staticClass: "page"
-  }, [_vm._m(1), _c('div', {
-    staticClass: "box-left boxodd-right"
-  }, [_c('div', {
     staticClass: " page2"
-  }, [_vm._m(2), _c('div', {
+  }, [_vm._m(0), _c('div', {
     staticClass: " stips magic"
   }), _c('div', {
     staticClass: " stips hat"
@@ -14454,12 +14742,37 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "y1": "232.99815",
       "x1": "308.74865"
     }
-  })])])])])])])]), _c('div', {
+  })])])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: " magicbox"
+  }, [_c('div', {
+    staticClass: " stips diamond"
+  }), _c('div', {
+    staticClass: " stips Starbig"
+  }), _c('div', {
+    staticClass: " stips Starsmall"
+  }), _c('div', {
+    staticClass: " stips Ray"
+  }, [_c('div', {
+    staticClass: " stips Ray2"
+  })]), _c('div', {
+    staticClass: " stips Circle1"
+  }), _c('div', {
+    staticClass: " stips Circle2"
+  }), _c('div', {
+    staticClass: " stips Circle3"
+  })])
+}]}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 179 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "section"
-  }, [_c('div', {
-    staticClass: " page"
-  }, [_c('div', {
-    staticClass: "box-left"
   }, [_c('div', {
     staticClass: " page3"
   }, [_c('svg', {
@@ -14502,7 +14815,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })])]), _c('div', {
     staticClass: " stips computerzhezhao"
-  }), _vm._m(3), _vm._m(4), _c('div', {
+  }), _vm._m(0), _vm._m(1), _c('div', {
     staticClass: " stips Gear1"
   }), _c('div', {
     staticClass: " stips Gear2"
@@ -14510,102 +14823,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: " stips Gear3"
   }), _c('div', {
     staticClass: " stips Rocket"
-  }), _vm._m(5), _vm._m(6), _c('div', {
+  }), _vm._m(2), _vm._m(3), _c('div', {
     staticClass: " stips xingxing"
-  })])]), _vm._m(7)])]), _vm._m(8)])
+  })])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "section"
-  }, [_c('div', {
-    staticClass: "page"
-  }, [_c('div', {
-    staticClass: "box-left"
-  }, [_c('div', {
-    staticClass: " page1"
-  }, [_c('div', {
-    staticClass: " stips cloud1"
-  }), _c('div', {
-    staticClass: " stips cloud2"
-  }), _c('div', {
-    staticClass: " stips cloud4"
-  }), _c('div', {
-    staticClass: " left"
-  }, [_c('div', {
-    staticClass: " stips shan"
-  }), _c('div', {
-    staticClass: " stips balloon"
-  }), _c('div', {
-    staticClass: " stips money1"
-  }), _c('div', {
-    staticClass: " stips money2"
-  }), _c('div', {
-    staticClass: " stips money3"
-  }), _c('div', {
-    staticClass: " stips money4"
-  })]), _c('div', {
-    staticClass: " right-box"
-  }, [_c('div', {
-    staticClass: " right"
-  }, [_c('div', {
-    staticClass: " stips shan"
-  }), _c('div', {
-    staticClass: "stips shanxiaocao"
-  }), _c('div', {
-    staticClass: " stips groud1"
-  }), _c('div', {
-    staticClass: " stips groud2"
-  }), _c('div', {
-    staticClass: " stips groud3 car-box"
-  }), _c('div', {
-    staticClass: " groud4 car-box"
-  }, [_c('div', {
-    staticClass: " stips car"
-  })]), _c('div', {
-    staticClass: " stips ktvfont"
-  }), _c('div', {
-    staticClass: " stips ktv"
-  }, [_c('div', {
-    staticClass: " stips deng"
-  })]), _c('div', {
-    staticClass: " stips xiaocao"
-  })])]), _c('div', {
-    staticClass: " phone"
-  })])]), _c('div', {
-    staticClass: "box-right"
-  }, [_c('img', {
-    attrs: {
-      "src": __webpack_require__(25)
-    }
-  })])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "box-right boxodd-left"
-  }, [_c('img', {
-    attrs: {
-      "src": __webpack_require__(25)
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: " magicbox"
-  }, [_c('div', {
-    staticClass: " stips diamond"
-  }), _c('div', {
-    staticClass: " stips Starbig"
-  }), _c('div', {
-    staticClass: " stips Starsmall"
-  }), _c('div', {
-    staticClass: " stips Ray"
-  }, [_c('div', {
-    staticClass: " stips Ray2"
-  })]), _c('div', {
-    staticClass: " stips Circle1"
-  }), _c('div', {
-    staticClass: " stips Circle2"
-  }), _c('div', {
-    staticClass: " stips Circle3"
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: " computer"
   }, [_c('div', {
@@ -14659,32 +14880,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "stips huxian1"
   })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "box-right"
-  }, [_c('img', {
-    attrs: {
-      "src": __webpack_require__(25)
-    }
-  })])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+}]}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 180 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "section"
   }, [_c('div', {
-    staticClass: " page"
-  }, [_c('div', {
-    staticClass: " box-right boxodd-left"
-  }, [_c('img', {
-    attrs: {
-      "src": __webpack_require__(25)
-    }
-  })]), _c('div', {
     staticClass: "box-left boxodd-right"
   }, [_c('div', {
-    staticClass: " page4",
-    staticStyle: {
-      "margin": "0px -33px 0px 0px"
-    }
+    staticClass: " page4"
   }, [_c('div', {
     staticClass: "stips Street"
   }), _c('div', {
@@ -14733,12 +14944,118 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "stips msg3"
   }), _c('div', {
     staticClass: "stips balloon"
-  })])])])])
+  })])])])
 }]}
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 151 */
+/* 181 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "ktvrank"
+  }, [_c('section', {
+    attrs: {
+      "id": "container"
+    }
+  }, [_c('div', {
+    attrs: {
+      "data-chart": "2,3,3,3,3"
+    }
+  })]), _c('article', [_c('section', {
+    attrs: {
+      "id": "controlcenter"
+    }
+  }, [_c('section', {
+    staticClass: "center"
+  }, [_c('div', [_c('div', {
+    staticClass: "cup"
+  }, [_c('i', {
+    attrs: {
+      "active": "true"
+    }
+  }), _c('span', [_vm._v("1")])]), _c('div', [_c('div', {
+    staticClass: "red1"
+  }, [_c('div', {
+    staticClass: "red2"
+  }, [_c('div', {
+    staticClass: "red3"
+  })])])])]), _c('ul', {
+    staticClass: "ul"
+  }, [_c('li'), _c('li'), _c('li'), _c('li'), _c('li'), _c('li'), _c('li'), _c('li'), _c('li'), _c('li')]), _c('div', {
+    staticClass: "chart"
+  }, [_c('canvas', {
+    attrs: {
+      "id": "chart",
+      "width": "240",
+      "height": "194"
+    }
+  })])])])])])
+}]}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 182 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    attrs: {
+      "id": "__nuxt"
+    }
+  }, [_c('nuxt-loading', {
+    ref: "loading"
+  }), (_vm.layout) ? _c(_vm.layout, {
+    tag: "component"
+  }) : _vm._e()], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 183 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _vm._m(0)
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('footer', [_vm._v("\n  Visit our website for more documentation : "), _c('a', {
+    attrs: {
+      "href": "https://nuxtjs.org",
+      "target": "_blank"
+    }
+  }, [_vm._v("nuxtjs.org")])])
+}]}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 184 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    attrs: {
+      "id": "fullpage"
+    }
+  }, [_c('page1'), _c('page2'), _c('page3'), _c('page4')], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 185 */
+/***/ (function(module, exports) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('section', {
+    staticClass: "h5"
+  }, [_c('nuxt')], 1)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+
+/***/ }),
+/* 186 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -14758,7 +15075,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 152 */
+/* 187 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -14771,7 +15088,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 153 */
+/* 188 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -14788,55 +15105,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 154 */
+/* 189 */
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('nuxt')], 1)
+  return _c('nuxt')
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 
 /***/ }),
-/* 155 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(116);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add CSS to SSR context
-__webpack_require__(14)("c7ccba4a", content, false);
-
-/***/ }),
-/* 156 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(117);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add CSS to SSR context
-__webpack_require__(14)("36bee04c", content, false);
-
-/***/ }),
-/* 157 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(118);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add CSS to SSR context
-__webpack_require__(14)("70461fec", content, false);
-
-/***/ }),
-/* 158 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -14846,10 +15124,10 @@ var content = __webpack_require__(119);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add CSS to SSR context
-__webpack_require__(14)("75b4ddde", content, false);
+__webpack_require__(4)("582e715e", content, false);
 
 /***/ }),
-/* 159 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -14859,10 +15137,10 @@ var content = __webpack_require__(120);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add CSS to SSR context
-__webpack_require__(14)("59cb513a", content, false);
+__webpack_require__(4)("4544de34", content, false);
 
 /***/ }),
-/* 160 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
@@ -14872,10 +15150,127 @@ var content = __webpack_require__(121);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add CSS to SSR context
-__webpack_require__(14)("2b9b8406", content, false);
+__webpack_require__(4)("bdfb4dc4", content, false);
 
 /***/ }),
-/* 161 */
+/* 193 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(122);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add CSS to SSR context
+__webpack_require__(4)("125e7001", content, false);
+
+/***/ }),
+/* 194 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(123);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add CSS to SSR context
+__webpack_require__(4)("4457d1ff", content, false);
+
+/***/ }),
+/* 195 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(124);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add CSS to SSR context
+__webpack_require__(4)("c7ccba4a", content, false);
+
+/***/ }),
+/* 196 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(125);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add CSS to SSR context
+__webpack_require__(4)("36bee04c", content, false);
+
+/***/ }),
+/* 197 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(126);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add CSS to SSR context
+__webpack_require__(4)("70461fec", content, false);
+
+/***/ }),
+/* 198 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(127);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add CSS to SSR context
+__webpack_require__(4)("fbd29d30", content, false);
+
+/***/ }),
+/* 199 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(128);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add CSS to SSR context
+__webpack_require__(4)("75b4ddde", content, false);
+
+/***/ }),
+/* 200 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(129);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add CSS to SSR context
+__webpack_require__(4)("59cb513a", content, false);
+
+/***/ }),
+/* 201 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(130);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add CSS to SSR context
+__webpack_require__(4)("2b9b8406", content, false);
+
+/***/ }),
+/* 202 */
 /***/ (function(module, exports) {
 
 /**
@@ -14908,38 +15303,38 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 162 */
+/* 203 */
 /***/ (function(module, exports) {
 
 module.exports = require("vue-meta");
 
 /***/ }),
-/* 163 */
+/* 204 */
 /***/ (function(module, exports) {
 
 module.exports = require("vue-router");
 
 /***/ }),
-/* 164 */
+/* 205 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise__ = __webpack_require__(26);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_babel_runtime_core_js_promise__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_querystring__ = __webpack_require__(60);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_querystring__ = __webpack_require__(59);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_querystring___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_querystring__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash__ = __webpack_require__(59);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__middleware__ = __webpack_require__(56);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__index__ = __webpack_require__(55);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__utils__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__middleware__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__index__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__utils__ = __webpack_require__(56);
 
 
 
-var debug = __webpack_require__(58)('nuxt:render');
+var debug = __webpack_require__(57)('nuxt:render');
 debug.color = 4; // force blue color
 
 
@@ -14972,7 +15367,7 @@ var _app = new __WEBPACK_IMPORTED_MODULE_1_vue___default.a(__WEBPACK_IMPORTED_MO
     }
     opts.query = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_querystring__["stringify"])(opts.query);
     opts.path = opts.path + (opts.query ? '?' + opts.query : '');
-    opts.path = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__utils__["a" /* urlJoin */])('//w550.github.io/', opts.path);
+    opts.path = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_6__utils__["a" /* urlJoin */])('./', opts.path);
     context.res.writeHead(opts.status, {
       'Location': opts.path
     });
