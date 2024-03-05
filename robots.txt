@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+
+Sitemap: https://w550.github.io/sitemap-index.xml

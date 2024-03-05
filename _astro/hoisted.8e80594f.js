@@ -1,0 +1,1 @@
+import{g,S as r}from"./ScrollTrigger.06fbf3d1.js";g.registerPlugin(r),self.gsap=g;
